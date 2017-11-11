@@ -103,6 +103,7 @@
 		1F13A2F11FB448BC000AD5B4 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				1F5446D71F6EDCA000FAA2FF /* LaunchScreen.storyboard */,
 				1F5446D21F6EDC9F00FAA2FF /* Main.storyboard */,
 				1F13A2F21FB44B2D000AD5B4 /* Groups.storyboard */,
 				1F13A2F41FB44D96000AD5B4 /* Friends.storyboard */,
@@ -171,7 +172,6 @@
 				1F5446CE1F6EDC9F00FAA2FF /* AppDelegate.swift */,
 				1F13A2F11FB448BC000AD5B4 /* Storyboards */,
 				1F5446D51F6EDCA000FAA2FF /* Assets.xcassets */,
-				1F5446D71F6EDCA000FAA2FF /* LaunchScreen.storyboard */,
 				1F5446DA1F6EDCA000FAA2FF /* Info.plist */,
 				1F47CA101FADD7DB007FF908 /* GoogleService-Info.plist */,
 			);

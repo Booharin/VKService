@@ -31,18 +31,40 @@ class NewsRequest {
         let item = value as! [String:Any]
         let sourceID = item["source_id"] as! Int
         let textOfPost = item["text"] as? String ?? ""
-        var photoOfPost = PhotoOfPost()
-        var items = Item()
         var photoID = ""
         var nameID = ""
+        let photoOfPost = PhotoOfPost()
+        let linkOfPost = LinkOfPost()
+        let items = Item()
+        var typeOfAttachment = TypeOfAttachment.none
         if item["attachment"] != nil {
           let attachment = item["attachment"] as! [String:Any]
-          let typeOfPost = attachment["type"] as! String
-          if typeOfPost == "photo" {
+          let typeOfAttachmentJSON = attachment["type"] as! String
+          
+          switch typeOfAttachmentJSON {
+          case "photo" :
+            typeOfAttachment = .photo
             let photoAttachment = attachment["photo"] as! [String:Any]
             photoOfPost.urlOfImage = photoAttachment["src_big"] as! String
             photoOfPost.width = photoAttachment["width"] as! Int
             photoOfPost.height = photoAttachment["height"] as! Int
+          case "link" :
+            typeOfAttachment = .link
+            let linkAttachment = attachment["link"] as! [String:Any]
+            linkOfPost.urlOfLink = linkAttachment["url"] as! String
+            linkOfPost.title = linkAttachment["title"] as! String
+            if linkAttachment["image_big"] != nil {
+              linkOfPost.image = (linkAttachment["image_big"] as! String)
+            } else {
+              linkOfPost.image = (linkAttachment["image_src"] as! String)
+            }
+          case "video" :
+            typeOfAttachment = .video
+          case "audio" :
+            typeOfAttachment = .audio
+          case "poll":
+            typeOfAttachment = .poll
+          default: break
           }
         }
         //FIXME:
@@ -85,7 +107,7 @@ class NewsRequest {
             }
           }
         }
-        news.append(New(photoID: photoID, nameID: nameID, textOfPost: textOfPost, photoOfPost: photoOfPost, items: items))
+        news.append(New(photoID: photoID, nameID: nameID, textOfPost: textOfPost, typeOfAttachment: typeOfAttachment, photoOfPost: photoOfPost, linkOfPost: linkOfPost, items: items))
       }
       completion(news)
     }

@@ -21,22 +21,17 @@ class NewsController: UITableViewController {
     self.newsRequest.loadNewsData() { [weak self] news in
       self?.news = news
       OperationQueue.main.addOperation {
-      self?.tableView.reloadData()
+        self?.tableView.reloadData()
       }
     }
     
-//    tableView.estimatedRowHeight = 44
-//    tableView.rowHeight = UITableViewAutomaticDimension
+    //    tableView.estimatedRowHeight = 44
+    //    tableView.rowHeight = UITableViewAutomaticDimension
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
   }
-  
-//  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//    let new = news[indexPath.row]
-//    return CGFloat((Double(UIScreen.main.bounds.width) * new.photoOfPost.ratio) + 120)
-//  }
   
   override func numberOfSections(in tableView: UITableView) -> Int {
     return 1
@@ -47,28 +42,53 @@ class NewsController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsCell
     let new = news[indexPath.row]
+    var identifier = ""
+    var ratio = 0.0
+    var imageOfPost = ""
+    var addedHeight = 0.0
 
-    cell.setName(text: cell.nameID.text!)
-    cell.setPostText(text: cell.textOfPost.text!)
-    cell.setLikesCount(text: cell.likes.text!)
-    cell.setCommentsCount(text: cell.comments.text!)
-    cell.setRepostsCount(text: cell.reposts.text!)
-    cell.setSizeImageOfPost(widthOfScreen: UIScreen.main.bounds.width, ratio: new.photoOfPost.ratio)
+    switch new.typeOfAttachment {
+    case .photo:
+      identifier = "NewsCellPhotoPost"
+      imageOfPost = new.photoOfPost.urlOfImage
+      ratio = new.photoOfPost.ratio
+      addedHeight = 150.0
+    case .link:
+      identifier = "NewsCellLinkPost"
+      imageOfPost = new.linkOfPost.image ?? ""
+      ratio = 0.5
+      addedHeight = 180.0
+    default:
+      identifier = "NewsCellPhotoPost"
+      imageOfPost = ""
+      ratio = 0.5
+      addedHeight = 150.0
+    }
     
-    tableView.rowHeight = CGFloat((Double(UIScreen.main.bounds.width) * new.photoOfPost.ratio) + 120)
+    let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! NewsCell
+    tableView.rowHeight = CGFloat(ceil((Double(UIScreen.main.bounds.width) * ratio)) + addedHeight)
     
     cell.nameID.text = new.nameID
     cell.textOfPost.text = new.textOfPost
     cell.likes.text = new.items.likes
     cell.comments.text = new.items.comments
     cell.reposts.text = new.items.reposts
-    
     cell.photoID.image = photoService.photo(atIndexpath: indexPath, byUrl: new.photoID)
+    cell.photoOfPost.image = photoService.photo(atIndexpath: indexPath, byUrl: imageOfPost)
     
-    cell.photoOfPost.image = photoService.photo(atIndexpath: indexPath, byUrl: new.photoOfPost.urlOfImage)
-
+    if identifier == "NewsCellLinkPost" {
+    cell.titleUrl.text = new.linkOfPost.title
+    cell.setTitleOfLink(text: cell.titleUrl.text ?? new.linkOfPost.urlOfLink, originY: tableView.rowHeight)
+    }
+    
+    cell.setName(text: cell.nameID.text!)
+    cell.setPostText(text: cell.textOfPost.text!)
+    cell.setLikesCount(text: cell.likes.text!, originY: tableView.rowHeight)
+    cell.setCommentsCount(text: cell.comments.text!, originY: tableView.rowHeight)
+    cell.setRepostsCount(text: cell.reposts.text!, originY: tableView.rowHeight)
+    cell.setSizeImageOfPost(widthOfScreen: UIScreen.main.bounds.width, ratio: ratio)
+    
     return cell
   }
 }

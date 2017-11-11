@@ -34,14 +34,14 @@ class AllFriendsCell: UITableViewCell {
   override func layoutSubviews() {
     super.layoutSubviews()
     
-    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: friendsName.text!, font: friendsName.font), instets: 25, label: friendsName, originX: 70)
+    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: friendsName.text!, font: friendsName.font), label: friendsName, originX: 70, originY: 25)
     handleSizingUI.imageFrame(image: avatar, imageSide: 60, originX: 0, originY: 5, round: true)
   }
   
   func setFriendName(text: String) {
     friendsName.text = text
     
-    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: friendsName.text!, font: friendsName.font), instets: 25, label: friendsName, originX: 70)
+    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: friendsName.text!, font: friendsName.font), label: friendsName, originX: 70, originY: 25)
   }
   
 }

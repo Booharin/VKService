@@ -12,14 +12,17 @@ class New {
   var photoID = ""
   var nameID = ""
   var textOfPost = ""
+  var typeOfAttachment = TypeOfAttachment.none
   var photoOfPost = PhotoOfPost()
+  var linkOfPost = LinkOfPost()
   var items = Item()
   
-  convenience init(photoID: String, nameID: String, textOfPost: String, photoOfPost: PhotoOfPost, items: Item) {
+  convenience init(photoID: String, nameID: String, textOfPost: String, typeOfAttachment: TypeOfAttachment, photoOfPost: PhotoOfPost, linkOfPost: LinkOfPost, items: Item) {
     self.init()
     self.photoID = photoID
     self.nameID = nameID
     self.textOfPost = textOfPost
+    self.typeOfAttachment = typeOfAttachment
     self.photoOfPost = photoOfPost
     self.items = items
   }
@@ -30,8 +33,15 @@ class PhotoOfPost {
   var width = 1
   var height = 1
   var ratio: Double {
-    return Double(height / width)
+    return Double(height) / Double(width)
   }
+}
+
+class LinkOfPost {
+  var urlOfLink = ""
+  var title = ""
+  var description = ""
+  var image : String?
 }
 
 class Item {
@@ -40,5 +50,12 @@ class Item {
   var reposts = ""
 }
 
-
+enum TypeOfAttachment {
+  case photo
+  case link
+  case audio
+  case video
+  case poll
+  case none
+}
 

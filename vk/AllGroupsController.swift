@@ -58,7 +58,7 @@ class AllGroupsController: UITableViewController {
     //if isFiltering() {
       return groups.count
     //}
-    return 1
+    //return 1
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

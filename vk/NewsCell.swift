@@ -30,6 +30,11 @@ class NewsCell: UITableViewCell {
       photoOfPost.translatesAutoresizingMaskIntoConstraints = false
     }
   }
+  @IBOutlet weak var titleUrl: UILabel! {
+    didSet {
+      titleUrl.translatesAutoresizingMaskIntoConstraints = false
+    }
+  }
   @IBOutlet weak var likesImage: UIImageView! {
     didSet {
       likesImage.translatesAutoresizingMaskIntoConstraints = false
@@ -73,53 +78,47 @@ class NewsCell: UITableViewCell {
   
   override func layoutSubviews() {
     super.layoutSubviews()
-    // nameID
-    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: nameID.text!, font: nameID.font), instets: 25, label: nameID, originX: 70)
-    // photoID
     handleSizingUI.imageFrame(image: photoID, imageSide: 60, originX: 0, originY: 5, round: true)
-    // textOfPost
-    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: textOfPost.text!, font: textOfPost.font), instets: 70, label: textOfPost, originX: 10)
-    // likes
-    handleSizingUI.imageFrame(image: likesImage, imageSide: 20, originX: 5, originY: 375, round: false)
-    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: likes.text!, font: likes.font), instets: 380, label: likes, originX: 30)
-    // comments
-    handleSizingUI.imageFrame(image: commentsImage, imageSide: 20, originX: 60, originY: 375, round: false)
-    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: comments.text!, font: comments.font), instets: 380, label: comments, originX: 85)
-    // reposts
-    handleSizingUI.imageFrame(image: repostsImage, imageSide: 20, originX: 115, originY: 375, round: false)
-    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: reposts.text!, font: reposts.font), instets: 380, label: reposts, originX: 140)
   }
   
   // nameID
   func setName(text: String) {
     nameID.text = text
     
-    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: nameID.text!, font: nameID.font), instets: 25, label: nameID, originX: 70)
+    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: nameID.text!, font: nameID.font), label: nameID, originX: 70, originY: 25)
   }
   // textOfPost
   func setPostText(text: String) {
     textOfPost.text = text
     
-    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: textOfPost.text!, font: textOfPost.font), instets: 70, label: textOfPost, originX: 10)
+    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: textOfPost.text!, font: textOfPost.font), label: textOfPost, originX: 10, originY: 70)
   }
   // imageOfPost
   func setSizeImageOfPost(widthOfScreen: CGFloat, ratio: Double) {
-    handleSizingUI.imageOfPost(image: photoOfPost, width: widthOfScreen, ratio: ratio, originY: 85)
+    handleSizingUI.imageOfPost(image: photoOfPost, width: widthOfScreen, ratio: ratio, originY: 105)
+  }
+  // link
+  func setTitleOfLink(text: String, originY: CGFloat) {
+    titleUrl.text = text
+    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: titleUrl.text!, font: titleUrl.font), label: titleUrl, originX: 10, originY: originY - 60)
   }
   // likes
-  func setLikesCount(text: String) {
+  func setLikesCount(text: String, originY: CGFloat) {
     likes.text = text
-    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: likes.text!, font: likes.font), instets: 380, label: likes, originX: 30)
+    handleSizingUI.imageFrame(image: likesImage, imageSide: 30, originX: 25, originY: Int(originY - 35), round: false)
+    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: likes.text!, font: likes.font), label: likes, originX: 60, originY: originY - 30)
   }
   // comments
-  func setCommentsCount(text: String) {
+  func setCommentsCount(text: String, originY: CGFloat) {
     comments.text = text
-    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: comments.text!, font: comments.font), instets: 380, label: comments, originX: 85)
+    handleSizingUI.imageFrame(image: commentsImage, imageSide: 30, originX: 110, originY: Int(originY - 35), round: false)
+    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: comments.text!, font: comments.font), label: comments, originX: 145, originY: originY - 30)
   }
   // reposts
-  func setRepostsCount(text: String) {
+  func setRepostsCount(text: String, originY: CGFloat) {
     reposts.text = text
-    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: reposts.text!, font: reposts.font), instets: 380, label: reposts, originX: 140)
+    handleSizingUI.imageFrame(image: repostsImage, imageSide: 30, originX: 185, originY: Int(originY - 35), round: false)
+    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: reposts.text!, font: reposts.font), label: reposts, originX: 220, originY: originY - 30)
   }
   
 }

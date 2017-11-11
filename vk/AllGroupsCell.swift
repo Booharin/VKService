@@ -39,9 +39,9 @@ class AllGroupsCell: UITableViewCell {
   override func layoutSubviews() {
     super.layoutSubviews()
     // name
-    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: nameOfGroup.text!, font: nameOfGroup.font), instets: handleSizingUI.instets, label: nameOfGroup, originX: 70)
+    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: nameOfGroup.text!, font: nameOfGroup.font), label: nameOfGroup, originX: 70, originY: handleSizingUI.instets)
     // count members
-    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: countMembers.text!, font: countMembers.font), instets: 50, label: countMembers, originX: 70)
+    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: countMembers.text!, font: countMembers.font), label: countMembers, originX: 70, originY: 50)
     // photo
     handleSizingUI.imageFrame(image: groupPhoto, imageSide: 60, originX: 0, originY: 5, round: true)
   }
@@ -49,13 +49,13 @@ class AllGroupsCell: UITableViewCell {
   func setGroupName(text: String) {
     nameOfGroup.text = text
     
-    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: nameOfGroup.text!, font: nameOfGroup.font), instets: handleSizingUI.instets, label: nameOfGroup, originX: 70)
+    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: nameOfGroup.text!, font: nameOfGroup.font), label: nameOfGroup, originX: 70, originY: handleSizingUI.instets)
   }
   
   func setCountMembers(text: String) {
     countMembers.text = text
     
-    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: countMembers.text!, font: countMembers.font), instets: 50, label: countMembers, originX: 70)
+    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: countMembers.text!, font: countMembers.font), label: countMembers, originX: 70, originY: 50)
   }
   
 }

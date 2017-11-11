@@ -34,14 +34,14 @@ class MyGroupsCell: UITableViewCell {
   override func layoutSubviews() {
     super.layoutSubviews()
     
-    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: nameOfMyGroup.text!, font: nameOfMyGroup.font), instets: 25, label: nameOfMyGroup, originX: 70)
+    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: nameOfMyGroup.text!, font: nameOfMyGroup.font), label: nameOfMyGroup, originX: 70, originY: 25)
     handleSizingUI.imageFrame(image: photoOfMyGroup, imageSide: 60, originX: 0, originY: 5, round: true)
   }
   
   func setGroupName(text: String) {
     nameOfMyGroup.text = text
     
-    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: nameOfMyGroup.text!, font: nameOfMyGroup.font), instets: 25, label: nameOfMyGroup, originX: 70)
+    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: nameOfMyGroup.text!, font: nameOfMyGroup.font), label: nameOfMyGroup, originX: 70, originY: 25)
   }
   
 }

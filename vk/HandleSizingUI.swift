@@ -22,8 +22,8 @@ class HandleSizingUI {
     return size
   }
   
-  func labelFrame (labelSize: CGSize, instets: CGFloat, label: UILabel, originX: CGFloat) {
-    let labelOrigin = CGPoint(x: originX, y: instets)
+  func labelFrame (labelSize: CGSize, label: UILabel, originX: CGFloat, originY: CGFloat) {
+    let labelOrigin = CGPoint(x: originX, y: originY)
     label.frame = CGRect(origin: labelOrigin, size: labelSize)
   }
   
