@@ -20,7 +20,6 @@
 		1F5446CF1F6EDC9F00FAA2FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5446CE1F6EDC9F00FAA2FF /* AppDelegate.swift */; };
 		1F5446D41F6EDC9F00FAA2FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F5446D21F6EDC9F00FAA2FF /* Main.storyboard */; };
 		1F5446D61F6EDCA000FAA2FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F5446D51F6EDCA000FAA2FF /* Assets.xcassets */; };
-		1F5446D91F6EDCA000FAA2FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F5446D71F6EDCA000FAA2FF /* LaunchScreen.storyboard */; };
 		1F5A87521F7E5EC000C967DA /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5A87511F7E5EC000C967DA /* Group.swift */; };
 		1F5B35061F932CD300360FCA /* NewsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5B35051F932CD300360FCA /* NewsRequest.swift */; };
 		1F5B35091F933FB600360FCA /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5B35081F933FB600360FCA /* NewsController.swift */; };
@@ -35,9 +34,27 @@
 		1F62361A1F752D5300C2EC13 /* MyGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6236191F752D5300C2EC13 /* MyGroupsController.swift */; };
 		1F62361C1F752D7000C2EC13 /* MyGroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62361B1F752D7000C2EC13 /* MyGroupsCell.swift */; };
 		1F66F0DA1F9E8A6600D74D4E /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F66F0D91F9E8A6600D74D4E /* PhotoService.swift */; };
+		1F6A68091FB7854B0038A390 /* NewsMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A68081FB7854B0038A390 /* NewsMethods.swift */; };
+		1F6A680C1FB833E00038A390 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A680B1FB833E00038A390 /* ChatCell.swift */; };
+		1F6A680E1FB834100038A390 /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A680D1FB834100038A390 /* ChatController.swift */; };
+		1F6A68121FB860FF0038A390 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6A68141FB860FF0038A390 /* Chat.storyboard */; };
+		1F6A68181FB865110038A390 /* ChatRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A68171FB865110038A390 /* ChatRequest.swift */; };
+		1F6A681A1FB8B8AC0038A390 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A68191FB8B8AC0038A390 /* Chat.swift */; };
+		1F6A681C1FB9D2B10038A390 /* ChatMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A681B1FB9D2B10038A390 /* ChatMethods.swift */; };
+		1F6A68211FBA06580038A390 /* DialogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A681F1FBA06580038A390 /* DialogController.swift */; };
+		1F6A68241FBA0D580038A390 /* RealmMethodsForDialogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A68231FBA0D580038A390 /* RealmMethodsForDialogs.swift */; };
+		1F6A68261FBAE49F0038A390 /* DialogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A68251FBAE49F0038A390 /* DialogCell.swift */; };
+		1F6A68281FBB11810038A390 /* RealmMethodsForMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A68271FBB11810038A390 /* RealmMethodsForMessages.swift */; };
+		1F6A682A1FBB372B0038A390 /* DialogMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A68291FBB372A0038A390 /* DialogMethods.swift */; };
 		1F708B9F1FB05A2100ACE7FF /* FireBaseStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F708B9E1FB05A2100ACE7FF /* FireBaseStruct.swift */; };
 		1F7D00F71F90D19700BE6E71 /* RequestMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D00F61F90D19700BE6E71 /* RequestMethods.swift */; };
 		1F99445E1F77C6C400351C0A /* VKService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F99445D1F77C6C400351C0A /* VKService.swift */; };
+		1FAA1C6D1FBC45FB00354807 /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAA1C6C1FBC45FB00354807 /* PostController.swift */; };
+		1FAA1C6F1FBCB62E00354807 /* PostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAA1C6E1FBCB62E00354807 /* PostRequest.swift */; };
+		1FAA1C711FBDA23700354807 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAA1C701FBDA23700354807 /* MapController.swift */; };
+		1FAA1C741FBDC15500354807 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAA1C731FBDC15500354807 /* LocationManager.swift */; };
+		1FAA1C781FBDFE3100354807 /* MapTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAA1C771FBDFE3100354807 /* MapTableCell.swift */; };
+		1FAA1C7A1FBDFECC00354807 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FAA1C791FBDFECC00354807 /* Map.storyboard */; };
 		1FE50AE31FAC6D950060E54B /* HandleSizingUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE50AE21FAC6D950060E54B /* HandleSizingUI.swift */; };
 		1FEEA4201F86A359004FB74A /* GroupsDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEEA41F1F86A359004FB74A /* GroupsDataRequest.swift */; };
 		1FEEB3311F7CED0F00010A3F /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEEB3301F7CED0F00010A3F /* Friend.swift */; };
@@ -61,7 +78,6 @@
 		1F5446CE1F6EDC9F00FAA2FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F5446D31F6EDC9F00FAA2FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F5446D51F6EDCA000FAA2FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1F5446D81F6EDCA000FAA2FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F5446DA1F6EDCA000FAA2FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F5A87511F7E5EC000C967DA /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		1F5B35051F932CD300360FCA /* NewsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRequest.swift; sourceTree = "<group>"; };
@@ -77,9 +93,27 @@
 		1F6236191F752D5300C2EC13 /* MyGroupsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGroupsController.swift; sourceTree = "<group>"; };
 		1F62361B1F752D7000C2EC13 /* MyGroupsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGroupsCell.swift; sourceTree = "<group>"; };
 		1F66F0D91F9E8A6600D74D4E /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
+		1F6A68081FB7854B0038A390 /* NewsMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsMethods.swift; sourceTree = "<group>"; };
+		1F6A680B1FB833E00038A390 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		1F6A680D1FB834100038A390 /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
+		1F6A68131FB860FF0038A390 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Chat.storyboard; sourceTree = "<group>"; };
+		1F6A68171FB865110038A390 /* ChatRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequest.swift; sourceTree = "<group>"; };
+		1F6A68191FB8B8AC0038A390 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		1F6A681B1FB9D2B10038A390 /* ChatMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMethods.swift; sourceTree = "<group>"; };
+		1F6A681F1FBA06580038A390 /* DialogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogController.swift; sourceTree = "<group>"; };
+		1F6A68231FBA0D580038A390 /* RealmMethodsForDialogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMethodsForDialogs.swift; sourceTree = "<group>"; };
+		1F6A68251FBAE49F0038A390 /* DialogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogCell.swift; sourceTree = "<group>"; };
+		1F6A68271FBB11810038A390 /* RealmMethodsForMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMethodsForMessages.swift; sourceTree = "<group>"; };
+		1F6A68291FBB372A0038A390 /* DialogMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogMethods.swift; sourceTree = "<group>"; };
 		1F708B9E1FB05A2100ACE7FF /* FireBaseStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseStruct.swift; sourceTree = "<group>"; };
 		1F7D00F61F90D19700BE6E71 /* RequestMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethods.swift; sourceTree = "<group>"; };
 		1F99445D1F77C6C400351C0A /* VKService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKService.swift; sourceTree = "<group>"; };
+		1FAA1C6C1FBC45FB00354807 /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
+		1FAA1C6E1FBCB62E00354807 /* PostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRequest.swift; sourceTree = "<group>"; };
+		1FAA1C701FBDA23700354807 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
+		1FAA1C731FBDC15500354807 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		1FAA1C771FBDFE3100354807 /* MapTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTableCell.swift; sourceTree = "<group>"; };
+		1FAA1C791FBDFECC00354807 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		1FE50AE21FAC6D950060E54B /* HandleSizingUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleSizingUI.swift; sourceTree = "<group>"; };
 		1FEEA41F1F86A359004FB74A /* GroupsDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsDataRequest.swift; sourceTree = "<group>"; };
 		1FEEB3301F7CED0F00010A3F /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
@@ -103,11 +137,12 @@
 		1F13A2F11FB448BC000AD5B4 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				1F5446D71F6EDCA000FAA2FF /* LaunchScreen.storyboard */,
 				1F5446D21F6EDC9F00FAA2FF /* Main.storyboard */,
 				1F13A2F21FB44B2D000AD5B4 /* Groups.storyboard */,
 				1F13A2F41FB44D96000AD5B4 /* Friends.storyboard */,
 				1F13A2F61FB44DE1000AD5B4 /* News.storyboard */,
+				1FAA1C791FBDFECC00354807 /* Map.storyboard */,
+				1F6A68141FB860FF0038A390 /* Chat.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -134,6 +169,8 @@
 			children = (
 				1F2EDF401F8D0D8F00798E59 /* RealmMethodsForFriends.swift */,
 				1F2EDF421F8D1ACD00798E59 /* RealmMethodsForPhoto.swift */,
+				1F6A68231FBA0D580038A390 /* RealmMethodsForDialogs.swift */,
+				1F6A68271FBB11810038A390 /* RealmMethodsForMessages.swift */,
 			);
 			name = Realm;
 			sourceTree = "<group>";
@@ -159,6 +196,7 @@
 		1F5446CD1F6EDC9F00FAA2FF /* vk */ = {
 			isa = PBXGroup;
 			children = (
+				1F5446CE1F6EDC9F00FAA2FF /* AppDelegate.swift */,
 				1F708B9D1FB059FD00ACE7FF /* FireBase */,
 				1FE50AE11FAC6D5E0060E54B /* HandleSizingUI */,
 				1F25C0281FA0F83000E799D0 /* Operations */,
@@ -169,7 +207,6 @@
 				1FEEB32F1F7CECEE00010A3F /* Classes */,
 				1F99445C1F77C6A500351C0A /* Requests */,
 				1F5B350C1F93407400360FCA /* ViewControllers */,
-				1F5446CE1F6EDC9F00FAA2FF /* AppDelegate.swift */,
 				1F13A2F11FB448BC000AD5B4 /* Storyboards */,
 				1F5446D51F6EDCA000FAA2FF /* Assets.xcassets */,
 				1F5446DA1F6EDCA000FAA2FF /* Info.plist */,
@@ -183,6 +220,7 @@
 			children = (
 				1F5B35081F933FB600360FCA /* NewsController.swift */,
 				1F5B350A1F933FCF00360FCA /* NewsCell.swift */,
+				1FAA1C6C1FBC45FB00354807 /* PostController.swift */,
 			);
 			name = News;
 			sourceTree = "<group>";
@@ -190,6 +228,9 @@
 		1F5B350C1F93407400360FCA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1FAA1C721FBDA2C200354807 /* Map */,
+				1F6A680A1FB833AD0038A390 /* Chat */,
+				1FAA1C6B1FBC2D1300354807 /* MethodsForControllers */,
 				1F5B35071F933F7700360FCA /* News */,
 				1F6236141F7525B200C2EC13 /* MyGroups */,
 				1F6236131F75259E00C2EC13 /* AllGroups */,
@@ -243,6 +284,17 @@
 			name = Services;
 			sourceTree = "<group>";
 		};
+		1F6A680A1FB833AD0038A390 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				1F6A680B1FB833E00038A390 /* ChatCell.swift */,
+				1F6A680D1FB834100038A390 /* ChatController.swift */,
+				1F6A681F1FBA06580038A390 /* DialogController.swift */,
+				1F6A68251FBAE49F0038A390 /* DialogCell.swift */,
+			);
+			name = Chat;
+			sourceTree = "<group>";
+		};
 		1F708B9D1FB059FD00ACE7FF /* FireBase */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,8 +318,30 @@
 				1F4E4B6F1F802E410021B873 /* PhotosRequest.swift */,
 				1FEEA41F1F86A359004FB74A /* GroupsDataRequest.swift */,
 				1F5B35051F932CD300360FCA /* NewsRequest.swift */,
+				1F6A68171FB865110038A390 /* ChatRequest.swift */,
+				1FAA1C6E1FBCB62E00354807 /* PostRequest.swift */,
 			);
 			name = Requests;
+			sourceTree = "<group>";
+		};
+		1FAA1C6B1FBC2D1300354807 /* MethodsForControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1F6A68081FB7854B0038A390 /* NewsMethods.swift */,
+				1F6A681B1FB9D2B10038A390 /* ChatMethods.swift */,
+				1F6A68291FBB372A0038A390 /* DialogMethods.swift */,
+			);
+			name = MethodsForControllers;
+			sourceTree = "<group>";
+		};
+		1FAA1C721FBDA2C200354807 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				1FAA1C701FBDA23700354807 /* MapController.swift */,
+				1FAA1C731FBDC15500354807 /* LocationManager.swift */,
+				1FAA1C771FBDFE3100354807 /* MapTableCell.swift */,
+			);
+			name = Map;
 			sourceTree = "<group>";
 		};
 		1FE50AE11FAC6D5E0060E54B /* HandleSizingUI */ = {
@@ -285,6 +359,7 @@
 				1FEEB3321F7D8C1000010A3F /* Photo.swift */,
 				1F5A87511F7E5EC000C967DA /* Group.swift */,
 				1F5B350D1F937B9300360FCA /* New.swift */,
+				1F6A68191FB8B8AC0038A390 /* Chat.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -372,10 +447,11 @@
 			files = (
 				1F13A2F51FB44D97000AD5B4 /* Friends.storyboard in Resources */,
 				1F13A2F31FB44B2D000AD5B4 /* Groups.storyboard in Resources */,
-				1F5446D91F6EDCA000FAA2FF /* LaunchScreen.storyboard in Resources */,
 				1F47CA111FADD7DB007FF908 /* GoogleService-Info.plist in Resources */,
+				1FAA1C7A1FBDFECC00354807 /* Map.storyboard in Resources */,
 				1F13A2F71FB44DE1000AD5B4 /* News.storyboard in Resources */,
 				1F5446D61F6EDCA000FAA2FF /* Assets.xcassets in Resources */,
+				1F6A68121FB860FF0038A390 /* Chat.storyboard in Resources */,
 				1F5446D41F6EDC9F00FAA2FF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -459,11 +535,16 @@
 			files = (
 				1F4E4B6E1F802AD20021B873 /* FriendsRequest.swift in Sources */,
 				1F6236161F75263900C2EC13 /* AllGroupsController.swift in Sources */,
+				1F6A680E1FB834100038A390 /* ChatController.swift in Sources */,
+				1FAA1C741FBDC15500354807 /* LocationManager.swift in Sources */,
 				1F62360B1F73F5D400C2EC13 /* AllFriendsController.swift in Sources */,
 				1F443C611FA24B53005ED345 /* SetImageToRow.swift in Sources */,
 				1F5B350B1F933FCF00360FCA /* NewsCell.swift in Sources */,
+				1F6A68241FBA0D580038A390 /* RealmMethodsForDialogs.swift in Sources */,
 				1F6236121F741C5100C2EC13 /* FriendPhotoCell.swift in Sources */,
 				1F66F0DA1F9E8A6600D74D4E /* PhotoService.swift in Sources */,
+				1FAA1C781FBDFE3100354807 /* MapTableCell.swift in Sources */,
+				1FAA1C6F1FBCB62E00354807 /* PostRequest.swift in Sources */,
 				1F4E4B701F802E410021B873 /* PhotosRequest.swift in Sources */,
 				1F99445E1F77C6C400351C0A /* VKService.swift in Sources */,
 				1F2EDF431F8D1ACD00798E59 /* RealmMethodsForPhoto.swift in Sources */,
@@ -474,16 +555,27 @@
 				1F5446CF1F6EDC9F00FAA2FF /* AppDelegate.swift in Sources */,
 				1F5B35091F933FB600360FCA /* NewsController.swift in Sources */,
 				1FEEB3331F7D8C1000010A3F /* Photo.swift in Sources */,
+				1F6A68091FB7854B0038A390 /* NewsMethods.swift in Sources */,
 				1F5A87521F7E5EC000C967DA /* Group.swift in Sources */,
+				1FAA1C711FBDA23700354807 /* MapController.swift in Sources */,
+				1F6A68211FBA06580038A390 /* DialogController.swift in Sources */,
 				1F2EDF411F8D0D8F00798E59 /* RealmMethodsForFriends.swift in Sources */,
+				1F6A68181FB865110038A390 /* ChatRequest.swift in Sources */,
 				1FEEA4201F86A359004FB74A /* GroupsDataRequest.swift in Sources */,
+				1FAA1C6D1FBC45FB00354807 /* PostController.swift in Sources */,
 				1FE50AE31FAC6D950060E54B /* HandleSizingUI.swift in Sources */,
 				1F6236101F741C2800C2EC13 /* FriendPhotoController.swift in Sources */,
+				1F6A682A1FBB372B0038A390 /* DialogMethods.swift in Sources */,
+				1F6A680C1FB833E00038A390 /* ChatCell.swift in Sources */,
 				1FEEB3311F7CED0F00010A3F /* Friend.swift in Sources */,
 				1F62361C1F752D7000C2EC13 /* MyGroupsCell.swift in Sources */,
+				1F6A681A1FB8B8AC0038A390 /* Chat.swift in Sources */,
 				1F62360D1F73F76900C2EC13 /* AllFriendsCell.swift in Sources */,
+				1F6A681C1FB9D2B10038A390 /* ChatMethods.swift in Sources */,
 				1F5B350E1F937B9300360FCA /* New.swift in Sources */,
+				1F6A68281FBB11810038A390 /* RealmMethodsForMessages.swift in Sources */,
 				1F6236181F75267E00C2EC13 /* AllGroupsCell.swift in Sources */,
+				1F6A68261FBAE49F0038A390 /* DialogCell.swift in Sources */,
 				1F708B9F1FB05A2100ACE7FF /* FireBaseStruct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -499,12 +591,12 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		1F5446D71F6EDCA000FAA2FF /* LaunchScreen.storyboard */ = {
+		1F6A68141FB860FF0038A390 /* Chat.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				1F5446D81F6EDCA000FAA2FF /* Base */,
+				1F6A68131FB860FF0038A390 /* Base */,
 			);
-			name = LaunchScreen.storyboard;
+			name = Chat.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -557,7 +649,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -609,7 +701,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -629,7 +721,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 62UUS6482X;
 				INFOPLIST_FILE = vk/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Umbrella.vk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -649,7 +741,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 62UUS6482X;
 				INFOPLIST_FILE = vk/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Umbrella.vk;
 				PRODUCT_NAME = "$(TARGET_NAME)";

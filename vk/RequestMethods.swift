@@ -1,0 +1,30 @@
+//
+//  Environment.swift
+//  vk
+//
+//  Created by Александр on 13.10.17.
+//  Copyright © 2017 Александр. All rights reserved.
+//
+
+import Foundation
+
+class RequestMethods {
+  
+  let baseURL = "https://api.vk.com"
+  let apiVersion = "5.68"
+  
+  let getFriends = "/method/friends.get"
+  let getPhotos = "/method/photos.get"
+  let groupSearch = "/method/groups.search"
+  let groupsInfo = "/method/groups.getById"
+  let newsGet = "/method/newsfeed.get"
+  let messagesGet = "/method/messages.get"
+  let dialogsGet = "/method/messages.getDialogs"
+  let historyOfMessagesGet = "/method/messages.getHistory"
+  let getUsers = "/method/users.get"
+  let goPost = "/method/wall.post"
+  
+  let photoPlaceHolder = "https://vk.com/images/camera_100.png"
+  
+}
+
