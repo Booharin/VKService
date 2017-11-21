@@ -43,4 +43,23 @@ class FriendsRequest {
       self?.realm.saveFriendsData(friends)
     }
   }
+  
+  func loadRequestsToFriends() {
+    let parameters: Parameters = [
+      "count": "100",
+      "extended": "1",
+      "sort": "0",
+      "need_viewed": "1",
+      "access_token": userDefaults.string(forKey: "token") ?? print("no Token")
+    ]
+    print(Alamofire.request(requestMethods.baseURL + requestMethods.getRequests, parameters: parameters))
+    
+    Alamofire.request(requestMethods.baseURL + requestMethods.getRequests, parameters: parameters).responseJSON(queue: .global()) { response in
+      guard let responseRequestsGet = response.value as! [String: Any]? else { return }
+      let array = responseRequestsGet["response"] as! [Any]
+      userDefaults.set(array.count, forKey: "RequestsCount")
+      let requestNotification = Notification.Name("requestNotification")
+      NotificationCenter.default.post(name: requestNotification, object: nil)
+    }
+  }
 }

@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import RealmSwift
+import UserNotifications
 
 class NewsController: UITableViewController {
   let newsRequest = NewsRequest()
@@ -28,6 +29,10 @@ class NewsController: UITableViewController {
       OperationQueue.main.addOperation {
         self?.tableView.reloadData()
       }
+    }
+    let center = UNUserNotificationCenter.current()
+    center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
+      // Enable or disable features based on authorization.
     }
   }
   

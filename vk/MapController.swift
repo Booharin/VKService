@@ -13,7 +13,6 @@ class MapController: UIViewController {
   
   @IBOutlet weak var mapView: MKMapView!
   @IBOutlet weak var table: UITableView!
-  
   override func viewDidLoad() {
       super.viewDidLoad()
       LocationManager.instance.delegate = self

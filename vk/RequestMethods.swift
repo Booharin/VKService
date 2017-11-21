@@ -14,6 +14,7 @@ class RequestMethods {
   let apiVersion = "5.68"
   
   let getFriends = "/method/friends.get"
+  let getRequests = "/method/friends.getRequests"
   let getPhotos = "/method/photos.get"
   let groupSearch = "/method/groups.search"
   let groupsInfo = "/method/groups.getById"

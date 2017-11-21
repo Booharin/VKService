@@ -15,6 +15,7 @@
 		1F2EDF431F8D1ACD00798E59 /* RealmMethodsForPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2EDF421F8D1ACD00798E59 /* RealmMethodsForPhoto.swift */; };
 		1F443C611FA24B53005ED345 /* SetImageToRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F443C601FA24B53005ED345 /* SetImageToRow.swift */; };
 		1F47CA111FADD7DB007FF908 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F47CA101FADD7DB007FF908 /* GoogleService-Info.plist */; };
+		1F4BE7C31FC357CD00E1C0A1 /* BackgroundFetchAssist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4BE7C21FC357CC00E1C0A1 /* BackgroundFetchAssist.swift */; };
 		1F4E4B6E1F802AD20021B873 /* FriendsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4E4B6D1F802AD20021B873 /* FriendsRequest.swift */; };
 		1F4E4B701F802E410021B873 /* PhotosRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4E4B6F1F802E410021B873 /* PhotosRequest.swift */; };
 		1F5446CF1F6EDC9F00FAA2FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5446CE1F6EDC9F00FAA2FF /* AppDelegate.swift */; };
@@ -72,6 +73,8 @@
 		1F2EDF421F8D1ACD00798E59 /* RealmMethodsForPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMethodsForPhoto.swift; sourceTree = "<group>"; };
 		1F443C601FA24B53005ED345 /* SetImageToRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetImageToRow.swift; sourceTree = "<group>"; };
 		1F47CA101FADD7DB007FF908 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1F4BE7C01FC31A7500E1C0A1 /* vk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = vk.entitlements; sourceTree = "<group>"; };
+		1F4BE7C21FC357CC00E1C0A1 /* BackgroundFetchAssist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundFetchAssist.swift; sourceTree = "<group>"; };
 		1F4E4B6D1F802AD20021B873 /* FriendsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsRequest.swift; sourceTree = "<group>"; };
 		1F4E4B6F1F802E410021B873 /* PhotosRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosRequest.swift; sourceTree = "<group>"; };
 		1F5446CB1F6EDC9F00FAA2FF /* vk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vk.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,6 +199,7 @@
 		1F5446CD1F6EDC9F00FAA2FF /* vk */ = {
 			isa = PBXGroup;
 			children = (
+				1F4BE7C01FC31A7500E1C0A1 /* vk.entitlements */,
 				1F5446CE1F6EDC9F00FAA2FF /* AppDelegate.swift */,
 				1F708B9D1FB059FD00ACE7FF /* FireBase */,
 				1FE50AE11FAC6D5E0060E54B /* HandleSizingUI */,
@@ -307,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				1F7D00F61F90D19700BE6E71 /* RequestMethods.swift */,
+				1F4BE7C21FC357CC00E1C0A1 /* BackgroundFetchAssist.swift */,
 			);
 			name = Config;
 			sourceTree = "<group>";
@@ -419,6 +424,14 @@
 						DevelopmentTeam = 62UUS6482X;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -553,6 +566,7 @@
 				1F5B35061F932CD300360FCA /* NewsRequest.swift in Sources */,
 				1F7D00F71F90D19700BE6E71 /* RequestMethods.swift in Sources */,
 				1F5446CF1F6EDC9F00FAA2FF /* AppDelegate.swift in Sources */,
+				1F4BE7C31FC357CD00E1C0A1 /* BackgroundFetchAssist.swift in Sources */,
 				1F5B35091F933FB600360FCA /* NewsController.swift in Sources */,
 				1FEEB3331F7D8C1000010A3F /* Photo.swift in Sources */,
 				1F6A68091FB7854B0038A390 /* NewsMethods.swift in Sources */,
@@ -716,6 +730,7 @@
 			baseConfigurationReference = 8A7DCEABC9A742D020D4FA6E /* Pods-vk.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = vk/vk.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -736,6 +751,7 @@
 			baseConfigurationReference = 016E847BB108BB55FF5C21D5 /* Pods-vk.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = vk/vk.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: booharin@me.com (7ZWPP66T8E)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: booharin@me.com (7ZWPP66T8E)";
 				CODE_SIGN_STYLE = Automatic;

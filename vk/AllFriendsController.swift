@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import RealmSwift
+import UserNotifications
 
 class AllFriendsController: UITableViewController {
   
@@ -16,6 +17,7 @@ class AllFriendsController: UITableViewController {
   var friends : Results<Friend>?
   var token: NotificationToken?
   let realm = RealmMethodsForFriends()
+  let requestNotification = Notification.Name("requestNotification")
   
   let queue: OperationQueue = {
     let queue = OperationQueue()
@@ -28,6 +30,10 @@ class AllFriendsController: UITableViewController {
     realm.tableUpdate(&friends, &token, tableView)
     
     self.friendRequest.loadFriendsData()
+    self.friendRequest.loadRequestsToFriends()
+    
+    let requestNotification = Notification.Name("requestNotification")
+    NotificationCenter.default.addObserver(self, selector: #selector(addBadge(notification:)), name: requestNotification, object: nil)
   }
   
   override func didReceiveMemoryWarning() {
@@ -63,9 +69,18 @@ class AllFriendsController: UITableViewController {
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let indexPathCurrent = tableView.indexPathForSelectedRow
     if friends != nil {
-    let whoIsYourFriend = String(friends![(indexPathCurrent?.row)!].userID)
-    userDefaults.set(whoIsYourFriend, forKey: "whoIsYourFriend")
+      let whoIsYourFriend = String(friends![(indexPathCurrent?.row)!].userID)
+      userDefaults.set(whoIsYourFriend, forKey: "whoIsYourFriend")
     }
   }
+  
+  @objc func addBadge(notification: Notification) {
+    let application = UIApplication.shared
+    DispatchQueue.main.async {
+      application.registerForRemoteNotifications()
+      application.applicationIconBadgeNumber = userDefaults.integer(forKey: "RequestsCount")
+    }
+  }
+  
 }
 

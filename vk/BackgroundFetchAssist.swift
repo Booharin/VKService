@@ -8,11 +8,11 @@
 
 import Foundation
 
-class Utils {
+class BackgroundFetchAssist {
   let fetchCitiesWeatherGroup = DispatchGroup()
   var timer: DispatchSourceTimer?
   
-  static let instance = Utils()
+  static let instance = BackgroundFetchAssist()
   private init(){}
   
   var lastUpdate: Date? {
