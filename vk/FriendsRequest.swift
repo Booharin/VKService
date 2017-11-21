@@ -52,7 +52,6 @@ class FriendsRequest {
       "need_viewed": "1",
       "access_token": userDefaults.string(forKey: "token") ?? print("no Token")
     ]
-    print(Alamofire.request(requestMethods.baseURL + requestMethods.getRequests, parameters: parameters))
     
     Alamofire.request(requestMethods.baseURL + requestMethods.getRequests, parameters: parameters).responseJSON(queue: .global()) { response in
       guard let responseRequestsGet = response.value as! [String: Any]? else { return }

@@ -77,8 +77,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Swift.print("asd")
     let friendsRequest = FriendsRequest()
     friendsRequest.loadRequestsToFriends()
+    let chatRequest = ChatRequest()
+    chatRequest.loadDialogsData()
     let requestNotification = Notification.Name("requestNotification")
     NotificationCenter.default.addObserver(self, selector: #selector(addBadge(notification:)), name: requestNotification, object: nil)
+    let messageNotification = Notification.Name("messageNotification")
+    NotificationCenter.default.addObserver(self, selector: #selector(addBadge(notification:)), name: messageNotification, object: nil)
     
     backgroundFetcher.timer = nil
     backgroundFetcher.lastUpdate = Date()
@@ -91,10 +95,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let application = UIApplication.shared
     DispatchQueue.main.async {
       application.registerForRemoteNotifications()
-      application.applicationIconBadgeNumber = userDefaults.integer(forKey: "RequestsCount")
+      application.applicationIconBadgeNumber = userDefaults.integer(forKey: "RequestsCount") + userDefaults.integer(forKey: "UnreadMessage")
     }
   }
-  
   
 }
 

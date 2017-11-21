@@ -22,7 +22,7 @@ class ChatRequest {
       "version": requestMethods.apiVersion,
       "access_token": userDefaults.string(forKey: "token") ?? print("no Token")
     ]
-    
+    print(Alamofire.request(requestMethods.baseURL + requestMethods.dialogsGet, parameters: parameters))
     Alamofire.request(requestMethods.baseURL + requestMethods.dialogsGet, parameters: parameters).responseJSON(queue: .global()) { response in
       let responseDialogsGet = response.value as! [String: Any]
       guard var array = responseDialogsGet["response"] as! [Any]? else { return }
@@ -43,6 +43,10 @@ class ChatRequest {
         }
         dialogItem.date = dialog["date"] as! Int
         dialogItem.readState = dialog["read_state"] as! Int
+        if dialogItem.readState == 0 { userDefaults.set(1, forKey: "UnreadMessage")
+          let messageNotification = Notification.Name("messageNotification")
+          NotificationCenter.default.post(name: messageNotification, object: nil)
+        }
         dialogItem.out = dialog["out"] as! Int
         dialogs.append(dialogItem)
         dialogItem = Dialog(id: "", photoID: "", nameID: "", title: "", photoIDLastMessage: "", textLastMessage: "", date: 0, readState: 1, out: 1)
@@ -105,8 +109,7 @@ class ChatRequest {
       "version": self.requestMethods.apiVersion,
       "access_token": userDefaults.string(forKey: "token") ?? print("no Token")
     ]
-    let request = Alamofire.request(requestMethods.baseURL + requestMethods.historyOfMessagesGet, parameters: parameters)
-    print(request)
+
     Alamofire.request(self.requestMethods.baseURL + requestMethods.historyOfMessagesGet, parameters: parameters).responseJSON(queue: .global()) { response in
       let responseMessagesGet = response.value as! [String: Any]
       guard var array = responseMessagesGet["response"] as! [Any]? else { return }
