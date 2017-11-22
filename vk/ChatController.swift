@@ -20,7 +20,7 @@ class ChatController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     realm.tableUpdate(&dialogs, &token, tableView)
-    chatRequest.loadDialogsData()    
+    chatRequest.loadDialogsData()
   }
   
   override func didReceiveMemoryWarning() {

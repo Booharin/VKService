@@ -17,7 +17,6 @@ class AllFriendsController: UITableViewController {
   var friends : Results<Friend>?
   var token: NotificationToken?
   let realm = RealmMethodsForFriends()
-  let requestNotification = Notification.Name("requestNotification")
   
   let queue: OperationQueue = {
     let queue = OperationQueue()
@@ -31,9 +30,6 @@ class AllFriendsController: UITableViewController {
     
     self.friendRequest.loadFriendsData()
     self.friendRequest.loadRequestsToFriends()
-    
-    let requestNotification = Notification.Name("requestNotification")
-    NotificationCenter.default.addObserver(self, selector: #selector(addBadge(notification:)), name: requestNotification, object: nil)
   }
   
   override func didReceiveMemoryWarning() {
@@ -73,14 +69,5 @@ class AllFriendsController: UITableViewController {
       userDefaults.set(whoIsYourFriend, forKey: "whoIsYourFriend")
     }
   }
-  
-  @objc func addBadge(notification: Notification) {
-    let application = UIApplication.shared
-    DispatchQueue.main.async {
-      application.registerForRemoteNotifications()
-      application.applicationIconBadgeNumber = userDefaults.integer(forKey: "RequestsCount")
-    }
-  }
-  
 }
 

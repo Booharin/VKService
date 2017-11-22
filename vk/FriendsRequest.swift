@@ -57,8 +57,11 @@ class FriendsRequest {
       guard let responseRequestsGet = response.value as! [String: Any]? else { return }
       let array = responseRequestsGet["response"] as! [Any]
       userDefaults.set(array.count, forKey: "RequestsCount")
-      let requestNotification = Notification.Name("requestNotification")
-      NotificationCenter.default.post(name: requestNotification, object: nil)
+      
+      let application = UIApplication.shared
+      DispatchQueue.main.async {
+        application.applicationIconBadgeNumber = userDefaults.integer(forKey: "RequestsCount") + userDefaults.integer(forKey: "UnreadMessage")
+      }
     }
   }
 }

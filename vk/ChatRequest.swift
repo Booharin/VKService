@@ -16,7 +16,7 @@ class ChatRequest {
   let realmMSG = RealmMethodsForMessages()
   
   func loadDialogsData() {
-    
+    userDefaults.set(0, forKey: "UnreadMessage")
     let parameters: Parameters = [
       "count": "200",
       "version": requestMethods.apiVersion,
@@ -43,16 +43,20 @@ class ChatRequest {
         }
         dialogItem.date = dialog["date"] as! Int
         dialogItem.readState = dialog["read_state"] as! Int
-        if dialogItem.readState == 0 { userDefaults.set(1, forKey: "UnreadMessage")
-          let messageNotification = Notification.Name("messageNotification")
-          NotificationCenter.default.post(name: messageNotification, object: nil)
-        }
+        
+        if dialogItem.readState == 0 { userDefaults.set(1, forKey: "UnreadMessage") }
+        
         dialogItem.out = dialog["out"] as! Int
         dialogs.append(dialogItem)
         dialogItem = Dialog(id: "", photoID: "", nameID: "", title: "", photoIDLastMessage: "", textLastMessage: "", date: 0, readState: 1, out: 1)
       }
       for i in dialogs {
         usersIDString = usersIDString + "," + i.id
+      }
+      // обновление числа на бэдже
+      let application = UIApplication.shared
+      DispatchQueue.main.async {
+        application.applicationIconBadgeNumber = userDefaults.integer(forKey: "RequestsCount") + userDefaults.integer(forKey: "UnreadMessage")
       }
       
       let newParameters: Parameters = [
