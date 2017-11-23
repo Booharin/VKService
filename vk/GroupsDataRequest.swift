@@ -51,7 +51,7 @@ class GroupsDataRequest {
           let userJSON = value as! [String:Any]
           let name = userJSON["name"] as! String
           let photo = userJSON["photo_medium"] as! String
-          let groupID = userJSON["gid"] as! Int
+          let groupID = String(userJSON["gid"] as! Int)
           let membersCount = userJSON["members_count"] as! Int
           groups.append(Group(name: name, photo: photo, groupID: groupID, membersCount: membersCount))
         }

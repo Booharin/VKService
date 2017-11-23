@@ -7,14 +7,15 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Group: Codable {
-  let name: String
-  let photo: String
-  let groupID: Int
-  let membersCount: Int
+class Group: Object, Codable {
+  @objc dynamic var name = ""
+  @objc dynamic var photo = ""
+  @objc dynamic var groupID = ""
+  @objc dynamic var membersCount = 0
   
-  var toAnyObject: Any {
+  @objc dynamic var toAnyObject: Any {
     return [
       "name": name,
       "photo": photo,
@@ -22,10 +23,16 @@ struct Group: Codable {
       "membersCount": membersCount
     ]
   }
-  init(name: String, photo: String, groupID: Int, membersCount: Int) {
+  
+  convenience init(name: String, photo: String, groupID: String, membersCount: Int) {
+    self.init()
     self.name = name
     self.photo = photo
     self.groupID = groupID
     self.membersCount = membersCount
+  }
+  
+  override static func primaryKey() -> String? {
+    return "groupID"
   }
 }

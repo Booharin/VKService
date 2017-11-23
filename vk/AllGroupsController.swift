@@ -74,7 +74,7 @@ class AllGroupsController: UITableViewController {
       guard let imgURL = URL(string: group.photo) else { return cell }
       Alamofire.request(imgURL).responseData(queue: .global()) { response in
         OperationQueue.main.addOperation {
-        cell.groupPhoto.image = UIImage(data: response.data!)
+          cell.groupPhoto.image = UIImage(data: response.data!)
         }
       }
     //}

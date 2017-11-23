@@ -8,18 +8,20 @@
 
 import UIKit
 import Alamofire
-import FirebaseDatabase
+//import FirebaseDatabase
+import CloudKit
+import RealmSwift
 
 class MyGroupsController: UITableViewController {
-  let fireBase = FireBaseMethods()
-  var groups = [Group]()
+  //let fireBase = FireBaseMethods()
+  let myCloud = MyCloud()
+  let realm = RealmMethodsForGroups()
+  var token: NotificationToken?
+  var groups : Results<Group>?
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    fireBase.loadData() { [weak self] groups in
-      self?.groups = groups
-      self?.tableView.reloadData()
-    }
+   realm.tableUpdate(&groups, &token, tableView)
   }
   
   override func didReceiveMemoryWarning() {
@@ -35,13 +37,13 @@ class MyGroupsController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return groups.count
+    return groups?.count ?? 0
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "MyGroupsCell", for: indexPath) as! MyGroupsCell
     
-    let group = groups[indexPath.row]
+    guard let group = groups?[indexPath.row] else { return cell }
     
     cell.nameOfMyGroup.text = group.name
     cell.setGroupName(text: cell.nameOfMyGroup.text!)
@@ -60,16 +62,24 @@ class MyGroupsController: UITableViewController {
       let allGroupsController = segue.source as! AllGroupsController
       guard let indexPath = allGroupsController.tableView.indexPathForSelectedRow else { return }
       let group = allGroupsController.groups[indexPath.row]
-      fireBase.saveData(group: group)
+      //fireBase.saveData(group: group)
+      realm.saveGroupData(group)
+      myCloud.saveToiCloud(group)
+      if let navController = self.navigationController {
+        navController.popViewController(animated: true)
+      }
     }
   }
   
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      let deletedGroup = groups[indexPath.row]
-      fireBase.deleteData(group: deletedGroup)
+      guard let deletedGroupID = groups?[indexPath.row].groupID else { return }
+      //fireBase.deleteData(group: deletedGroup)
+      realm.deleteGroupData(deletedGroupID)
+      myCloud.deleteFromiCloud(deletedGroupID)
     }
   }
+  
 }
 
 

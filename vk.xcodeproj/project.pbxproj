@@ -13,6 +13,7 @@
 		1F25C02A1FA0F85A00E799D0 /* GetCacheImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F25C0291FA0F85A00E799D0 /* GetCacheImage.swift */; };
 		1F2EDF411F8D0D8F00798E59 /* RealmMethodsForFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2EDF401F8D0D8F00798E59 /* RealmMethodsForFriends.swift */; };
 		1F2EDF431F8D1ACD00798E59 /* RealmMethodsForPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2EDF421F8D1ACD00798E59 /* RealmMethodsForPhoto.swift */; };
+		1F34A1E31FC6AF40008E5B55 /* RealmMethodsForGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F34A1E21FC6AF40008E5B55 /* RealmMethodsForGroups.swift */; };
 		1F443C611FA24B53005ED345 /* SetImageToRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F443C601FA24B53005ED345 /* SetImageToRow.swift */; };
 		1F47CA111FADD7DB007FF908 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F47CA101FADD7DB007FF908 /* GoogleService-Info.plist */; };
 		1F4BE7C31FC357CD00E1C0A1 /* BackgroundFetchAssist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4BE7C21FC357CC00E1C0A1 /* BackgroundFetchAssist.swift */; };
@@ -48,6 +49,8 @@
 		1F6A68281FBB11810038A390 /* RealmMethodsForMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A68271FBB11810038A390 /* RealmMethodsForMessages.swift */; };
 		1F6A682A1FBB372B0038A390 /* DialogMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A68291FBB372A0038A390 /* DialogMethods.swift */; };
 		1F708B9F1FB05A2100ACE7FF /* FireBaseStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F708B9E1FB05A2100ACE7FF /* FireBaseStruct.swift */; };
+		1F78C3131FC58E6D00E53F19 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F78C3121FC58E6D00E53F19 /* CloudKit.framework */; };
+		1F78C3191FC5AA8F00E53F19 /* MyCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F78C3181FC5AA8F00E53F19 /* MyCloud.swift */; };
 		1F7D00F71F90D19700BE6E71 /* RequestMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D00F61F90D19700BE6E71 /* RequestMethods.swift */; };
 		1F99445E1F77C6C400351C0A /* VKService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F99445D1F77C6C400351C0A /* VKService.swift */; };
 		1FAA1C6D1FBC45FB00354807 /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAA1C6C1FBC45FB00354807 /* PostController.swift */; };
@@ -71,6 +74,7 @@
 		1F25C0291FA0F85A00E799D0 /* GetCacheImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCacheImage.swift; sourceTree = "<group>"; };
 		1F2EDF401F8D0D8F00798E59 /* RealmMethodsForFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMethodsForFriends.swift; sourceTree = "<group>"; };
 		1F2EDF421F8D1ACD00798E59 /* RealmMethodsForPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMethodsForPhoto.swift; sourceTree = "<group>"; };
+		1F34A1E21FC6AF40008E5B55 /* RealmMethodsForGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMethodsForGroups.swift; sourceTree = "<group>"; };
 		1F443C601FA24B53005ED345 /* SetImageToRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetImageToRow.swift; sourceTree = "<group>"; };
 		1F47CA101FADD7DB007FF908 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F4BE7C01FC31A7500E1C0A1 /* vk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = vk.entitlements; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 		1F6A68271FBB11810038A390 /* RealmMethodsForMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMethodsForMessages.swift; sourceTree = "<group>"; };
 		1F6A68291FBB372A0038A390 /* DialogMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogMethods.swift; sourceTree = "<group>"; };
 		1F708B9E1FB05A2100ACE7FF /* FireBaseStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseStruct.swift; sourceTree = "<group>"; };
+		1F78C3121FC58E6D00E53F19 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		1F78C3181FC5AA8F00E53F19 /* MyCloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCloud.swift; sourceTree = "<group>"; };
 		1F7D00F61F90D19700BE6E71 /* RequestMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethods.swift; sourceTree = "<group>"; };
 		1F99445D1F77C6C400351C0A /* VKService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKService.swift; sourceTree = "<group>"; };
 		1FAA1C6C1FBC45FB00354807 /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
@@ -131,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				492C89AF6FCB7C7A59CB9CED /* Pods_vk.framework in Frameworks */,
+				1F78C3131FC58E6D00E53F19 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +181,7 @@
 				1F2EDF421F8D1ACD00798E59 /* RealmMethodsForPhoto.swift */,
 				1F6A68231FBA0D580038A390 /* RealmMethodsForDialogs.swift */,
 				1F6A68271FBB11810038A390 /* RealmMethodsForMessages.swift */,
+				1F34A1E21FC6AF40008E5B55 /* RealmMethodsForGroups.swift */,
 			);
 			name = Realm;
 			sourceTree = "<group>";
@@ -201,6 +209,7 @@
 			children = (
 				1F4BE7C01FC31A7500E1C0A1 /* vk.entitlements */,
 				1F5446CE1F6EDC9F00FAA2FF /* AppDelegate.swift */,
+				1F78C3171FC5AA6800E53F19 /* MyCloud */,
 				1F708B9D1FB059FD00ACE7FF /* FireBase */,
 				1FE50AE11FAC6D5E0060E54B /* HandleSizingUI */,
 				1F25C0281FA0F83000E799D0 /* Operations */,
@@ -307,6 +316,14 @@
 			name = FireBase;
 			sourceTree = "<group>";
 		};
+		1F78C3171FC5AA6800E53F19 /* MyCloud */ = {
+			isa = PBXGroup;
+			children = (
+				1F78C3181FC5AA8F00E53F19 /* MyCloud.swift */,
+			);
+			name = MyCloud;
+			sourceTree = "<group>";
+		};
 		1F7D00F51F90D16F00BE6E71 /* Config */ = {
 			isa = PBXGroup;
 			children = (
@@ -372,6 +389,7 @@
 		24E896F9DBFFC96786215DC8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F78C3121FC58E6D00E53F19 /* CloudKit.framework */,
 				CD24C68CE0F769C0BC431145 /* Pods_vk.framework */,
 			);
 			name = Frameworks;
@@ -429,6 +447,9 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};
@@ -560,9 +581,11 @@
 				1FAA1C6F1FBCB62E00354807 /* PostRequest.swift in Sources */,
 				1F4E4B701F802E410021B873 /* PhotosRequest.swift in Sources */,
 				1F99445E1F77C6C400351C0A /* VKService.swift in Sources */,
+				1F34A1E31FC6AF40008E5B55 /* RealmMethodsForGroups.swift in Sources */,
 				1F2EDF431F8D1ACD00798E59 /* RealmMethodsForPhoto.swift in Sources */,
 				1F25C02A1FA0F85A00E799D0 /* GetCacheImage.swift in Sources */,
 				1F62361A1F752D5300C2EC13 /* MyGroupsController.swift in Sources */,
+				1F78C3191FC5AA8F00E53F19 /* MyCloud.swift in Sources */,
 				1F5B35061F932CD300360FCA /* NewsRequest.swift in Sources */,
 				1F7D00F71F90D19700BE6E71 /* RequestMethods.swift in Sources */,
 				1F5446CF1F6EDC9F00FAA2FF /* AppDelegate.swift in Sources */,
