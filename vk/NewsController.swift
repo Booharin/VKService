@@ -32,7 +32,6 @@ class NewsController: UITableViewController {
     }
     let center = UNUserNotificationCenter.current()
     center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
-      // Enable or disable features based on authorization.
     }
   }
   

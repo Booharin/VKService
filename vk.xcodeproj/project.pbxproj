@@ -10,10 +10,16 @@
 		1F13A2F31FB44B2D000AD5B4 /* Groups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F13A2F21FB44B2D000AD5B4 /* Groups.storyboard */; };
 		1F13A2F51FB44D97000AD5B4 /* Friends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F13A2F41FB44D96000AD5B4 /* Friends.storyboard */; };
 		1F13A2F71FB44DE1000AD5B4 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F13A2F61FB44DE1000AD5B4 /* News.storyboard */; };
+		1F24821A1FCABF810017F645 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F5446D51F6EDCA000FAA2FF /* Assets.xcassets */; };
+		1F24821B1FCAD86F0017F645 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9EB5351FC896CC0070ABCB /* TodayViewController.swift */; };
 		1F25C02A1FA0F85A00E799D0 /* GetCacheImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F25C0291FA0F85A00E799D0 /* GetCacheImage.swift */; };
 		1F2EDF411F8D0D8F00798E59 /* RealmMethodsForFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2EDF401F8D0D8F00798E59 /* RealmMethodsForFriends.swift */; };
 		1F2EDF431F8D1ACD00798E59 /* RealmMethodsForPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2EDF421F8D1ACD00798E59 /* RealmMethodsForPhoto.swift */; };
 		1F34A1E31FC6AF40008E5B55 /* RealmMethodsForGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F34A1E21FC6AF40008E5B55 /* RealmMethodsForGroups.swift */; };
+		1F39AB7B1FCC0A1F008CCD50 /* ToDayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39AB7A1FCC0A1F008CCD50 /* ToDayTableViewCell.swift */; };
+		1F39AB7C1FCC0A28008CCD50 /* ToDayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39AB7A1FCC0A1F008CCD50 /* ToDayTableViewCell.swift */; };
+		1F39AB7D1FCC5D2A008CCD50 /* New.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5B350D1F937B9300360FCA /* New.swift */; };
+		1F39AB7E1FCC5D3F008CCD50 /* HandleSizingUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE50AE21FAC6D950060E54B /* HandleSizingUI.swift */; };
 		1F443C611FA24B53005ED345 /* SetImageToRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F443C601FA24B53005ED345 /* SetImageToRow.swift */; };
 		1F47CA111FADD7DB007FF908 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F47CA101FADD7DB007FF908 /* GoogleService-Info.plist */; };
 		1F4BE7C31FC357CD00E1C0A1 /* BackgroundFetchAssist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4BE7C21FC357CC00E1C0A1 /* BackgroundFetchAssist.swift */; };
@@ -53,6 +59,10 @@
 		1F78C3191FC5AA8F00E53F19 /* MyCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F78C3181FC5AA8F00E53F19 /* MyCloud.swift */; };
 		1F7D00F71F90D19700BE6E71 /* RequestMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D00F61F90D19700BE6E71 /* RequestMethods.swift */; };
 		1F99445E1F77C6C400351C0A /* VKService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F99445D1F77C6C400351C0A /* VKService.swift */; };
+		1F9EB5331FC896CC0070ABCB /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F9EB5321FC896CC0070ABCB /* NotificationCenter.framework */; };
+		1F9EB5361FC896CC0070ABCB /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9EB5351FC896CC0070ABCB /* TodayViewController.swift */; };
+		1F9EB5391FC896CC0070ABCB /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F9EB5371FC896CC0070ABCB /* MainInterface.storyboard */; };
+		1F9EB53D1FC896CC0070ABCB /* ToDayVK.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1F9EB5311FC896CC0070ABCB /* ToDayVK.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1FAA1C6D1FBC45FB00354807 /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAA1C6C1FBC45FB00354807 /* PostController.swift */; };
 		1FAA1C6F1FBCB62E00354807 /* PostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAA1C6E1FBCB62E00354807 /* PostRequest.swift */; };
 		1FAA1C711FBDA23700354807 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAA1C701FBDA23700354807 /* MapController.swift */; };
@@ -66,6 +76,30 @@
 		492C89AF6FCB7C7A59CB9CED /* Pods_vk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD24C68CE0F769C0BC431145 /* Pods_vk.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1F9EB53B1FC896CC0070ABCB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F5446C31F6EDC9F00FAA2FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F9EB5301FC896CC0070ABCB;
+			remoteInfo = ToDayVK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1F9EB5411FC896CC0070ABCB /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1F9EB53D1FC896CC0070ABCB /* ToDayVK.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		016E847BB108BB55FF5C21D5 /* Pods-vk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vk.release.xcconfig"; path = "Pods/Target Support Files/Pods-vk/Pods-vk.release.xcconfig"; sourceTree = "<group>"; };
 		1F13A2F21FB44B2D000AD5B4 /* Groups.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Groups.storyboard; sourceTree = "<group>"; };
@@ -74,7 +108,9 @@
 		1F25C0291FA0F85A00E799D0 /* GetCacheImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCacheImage.swift; sourceTree = "<group>"; };
 		1F2EDF401F8D0D8F00798E59 /* RealmMethodsForFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMethodsForFriends.swift; sourceTree = "<group>"; };
 		1F2EDF421F8D1ACD00798E59 /* RealmMethodsForPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMethodsForPhoto.swift; sourceTree = "<group>"; };
+		1F30FF2E1FCAE3F500C12BE7 /* ToDayVK.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToDayVK.entitlements; sourceTree = "<group>"; };
 		1F34A1E21FC6AF40008E5B55 /* RealmMethodsForGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMethodsForGroups.swift; sourceTree = "<group>"; };
+		1F39AB7A1FCC0A1F008CCD50 /* ToDayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDayTableViewCell.swift; sourceTree = "<group>"; };
 		1F443C601FA24B53005ED345 /* SetImageToRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetImageToRow.swift; sourceTree = "<group>"; };
 		1F47CA101FADD7DB007FF908 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F4BE7C01FC31A7500E1C0A1 /* vk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = vk.entitlements; sourceTree = "<group>"; };
@@ -117,6 +153,11 @@
 		1F78C3181FC5AA8F00E53F19 /* MyCloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCloud.swift; sourceTree = "<group>"; };
 		1F7D00F61F90D19700BE6E71 /* RequestMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethods.swift; sourceTree = "<group>"; };
 		1F99445D1F77C6C400351C0A /* VKService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKService.swift; sourceTree = "<group>"; };
+		1F9EB5311FC896CC0070ABCB /* ToDayVK.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ToDayVK.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F9EB5321FC896CC0070ABCB /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		1F9EB5351FC896CC0070ABCB /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		1F9EB5381FC896CC0070ABCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		1F9EB53A1FC896CC0070ABCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FAA1C6C1FBC45FB00354807 /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
 		1FAA1C6E1FBCB62E00354807 /* PostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRequest.swift; sourceTree = "<group>"; };
 		1FAA1C701FBDA23700354807 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
@@ -138,6 +179,14 @@
 			files = (
 				492C89AF6FCB7C7A59CB9CED /* Pods_vk.framework in Frameworks */,
 				1F78C3131FC58E6D00E53F19 /* CloudKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F9EB52E1FC896CC0070ABCB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F9EB5331FC896CC0070ABCB /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				1F5446CD1F6EDC9F00FAA2FF /* vk */,
+				1F9EB5341FC896CC0070ABCB /* ToDayVK */,
 				1F5446CC1F6EDC9F00FAA2FF /* Products */,
 				BA4FF1D060E1C602065B06BC /* Pods */,
 				24E896F9DBFFC96786215DC8 /* Frameworks */,
@@ -200,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				1F5446CB1F6EDC9F00FAA2FF /* vk.app */,
+				1F9EB5311FC896CC0070ABCB /* ToDayVK.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -346,6 +397,18 @@
 			name = Requests;
 			sourceTree = "<group>";
 		};
+		1F9EB5341FC896CC0070ABCB /* ToDayVK */ = {
+			isa = PBXGroup;
+			children = (
+				1F30FF2E1FCAE3F500C12BE7 /* ToDayVK.entitlements */,
+				1F9EB5351FC896CC0070ABCB /* TodayViewController.swift */,
+				1F9EB5371FC896CC0070ABCB /* MainInterface.storyboard */,
+				1F9EB53A1FC896CC0070ABCB /* Info.plist */,
+				1F39AB7A1FCC0A1F008CCD50 /* ToDayTableViewCell.swift */,
+			);
+			path = ToDayVK;
+			sourceTree = "<group>";
+		};
 		1FAA1C6B1FBC2D1300354807 /* MethodsForControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,6 +454,7 @@
 			children = (
 				1F78C3121FC58E6D00E53F19 /* CloudKit.framework */,
 				CD24C68CE0F769C0BC431145 /* Pods_vk.framework */,
+				1F9EB5321FC896CC0070ABCB /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -417,15 +481,34 @@
 				1F5446C91F6EDC9F00FAA2FF /* Resources */,
 				99355B6867976699AC252C6F /* [CP] Embed Pods Frameworks */,
 				1E8124E22CCEB43850FE6A82 /* [CP] Copy Pods Resources */,
+				1F9EB5411FC896CC0070ABCB /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1F9EB53C1FC896CC0070ABCB /* PBXTargetDependency */,
 			);
 			name = vk;
 			productName = vk;
 			productReference = 1F5446CB1F6EDC9F00FAA2FF /* vk.app */;
 			productType = "com.apple.product-type.application";
+		};
+		1F9EB5301FC896CC0070ABCB /* ToDayVK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F9EB5401FC896CC0070ABCB /* Build configuration list for PBXNativeTarget "ToDayVK" */;
+			buildPhases = (
+				1F9EB52D1FC896CC0070ABCB /* Sources */,
+				1F9EB52E1FC896CC0070ABCB /* Frameworks */,
+				1F9EB52F1FC896CC0070ABCB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ToDayVK;
+			productName = ToDayVK;
+			productReference = 1F9EB5311FC896CC0070ABCB /* ToDayVK.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -433,7 +516,7 @@
 		1F5446C31F6EDC9F00FAA2FF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 0910;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Александр";
 				TargetAttributes = {
@@ -443,6 +526,9 @@
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
@@ -450,6 +536,16 @@
 								enabled = 1;
 							};
 							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
+					1F9EB5301FC896CC0070ABCB = {
+						CreatedOnToolsVersion = 9.1;
+						DevelopmentTeam = 62UUS6482X;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
 						};
@@ -470,6 +566,7 @@
 			projectRoot = "";
 			targets = (
 				1F5446CA1F6EDC9F00FAA2FF /* vk */,
+				1F9EB5301FC896CC0070ABCB /* ToDayVK */,
 			);
 		};
 /* End PBXProject section */
@@ -487,6 +584,15 @@
 				1F5446D61F6EDCA000FAA2FF /* Assets.xcassets in Resources */,
 				1F6A68121FB860FF0038A390 /* Chat.storyboard in Resources */,
 				1F5446D41F6EDC9F00FAA2FF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F9EB52F1FC896CC0070ABCB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F24821A1FCABF810017F645 /* Assets.xcassets in Resources */,
+				1F9EB5391FC896CC0070ABCB /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,6 +680,7 @@
 				1F62360B1F73F5D400C2EC13 /* AllFriendsController.swift in Sources */,
 				1F443C611FA24B53005ED345 /* SetImageToRow.swift in Sources */,
 				1F5B350B1F933FCF00360FCA /* NewsCell.swift in Sources */,
+				1F39AB7C1FCC0A28008CCD50 /* ToDayTableViewCell.swift in Sources */,
 				1F6A68241FBA0D580038A390 /* RealmMethodsForDialogs.swift in Sources */,
 				1F6236121F741C5100C2EC13 /* FriendPhotoCell.swift in Sources */,
 				1F66F0DA1F9E8A6600D74D4E /* PhotoService.swift in Sources */,
@@ -587,6 +694,7 @@
 				1F62361A1F752D5300C2EC13 /* MyGroupsController.swift in Sources */,
 				1F78C3191FC5AA8F00E53F19 /* MyCloud.swift in Sources */,
 				1F5B35061F932CD300360FCA /* NewsRequest.swift in Sources */,
+				1F24821B1FCAD86F0017F645 /* TodayViewController.swift in Sources */,
 				1F7D00F71F90D19700BE6E71 /* RequestMethods.swift in Sources */,
 				1F5446CF1F6EDC9F00FAA2FF /* AppDelegate.swift in Sources */,
 				1F4BE7C31FC357CD00E1C0A1 /* BackgroundFetchAssist.swift in Sources */,
@@ -617,7 +725,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1F9EB52D1FC896CC0070ABCB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F9EB5361FC896CC0070ABCB /* TodayViewController.swift in Sources */,
+				1F39AB7E1FCC5D3F008CCD50 /* HandleSizingUI.swift in Sources */,
+				1F39AB7D1FCC5D2A008CCD50 /* New.swift in Sources */,
+				1F39AB7B1FCC0A1F008CCD50 /* ToDayTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1F9EB53C1FC896CC0070ABCB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F9EB5301FC896CC0070ABCB /* ToDayVK */;
+			targetProxy = 1F9EB53B1FC896CC0070ABCB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1F5446D21F6EDC9F00FAA2FF /* Main.storyboard */ = {
@@ -634,6 +761,14 @@
 				1F6A68131FB860FF0038A390 /* Base */,
 			);
 			name = Chat.storyboard;
+			sourceTree = "<group>";
+		};
+		1F9EB5371FC896CC0070ABCB /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F9EB5381FC896CC0070ABCB /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -752,6 +887,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8A7DCEABC9A742D020D4FA6E /* Pods-vk.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = vk/vk.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -773,6 +909,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 016E847BB108BB55FF5C21D5 /* Pods-vk.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = vk/vk.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: booharin@me.com (7ZWPP66T8E)";
@@ -787,6 +924,48 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		1F9EB53E1FC896CC0070ABCB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = ToDayVK/ToDayVK.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 62UUS6482X;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = ToDayVK/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Umbrella.vk.ToDayVK;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1F9EB53F1FC896CC0070ABCB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = ToDayVK/ToDayVK.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: booharin@me.com (7ZWPP66T8E)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: booharin@me.com (7ZWPP66T8E)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 62UUS6482X;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = ToDayVK/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Umbrella.vk.ToDayVK;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -807,6 +986,15 @@
 			buildConfigurations = (
 				1F5446DE1F6EDCA000FAA2FF /* Debug */,
 				1F5446DF1F6EDCA000FAA2FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F9EB5401FC896CC0070ABCB /* Build configuration list for PBXNativeTarget "ToDayVK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F9EB53E1FC896CC0070ABCB /* Debug */,
+				1F9EB53F1FC896CC0070ABCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

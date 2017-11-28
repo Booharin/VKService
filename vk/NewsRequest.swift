@@ -22,6 +22,9 @@ class NewsRequest {
 
     Alamofire.request(requestMethods.baseURL + requestMethods.newsGet, parameters: parameters).responseJSON(queue: .global()) { response in
       var news = [New]()
+      var newsText = [String]()
+      var newsImages = [String: String]()
+      var newsImagesRatio = [String: Double]()
       let data = response.value as! [String: Any]
       let dict = data["response"] as! [String: Any]
       let arrayItems = dict["items"] as! [Any]
@@ -111,8 +114,23 @@ class NewsRequest {
           }
         }
         news.append(New(photoID: photoID, nameID: nameID, textOfPost: textOfPost, typeOfAttachment: typeOfAttachment, photoOfPost: photoOfPost, linkOfPost: linkOfPost, items: items))
+        if textOfPost != "" {
+          newsText.append(textOfPost)
+          newsImages[textOfPost] = photoOfPost.urlOfImage
+          newsImagesRatio[photoOfPost.urlOfImage] = photoOfPost.ratio
+        }
+        if (linkOfPost.title != "") && (textOfPost == "") {
+          newsText.append(linkOfPost.title)
+          if linkOfPost.image != "" {
+            newsImages[linkOfPost.title] = linkOfPost.image!
+            newsImagesRatio[linkOfPost.image!] = 0.5
+          }
+        }
       }
       completion(news)
+      defaults?.set(newsText, forKey: "arrayOfNewsText")
+      defaults?.set(newsImages, forKey: "dictOfImages")
+      defaults?.set(newsImagesRatio, forKey: "dictOfImagesRatio")
     }
   }
 }

@@ -39,9 +39,9 @@ class HandleSizingUI {
     }
   }
   
-  func imageOfPost(image: UIImageView, width: CGFloat, ratio: Double, originY: Int) {
+  func imageOfPost(image: UIImageView, width: CGFloat, ratio: Double, originX: Int, originY: Int) {
     let imageSize = CGSize(width: Int(width), height: Int(ceil(Double(width) * ratio)))
-    let imageOrigin = CGPoint(x: 0, y: originY)
+    let imageOrigin = CGPoint(x: originX, y: originY)
     image.frame = CGRect(origin: imageOrigin, size: imageSize)
   }
   

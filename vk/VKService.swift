@@ -11,6 +11,7 @@ import WebKit
 import FirebaseDatabase
 
 let userDefaults = UserDefaults.standard
+let defaults = UserDefaults(suiteName: "group.VKGroup")
 
 class VKService: UIViewController {
   

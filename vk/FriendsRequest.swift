@@ -49,7 +49,7 @@ class FriendsRequest {
       "count": "100",
       "extended": "1",
       "sort": "0",
-      "need_viewed": "1",
+      "need_viewed": "0",
       "access_token": userDefaults.string(forKey: "token") ?? print("no Token")
     ]
     
