@@ -9,12 +9,12 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--My Groups Controller-->
+        <!--Группы-->
         <scene sceneID="cw9-xQ-tME">
             <objects>
                 <tableViewController id="fjX-OW-klQ" customClass="MyGroupsController" customModule="vk" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="OJ3-ug-3DU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -51,8 +51,9 @@
                             <outlet property="delegate" destination="fjX-OW-klQ" id="0nN-C3-yIP"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="cUQ-qp-vin">
+                    <navigationItem key="navigationItem" title="Группы" id="cUQ-qp-vin">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="abN-IC-Pp4">
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="HAZ-aK-8kk" kind="show" id="5bX-W7-Zw1"/>
                             </connections>
@@ -63,12 +64,12 @@
             </objects>
             <point key="canvasLocation" x="8740" y="868.51574212893559"/>
         </scene>
-        <!--All Groups Controller-->
+        <!--Поиск групп-->
         <scene sceneID="CMw-qM-6Nj">
             <objects>
                 <tableViewController id="HAZ-aK-8kk" customClass="AllGroupsController" customModule="vk" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="m0x-Sz-ELX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -114,7 +115,7 @@
                             <outlet property="delegate" destination="HAZ-aK-8kk" id="Klm-fi-6Ol"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="XXE-WL-d8d"/>
+                    <navigationItem key="navigationItem" title="Поиск групп" id="XXE-WL-d8d"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DUe-ed-wRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Je4-Ol-FxZ" userLabel="Exit" sceneMemberID="exit"/>
@@ -125,11 +126,19 @@
         <scene sceneID="kcS-zf-Bln">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jYW-LK-r9H" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="group_32" id="LuA-yp-vph"/>
+                    <tabBarItem key="tabBarItem" title="" image="group_32_2" id="LuA-yp-vph"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qr4-x0-K8Z">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Qr4-x0-K8Z">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.46265525169999999" green="0.36390921230000001" blue="0.92602412560000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.46265525169999999" green="0.36390921230000001" blue="0.92602412560000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" red="0.46265525169999999" green="0.36390921230000001" blue="0.92602412560000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -142,6 +151,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="group_32" width="32" height="32"/>
+        <image name="group_32_2" width="32" height="32"/>
     </resources>
 </document>

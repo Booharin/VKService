@@ -10,6 +10,9 @@
 		1F13A2F31FB44B2D000AD5B4 /* Groups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F13A2F21FB44B2D000AD5B4 /* Groups.storyboard */; };
 		1F13A2F51FB44D97000AD5B4 /* Friends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F13A2F41FB44D96000AD5B4 /* Friends.storyboard */; };
 		1F13A2F71FB44DE1000AD5B4 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F13A2F61FB44DE1000AD5B4 /* News.storyboard */; };
+		1F14C1651FCDD2FD004221A3 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F14C1641FCDD2FD004221A3 /* Messages.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		1F14C16B1FCDD2FE004221A3 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F14C1691FCDD2FE004221A3 /* MainInterface.storyboard */; };
+		1F14C1711FCDD2FE004221A3 /* iMessageVK.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1F14C1631FCDD2FD004221A3 /* iMessageVK.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1F24821A1FCABF810017F645 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F5446D51F6EDCA000FAA2FF /* Assets.xcassets */; };
 		1F24821B1FCAD86F0017F645 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9EB5351FC896CC0070ABCB /* TodayViewController.swift */; };
 		1F25C02A1FA0F85A00E799D0 /* GetCacheImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F25C0291FA0F85A00E799D0 /* GetCacheImage.swift */; };
@@ -58,6 +61,7 @@
 		1F78C3131FC58E6D00E53F19 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F78C3121FC58E6D00E53F19 /* CloudKit.framework */; };
 		1F78C3191FC5AA8F00E53F19 /* MyCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F78C3181FC5AA8F00E53F19 /* MyCloud.swift */; };
 		1F7D00F71F90D19700BE6E71 /* RequestMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D00F61F90D19700BE6E71 /* RequestMethods.swift */; };
+		1F8FF3171FCEECB3000D934F /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F14C1671FCDD2FD004221A3 /* MessagesViewController.swift */; };
 		1F99445E1F77C6C400351C0A /* VKService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F99445D1F77C6C400351C0A /* VKService.swift */; };
 		1F9EB5331FC896CC0070ABCB /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F9EB5321FC896CC0070ABCB /* NotificationCenter.framework */; };
 		1F9EB5361FC896CC0070ABCB /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9EB5351FC896CC0070ABCB /* TodayViewController.swift */; };
@@ -69,6 +73,8 @@
 		1FAA1C741FBDC15500354807 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAA1C731FBDC15500354807 /* LocationManager.swift */; };
 		1FAA1C781FBDFE3100354807 /* MapTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAA1C771FBDFE3100354807 /* MapTableCell.swift */; };
 		1FAA1C7A1FBDFECC00354807 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FAA1C791FBDFECC00354807 /* Map.storyboard */; };
+		1FAB65C81FCF2EFE0004F0AE /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F14C1671FCDD2FD004221A3 /* MessagesViewController.swift */; };
+		1FAB65CA1FCF353D0004F0AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F14C16C1FCDD2FE004221A3 /* Assets.xcassets */; };
 		1FE50AE31FAC6D950060E54B /* HandleSizingUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE50AE21FAC6D950060E54B /* HandleSizingUI.swift */; };
 		1FEEA4201F86A359004FB74A /* GroupsDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEEA41F1F86A359004FB74A /* GroupsDataRequest.swift */; };
 		1FEEB3311F7CED0F00010A3F /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEEB3301F7CED0F00010A3F /* Friend.swift */; };
@@ -77,6 +83,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1F14C16F1FCDD2FE004221A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F5446C31F6EDC9F00FAA2FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F14C1621FCDD2FD004221A3;
+			remoteInfo = iMessageVK;
+		};
 		1F9EB53B1FC896CC0070ABCB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1F5446C31F6EDC9F00FAA2FF /* Project object */;
@@ -94,6 +107,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				1F9EB53D1FC896CC0070ABCB /* ToDayVK.appex in Embed App Extensions */,
+				1F14C1711FCDD2FE004221A3 /* iMessageVK.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,6 +119,12 @@
 		1F13A2F21FB44B2D000AD5B4 /* Groups.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Groups.storyboard; sourceTree = "<group>"; };
 		1F13A2F41FB44D96000AD5B4 /* Friends.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Friends.storyboard; sourceTree = "<group>"; };
 		1F13A2F61FB44DE1000AD5B4 /* News.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
+		1F14C1631FCDD2FD004221A3 /* iMessageVK.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iMessageVK.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F14C1641FCDD2FD004221A3 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
+		1F14C1671FCDD2FD004221A3 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		1F14C16A1FCDD2FE004221A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		1F14C16C1FCDD2FE004221A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1F14C16E1FCDD2FE004221A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F25C0291FA0F85A00E799D0 /* GetCacheImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCacheImage.swift; sourceTree = "<group>"; };
 		1F2EDF401F8D0D8F00798E59 /* RealmMethodsForFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMethodsForFriends.swift; sourceTree = "<group>"; };
 		1F2EDF421F8D1ACD00798E59 /* RealmMethodsForPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMethodsForPhoto.swift; sourceTree = "<group>"; };
@@ -164,6 +184,7 @@
 		1FAA1C731FBDC15500354807 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		1FAA1C771FBDFE3100354807 /* MapTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTableCell.swift; sourceTree = "<group>"; };
 		1FAA1C791FBDFECC00354807 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
+		1FC0F7191FCECFDB0090AFD1 /* iMessageVK.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iMessageVK.entitlements; sourceTree = "<group>"; };
 		1FE50AE21FAC6D950060E54B /* HandleSizingUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleSizingUI.swift; sourceTree = "<group>"; };
 		1FEEA41F1F86A359004FB74A /* GroupsDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsDataRequest.swift; sourceTree = "<group>"; };
 		1FEEB3301F7CED0F00010A3F /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
@@ -173,6 +194,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1F14C1601FCDD2FD004221A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F14C1651FCDD2FD004221A3 /* Messages.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1F5446C81F6EDC9F00FAA2FF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -204,6 +233,18 @@
 				1F6A68141FB860FF0038A390 /* Chat.storyboard */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		1F14C1661FCDD2FD004221A3 /* iMessageVK */ = {
+			isa = PBXGroup;
+			children = (
+				1FC0F7191FCECFDB0090AFD1 /* iMessageVK.entitlements */,
+				1F14C1671FCDD2FD004221A3 /* MessagesViewController.swift */,
+				1F14C1691FCDD2FE004221A3 /* MainInterface.storyboard */,
+				1F14C16C1FCDD2FE004221A3 /* Assets.xcassets */,
+				1F14C16E1FCDD2FE004221A3 /* Info.plist */,
+			);
+			path = iMessageVK;
 			sourceTree = "<group>";
 		};
 		1F25C0271FA0F81700E799D0 /* Threads */ = {
@@ -240,6 +281,7 @@
 			children = (
 				1F5446CD1F6EDC9F00FAA2FF /* vk */,
 				1F9EB5341FC896CC0070ABCB /* ToDayVK */,
+				1F14C1661FCDD2FD004221A3 /* iMessageVK */,
 				1F5446CC1F6EDC9F00FAA2FF /* Products */,
 				BA4FF1D060E1C602065B06BC /* Pods */,
 				24E896F9DBFFC96786215DC8 /* Frameworks */,
@@ -251,6 +293,7 @@
 			children = (
 				1F5446CB1F6EDC9F00FAA2FF /* vk.app */,
 				1F9EB5311FC896CC0070ABCB /* ToDayVK.appex */,
+				1F14C1631FCDD2FD004221A3 /* iMessageVK.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -455,6 +498,7 @@
 				1F78C3121FC58E6D00E53F19 /* CloudKit.framework */,
 				CD24C68CE0F769C0BC431145 /* Pods_vk.framework */,
 				1F9EB5321FC896CC0070ABCB /* NotificationCenter.framework */,
+				1F14C1641FCDD2FD004221A3 /* Messages.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -471,6 +515,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1F14C1621FCDD2FD004221A3 /* iMessageVK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F14C1741FCDD2FE004221A3 /* Build configuration list for PBXNativeTarget "iMessageVK" */;
+			buildPhases = (
+				1F14C15F1FCDD2FD004221A3 /* Sources */,
+				1F14C1601FCDD2FD004221A3 /* Frameworks */,
+				1F14C1611FCDD2FD004221A3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iMessageVK;
+			productName = iMessageVK;
+			productReference = 1F14C1631FCDD2FD004221A3 /* iMessageVK.appex */;
+			productType = "com.apple.product-type.app-extension.messages";
+		};
 		1F5446CA1F6EDC9F00FAA2FF /* vk */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F5446DD1F6EDCA000FAA2FF /* Build configuration list for PBXNativeTarget "vk" */;
@@ -487,6 +548,7 @@
 			);
 			dependencies = (
 				1F9EB53C1FC896CC0070ABCB /* PBXTargetDependency */,
+				1F14C1701FCDD2FE004221A3 /* PBXTargetDependency */,
 			);
 			name = vk;
 			productName = vk;
@@ -520,6 +582,19 @@
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Александр";
 				TargetAttributes = {
+					1F14C1621FCDD2FD004221A3 = {
+						CreatedOnToolsVersion = 9.1;
+						DevelopmentTeam = 62UUS6482X;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
+					};
 					1F5446CA1F6EDC9F00FAA2FF = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 62UUS6482X;
@@ -531,6 +606,9 @@
 							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 0;
 							};
 							com.apple.Push = {
 								enabled = 1;
@@ -567,11 +645,21 @@
 			targets = (
 				1F5446CA1F6EDC9F00FAA2FF /* vk */,
 				1F9EB5301FC896CC0070ABCB /* ToDayVK */,
+				1F14C1621FCDD2FD004221A3 /* iMessageVK */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1F14C1611FCDD2FD004221A3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FAB65CA1FCF353D0004F0AE /* Assets.xcassets in Resources */,
+				1F14C16B1FCDD2FE004221A3 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1F5446C91F6EDC9F00FAA2FF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -669,6 +757,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1F14C15F1FCDD2FD004221A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F8FF3171FCEECB3000D934F /* MessagesViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1F5446C71F6EDC9F00FAA2FF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -713,6 +809,7 @@
 				1F6A682A1FBB372B0038A390 /* DialogMethods.swift in Sources */,
 				1F6A680C1FB833E00038A390 /* ChatCell.swift in Sources */,
 				1FEEB3311F7CED0F00010A3F /* Friend.swift in Sources */,
+				1FAB65C81FCF2EFE0004F0AE /* MessagesViewController.swift in Sources */,
 				1F62361C1F752D7000C2EC13 /* MyGroupsCell.swift in Sources */,
 				1F6A681A1FB8B8AC0038A390 /* Chat.swift in Sources */,
 				1F62360D1F73F76900C2EC13 /* AllFriendsCell.swift in Sources */,
@@ -739,6 +836,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1F14C1701FCDD2FE004221A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F14C1621FCDD2FD004221A3 /* iMessageVK */;
+			targetProxy = 1F14C16F1FCDD2FE004221A3 /* PBXContainerItemProxy */;
+		};
 		1F9EB53C1FC896CC0070ABCB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 1F9EB5301FC896CC0070ABCB /* ToDayVK */;
@@ -747,6 +849,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		1F14C1691FCDD2FE004221A3 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F14C16A1FCDD2FE004221A3 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		1F5446D21F6EDC9F00FAA2FF /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -774,6 +884,53 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1F14C1721FCDD2FE004221A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = iMessageVK/iMessageVK.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 62UUS6482X;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = iMessageVK/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Umbrella.vk.iMessageVK;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1F14C1731FCDD2FE004221A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = iMessageVK/iMessageVK.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: booharin@me.com (7ZWPP66T8E)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: booharin@me.com (7ZWPP66T8E)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 62UUS6482X;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = iMessageVK/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = Umbrella.vk.iMessageVK;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		1F5446DB1F6EDCA000FAA2FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -939,9 +1096,11 @@
 				DEVELOPMENT_TEAM = 62UUS6482X;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = ToDayVK/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Umbrella.vk.ToDayVK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -955,14 +1114,17 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = ToDayVK/ToDayVK.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: booharin@me.com (7ZWPP66T8E)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: booharin@me.com (7ZWPP66T8E)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 62UUS6482X;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = ToDayVK/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = Umbrella.vk.ToDayVK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -972,6 +1134,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1F14C1741FCDD2FE004221A3 /* Build configuration list for PBXNativeTarget "iMessageVK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F14C1721FCDD2FE004221A3 /* Debug */,
+				1F14C1731FCDD2FE004221A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1F5446C61F6EDC9F00FAA2FF /* Build configuration list for PBXProject "vk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

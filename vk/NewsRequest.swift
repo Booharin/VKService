@@ -19,7 +19,7 @@ class NewsRequest {
       "filters": "post,photo,photo_tag,note",
       "count": "20"
     ]
-
+   
     Alamofire.request(requestMethods.baseURL + requestMethods.newsGet, parameters: parameters).responseJSON(queue: .global()) { response in
       var news = [New]()
       var newsText = [String]()
@@ -65,9 +65,11 @@ class NewsRequest {
             let videoAttachment = attachment["video"] as! [String:Any]
             photoOfPost.urlOfImage = videoAttachment["image_big"] as! String
           case "audio" :
-            typeOfAttachment = .audio
+            typeOfAttachment = .none
           case "poll":
-            typeOfAttachment = .poll
+            typeOfAttachment = .none
+          case "doc":
+            typeOfAttachment = .none
           default: break
           }
         } else {

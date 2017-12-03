@@ -12,11 +12,16 @@ import RealmSwift
 class DialogController: UICollectionViewController {
   let chatRequest = ChatRequest()
   let dialogMethods = DialogMethods()
+  
   let realm = RealmMethodsForMessages()
   var messages : List<Message>?
   var token: NotificationToken?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    navigationController?.hidesBarsOnSwipe = true
+    
     chatRequest.loadHistoryOfMessages()
     sleep(1)
     realm.collectionUpdate(&messages, &token, collectionView!)
@@ -37,6 +42,7 @@ class DialogController: UICollectionViewController {
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DialogCell", for: indexPath) as! DialogCell
     guard let message = messages?[indexPath.row] else { return cell }
+    if message.out == 1 { cell.backgroundColor = #colorLiteral(red: 0.802629771, green: 0.7909274573, blue: 1, alpha: 1) } else { cell.backgroundColor = .white }
     cell.message.text = message.text
     cell.setMessageText(text: cell.message.text!)
     

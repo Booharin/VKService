@@ -21,7 +21,10 @@ class MyGroupsController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-   realm.tableUpdate(&groups, &token, tableView)
+    
+    navigationController?.hidesBarsOnSwipe = true
+    
+    realm.tableUpdate(&groups, &token, tableView)
   }
   
   override func didReceiveMemoryWarning() {
@@ -51,7 +54,7 @@ class MyGroupsController: UITableViewController {
     guard let imgURL = URL(string: group.photo) else { return cell }
     Alamofire.request(imgURL).responseData(queue: .global()) { (response) in
       OperationQueue.main.addOperation {
-      cell.photoOfMyGroup.image = UIImage(data: response.data!)
+        cell.photoOfMyGroup.image = UIImage(data: response.data!)
       }
     }
     return cell

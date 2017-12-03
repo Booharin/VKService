@@ -12,13 +12,18 @@ import RealmSwift
 class ChatController: UITableViewController {
   let chatRequest = ChatRequest()
   let chatMethods = ChatMethods()
+  
   let realm = RealmMethodsForDialogs()
   var dialogs : Results<Dialog>?
   var token: NotificationToken?
+  
   lazy var photoService = PhotoService(container: tableView)
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    navigationController?.hidesBarsOnSwipe = true
+    
     realm.tableUpdate(&dialogs, &token, tableView)
     chatRequest.loadDialogsData()
   }
@@ -42,6 +47,9 @@ class ChatController: UITableViewController {
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatCell
     guard let dialog = dialogs?[indexPath.row] else { return cell }
+    
+    if dialog.readState == 0 { cell.backgroundColor = #colorLiteral(red: 0.7570501583, green: 0.7513055267, blue: 1, alpha: 1) } else { cell.backgroundColor = .white }
+    
     cell.photoID.image = photoService.photo(atIndexpath: indexPath, byUrl: dialog.photoID)
     cell.nameID.text = dialog.nameID
     cell.lastMessage.text = dialog.textLastMessage
@@ -50,6 +58,7 @@ class ChatController: UITableViewController {
     
     cell.setLastMessage(text: &cell.lastMessage.text!)
     cell.setDate(text: date, width: UIScreen.main.bounds.width)
+    
     return cell
   }
   

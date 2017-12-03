@@ -122,13 +122,13 @@ class NewsCell: UITableViewCell {
   // comments
   func setCommentsCount(text: String, originY: CGFloat) {
     comments.text = text
-    handleSizingUI.imageFrame(image: commentsImage, imageSide: 20, originX: 110, originY: Int(originY - 35), round: false)
+    handleSizingUI.imageFrame(image: commentsImage, imageSide: 20, originX: 110, originY: Int(originY - 34), round: false)
     handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: comments.text!, font: comments.font), label: comments, originX: 135, originY: originY - 33)
   }
   // reposts
   func setRepostsCount(text: String, originY: CGFloat) {
     reposts.text = text
-    handleSizingUI.imageFrame(image: repostsImage, imageSide: 20, originX: 185, originY: Int(originY - 35), round: false)
+    handleSizingUI.imageFrame(image: repostsImage, imageSide: 20, originX: 185, originY: Int(originY - 34), round: false)
     handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: reposts.text!, font: reposts.font), label: reposts, originX: 210, originY: originY - 33)
   }
   

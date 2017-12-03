@@ -12,8 +12,8 @@ import RealmSwift
 import UserNotifications
 
 class AllFriendsController: UITableViewController {
-  
   let friendRequest = FriendsRequest()
+  
   var friends : Results<Friend>?
   var token: NotificationToken?
   let realm = RealmMethodsForFriends()
@@ -26,6 +26,9 @@ class AllFriendsController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    navigationController?.hidesBarsOnSwipe = true
+    
     realm.tableUpdate(&friends, &token, tableView)
     
     self.friendRequest.loadFriendsData()

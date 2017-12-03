@@ -18,18 +18,18 @@ class NewsController: UITableViewController {
   var news = [New]()
   lazy var photoService = PhotoService(container: tableView)
   var gesture = UITapGestureRecognizer()
+  var heigthOfCell: CGFloat = 0.0
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    navigationController?.hidesBarsOnSwipe = true
     newsMethods.addTapGestureRecognizer(gesture: &gesture)
     
     self.newsRequest.loadNewsData() { [weak self] news in
       self?.news = news
-      OperationQueue.main.addOperation {
-        self?.tableView.reloadData()
-      }
+      OperationQueue.main.addOperation { self?.tableView.reloadData() }
     }
+    
     let center = UNUserNotificationCenter.current()
     center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
     }
@@ -39,12 +39,33 @@ class NewsController: UITableViewController {
     super.didReceiveMemoryWarning()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    UIApplication.shared.statusBarStyle = .lightContent
+    UIApplication.shared.statusBarView?.backgroundColor = .black
+  }
+  
   override func numberOfSections(in tableView: UITableView) -> Int {
     return 1
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return news.count
+  }
+  
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    let new = news[indexPath.row]
+    let heightOfText = newsMethods.setHeightOfText(text: new.textOfPost)
+    let dictCell = self.newsMethods.cellType(new)
+    var heightOfTitleOfURL : CGFloat = 0.0
+    
+    heigthOfCell = CGFloat(ceil((Double(UIScreen.main.bounds.width) * (dictCell["ratio"] as! Double))) + (dictCell["addedHeight"] as! Double))
+    
+    if dictCell["identifier"] as! String == "NewsCellLinkPost" {
+      heightOfTitleOfURL = newsMethods.setHeightOfText(text: new.linkOfPost.title)
+    }
+    heigthOfCell += heightOfText + heightOfTitleOfURL
+    
+    return heigthOfCell
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -63,20 +84,18 @@ class NewsController: UITableViewController {
     
     cell.setName(text: cell.nameID.text!)
     cell.setPostText(text: cell.textOfPost.text!)
-    dictCell["addedHeight"] = dictCell["addedHeight"] as! Double + cell.heightOfTextOfPost + cell.heightOfTitleOfURL
-    tableView.rowHeight = CGFloat(ceil((Double(UIScreen.main.bounds.width) * (dictCell["ratio"] as! Double))) + (dictCell["addedHeight"] as! Double))
     
     if dictCell["identifier"] as! String == "NewsCellLinkPost" {
       cell.titleUrl.text = new.linkOfPost.title
-      cell.setTitleOfLink(text: cell.titleUrl.text ?? new.linkOfPost.urlOfLink, originY: tableView.rowHeight)
+      cell.setTitleOfLink(text: cell.titleUrl.text ?? new.linkOfPost.urlOfLink, originY: heigthOfCell)
       cell.titleUrl.isUserInteractionEnabled = true
       cell.titleUrl.addGestureRecognizer(gesture)
     }
     
     cell.setSizeImageOfPost(widthOfScreen: UIScreen.main.bounds.width, ratio: dictCell["ratio"] as! Double)
-    cell.setLikesCount(text: cell.likes.text!, originY: tableView.rowHeight)
-    cell.setCommentsCount(text: cell.comments.text!, originY: tableView.rowHeight)
-    cell.setRepostsCount(text: cell.reposts.text!, originY: tableView.rowHeight)
+    cell.setLikesCount(text: cell.likes.text!, originY: heigthOfCell)
+    cell.setCommentsCount(text: cell.comments.text!, originY: heigthOfCell)
+    cell.setRepostsCount(text: cell.reposts.text!, originY: heigthOfCell)
     
     return cell
   }
@@ -90,3 +109,10 @@ class NewsController: UITableViewController {
     }
   }
 }
+
+extension UIApplication {
+  var statusBarView: UIView? {
+    return value(forKey: "statusBar") as? UIView
+  }
+}
+

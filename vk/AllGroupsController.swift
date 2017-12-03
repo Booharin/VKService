@@ -14,7 +14,7 @@ class AllGroupsController: UITableViewController {
   let searchController = UISearchController(searchResultsController: nil)
   var groupsRequest = GroupsDataRequest()
   var groups = [Group]()
-
+  
   func searchBarIsEmpty() -> Bool {
     return searchController.searchBar.text?.isEmpty ?? true
   }
@@ -25,7 +25,7 @@ class AllGroupsController: UITableViewController {
     groupsRequest.loadGroupsDataCount() { [weak self] groups in
       self?.groups = groups
       OperationQueue.main.addOperation {
-      self?.tableView.reloadData()
+        self?.tableView.reloadData()
       }
     }
   }
@@ -36,6 +36,9 @@ class AllGroupsController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    navigationController?.hidesBarsOnSwipe = true
+    
     searchController.searchResultsUpdater = self
     searchController.dimsBackgroundDuringPresentation = false
     definesPresentationContext = true
@@ -56,7 +59,7 @@ class AllGroupsController: UITableViewController {
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     //if isFiltering() {
-      return groups.count
+    return groups.count
     //}
     //return 1
   }
@@ -65,18 +68,18 @@ class AllGroupsController: UITableViewController {
     let cell = tableView.dequeueReusableCell(withIdentifier: "AllGroupsCell", for: indexPath) as! AllGroupsCell
     
     //if isFiltering() {
-      let group = groups[indexPath.row]
-      cell.nameOfGroup.text = group.name
-      cell.countMembers.text = String(group.membersCount)
-      cell.setGroupName(text: cell.nameOfGroup.text!)
-      cell.setCountMembers(text: cell.countMembers.text!)
-      
-      guard let imgURL = URL(string: group.photo) else { return cell }
-      Alamofire.request(imgURL).responseData(queue: .global()) { response in
-        OperationQueue.main.addOperation {
-          cell.groupPhoto.image = UIImage(data: response.data!)
-        }
+    let group = groups[indexPath.row]
+    cell.nameOfGroup.text = group.name
+    cell.countMembers.text = String(group.membersCount)
+    cell.setGroupName(text: cell.nameOfGroup.text!)
+    cell.setCountMembers(text: cell.countMembers.text!)
+    
+    guard let imgURL = URL(string: group.photo) else { return cell }
+    Alamofire.request(imgURL).responseData(queue: .global()) { response in
+      OperationQueue.main.addOperation {
+        cell.groupPhoto.image = UIImage(data: response.data!)
       }
+    }
     //}
     return cell
   }

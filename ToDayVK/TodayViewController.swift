@@ -12,7 +12,6 @@ import NotificationCenter
 class TodayViewController: UIViewController, NCWidgetProviding {
   @IBOutlet weak var toDayTable: UITableView!
   let defaults = UserDefaults(suiteName: "group.VKGroup")
-  let decoder = JSONDecoder()
   var news = [String]()
   var newsImages = [String: String]()
   var newsImagesRatio = [String: Double]()
