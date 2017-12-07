@@ -9,12 +9,14 @@
 import Foundation
 import WebKit
 import FirebaseDatabase
+import WatchConnectivity
+import UserNotifications
 
 let userDefaults = UserDefaults.standard
 let defaults = UserDefaults(suiteName: "group.VKGroup")
 
-class VKService: UIViewController {
-  
+class VKService: UIViewController, WCSessionDelegate {
+  var token = ""
   @IBOutlet weak var webView: WKWebView! {
     didSet{
       webView.navigationDelegate = self
@@ -23,6 +25,11 @@ class VKService: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    let center = UNUserNotificationCenter.current()
+    center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
+    }
+    UIApplication.shared.registerForRemoteNotifications()
     
     var urlComponents = URLComponents()
     urlComponents.scheme = "https"
@@ -45,6 +52,31 @@ class VKService: UIViewController {
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
   }
+  
+  func connectWatch()  {
+    if WCSession.isSupported() {
+      let session = WCSession.default
+      session.delegate = self
+      session.activate()
+    }
+  }
+
+  func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+    print(activationState)
+    guard activationState == .activated else {
+      return
+    }
+    // передаем
+    session.transferUserInfo(["token" : self.token])
+  }
+  
+  func sessionDidBecomeInactive(_ session: WCSession) {
+  }
+  
+  func sessionDidDeactivate(_ session: WCSession) {
+    WCSession.default.activate()
+  }
+  
 }
 
 extension VKService: WKNavigationDelegate {
@@ -68,10 +100,11 @@ extension VKService: WKNavigationDelegate {
     }
     
     let token = params["access_token"]
+    self.token = token!
     userDefaults.set(token!, forKey: "token")
     let userID = params["user_id"]
     userDefaults.set(userID, forKey: "userID")
-    
+    connectWatch()
     performSegue(withIdentifier: "Enter", sender: token)
     
     decisionHandler(.cancel)

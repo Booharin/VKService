@@ -9,12 +9,15 @@
 import UIKit
 import Alamofire
 import RealmSwift
-import UserNotifications
+//import UserNotifications
 
 class NewsController: UITableViewController {
+  
   let newsRequest = NewsRequest()
   let postRequest = PostRequest()
   let newsMethods = NewsMethods()
+  let vkLocalNotification = VKLocalNotification()
+  
   var news = [New]()
   lazy var photoService = PhotoService(container: tableView)
   var gesture = UITapGestureRecognizer()
@@ -30,9 +33,19 @@ class NewsController: UITableViewController {
       OperationQueue.main.addOperation { self?.tableView.reloadData() }
     }
     
-    let center = UNUserNotificationCenter.current()
-    center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
+    vkLocalNotification.postLocalNotification()
+    
+    let refreshControl = UIRefreshControl()
+    refreshControl.addTarget(self, action: #selector(doRefresh), for: .valueChanged)
+    tableView.refreshControl = refreshControl
+  }
+  
+  @objc func doRefresh(refreshControl: UIRefreshControl) {
+    self.newsRequest.loadNewsData() { [weak self] news in
+      self?.news = news
+      OperationQueue.main.addOperation { self?.tableView.reloadData() }
     }
+    refreshControl.endRefreshing()
   }
   
   override func didReceiveMemoryWarning() {

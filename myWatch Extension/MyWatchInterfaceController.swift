@@ -7,7 +7,18 @@
 //
 
 import UIKit
+import WatchKit
 
 class MyWatchInterfaceController: WKInterfaceController {
-
+  @IBOutlet var imageView: WKInterfaceImage!
+  @IBOutlet var labelView: WKInterfaceLabel!
+  
+  override func awake(withContext context: Any?) {
+    super.awake(withContext: context)
+    
+    if let image = context as? UIImage {
+    self.imageView.setImage(image)
+    }
+  }
 }
+

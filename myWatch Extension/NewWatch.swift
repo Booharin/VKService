@@ -7,3 +7,10 @@
 //
 
 import Foundation
+import UIKit
+
+struct NewWatch {
+  var text: String?
+  var image: UIImage?
+  var ratio: Double?
+}

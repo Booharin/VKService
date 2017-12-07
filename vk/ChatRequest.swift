@@ -16,17 +16,17 @@ class ChatRequest {
   let realmMSG = RealmMethodsForMessages()
   
   func loadDialogsData() {
-    userDefaults.set(0, forKey: "UnreadMessage")
     let parameters: Parameters = [
       "count": "200",
       "version": requestMethods.apiVersion,
       "access_token": userDefaults.string(forKey: "token") ?? print("no Token")
     ]
-    
+    //    print(Alamofire.request(requestMethods.baseURL + requestMethods.dialogsGet, parameters: parameters))
     Alamofire.request(requestMethods.baseURL + requestMethods.dialogsGet, parameters: parameters).responseJSON(queue: .global()) { response in
       let responseDialogsGet = response.value as! [String: Any]
       guard var array = responseDialogsGet["response"] as! [Any]? else { return }
       array.remove(at: 0)
+      userDefaults.set(0, forKey: "UnreadMessage")
       var dialogs = [Dialog]()
       var dialogItem = Dialog()
       var usersIDString = ""
@@ -38,18 +38,21 @@ class ChatRequest {
         if dialogItem.nameID != "" && dialogItem.photoID == "" { dialogItem.photoID = self.requestMethods.photoPlaceHolder }
         dialogItem.textLastMessage = dialog["body"] as! String
         if dialog["attachment"] != nil {
-        let attachment = dialog["attachment"] as! [String: Any]
+          let attachment = dialog["attachment"] as! [String: Any]
           if attachment["type"] as! String == "sticker" { dialogItem.textLastMessage = "Стикер" }
         }
         dialogItem.date = dialog["date"] as! Int
         dialogItem.readState = dialog["read_state"] as! Int
-        
-        if dialogItem.readState == 0 { userDefaults.set(1, forKey: "UnreadMessage") }
-        
         dialogItem.out = dialog["out"] as! Int
+        
+        if dialogItem.readState == 0 && dialogItem.out == 0 {
+          userDefaults.set(1, forKey: "UnreadMessage")
+        }
+        
         dialogs.append(dialogItem)
         dialogItem = Dialog(id: "", photoID: "", nameID: "", title: "", photoIDLastMessage: "", textLastMessage: "", date: 0, readState: 1, out: 1)
       }
+      
       for i in dialogs {
         usersIDString = usersIDString + "," + i.id
       }
@@ -88,7 +91,7 @@ class ChatRequest {
               "fields": "members_count",
               "access_token": userDefaults.string(forKey: "token") ?? print("no Token")
             ]
-
+            
             Alamofire.request(self.requestMethods.baseURL + self.requestMethods.groupsInfo, parameters: groupParameters).responseJSON(queue: .global()) { response in
               let responseGroups = response.value as! [String: Any]
               guard let array = responseGroups["response"] as! [Any]? else { return }
@@ -113,7 +116,7 @@ class ChatRequest {
       "version": self.requestMethods.apiVersion,
       "access_token": userDefaults.string(forKey: "token") ?? print("no Token")
     ]
-print(Alamofire.request(self.requestMethods.baseURL + requestMethods.historyOfMessagesGet, parameters: parameters))
+//    print(Alamofire.request(self.requestMethods.baseURL + requestMethods.historyOfMessagesGet, parameters: parameters))
     Alamofire.request(self.requestMethods.baseURL + requestMethods.historyOfMessagesGet, parameters: parameters).responseJSON(queue: .global()) { response in
       let responseMessagesGet = response.value as! [String: Any]
       guard var array = responseMessagesGet["response"] as! [Any]? else { return }

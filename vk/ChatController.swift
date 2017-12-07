@@ -24,8 +24,9 @@ class ChatController: UITableViewController {
     
     navigationController?.hidesBarsOnSwipe = true
     
-    realm.tableUpdate(&dialogs, &token, tableView)
     chatRequest.loadDialogsData()
+    realm.tableUpdate(&dialogs, &token, tableView)
+    
   }
   
   override func didReceiveMemoryWarning() {

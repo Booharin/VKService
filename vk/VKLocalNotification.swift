@@ -9,19 +9,21 @@
 import Foundation
 import UserNotifications
 
-class LocalNotification {
-  func showNoti
-  let content = UNMutableNotificationContent()
-  content.title = "Заголовок"
-  content.body = "Уведомление"
-  content.sound = .default()
-  content.badge = 69
+class VKLocalNotification {
   
-  let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 30, repeats: false)
-  let requestIndentifier = "example"
-  let request = UNNotificationRequest(identifier: requestIndentifier, content: content, trigger: trigger)
-  
-  UNUserNotificationCenter.current().add(request, withCompletionHandler: {(error) in
-  UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [requestIndentifier])
-  })
+  func postLocalNotification() {
+    let content = UNMutableNotificationContent()
+    content.title = "Заголовок"
+    content.body = "Уведомление"
+    content.sound = .default()
+    content.badge = 0
+    
+    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 30, repeats: false)
+    let requestIndentifier = "example"
+    let request = UNNotificationRequest(identifier: requestIndentifier, content: content, trigger: trigger)
+    
+    UNUserNotificationCenter.current().add(request, withCompletionHandler: {(error) in
+      UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [requestIndentifier])
+    })
+  }
 }
