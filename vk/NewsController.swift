@@ -16,7 +16,6 @@ class NewsController: UITableViewController {
   let newsRequest = NewsRequest()
   let postRequest = PostRequest()
   let newsMethods = NewsMethods()
-  let vkLocalNotification = VKLocalNotification()
   
   var news = [New]()
   lazy var photoService = PhotoService(container: tableView)
@@ -32,8 +31,6 @@ class NewsController: UITableViewController {
       self?.news = news
       OperationQueue.main.addOperation { self?.tableView.reloadData() }
     }
-    
-    vkLocalNotification.postLocalNotification()
     
     let refreshControl = UIRefreshControl()
     refreshControl.addTarget(self, action: #selector(doRefresh), for: .valueChanged)

@@ -10,20 +10,38 @@ import Foundation
 import UserNotifications
 
 class VKLocalNotification {
+  let content = UNMutableNotificationContent()
   
   func postLocalNotification() {
-    let content = UNMutableNotificationContent()
-    content.title = "Заголовок"
-    content.body = "Уведомление"
+
+    if let title = userDefaults.string(forKey: "NameOfLastMessage") {
+      content.title = title
+    }
+    if let body = userDefaults.string(forKey: "TextOfLastMessage") {
+      content.body = body
+    }
     content.sound = .default()
-    content.badge = 0
     
-    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 30, repeats: false)
-    let requestIndentifier = "example"
+    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+    let requestIndentifier = "message"
     let request = UNNotificationRequest(identifier: requestIndentifier, content: content, trigger: trigger)
     
     UNUserNotificationCenter.current().add(request, withCompletionHandler: {(error) in
       UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [requestIndentifier])
     })
+    
+    if userDefaults.integer(forKey: "RequestsCount") > 0 {
+      content.title = ""
+      content.body = "Кто-то хочет в друзья"
+      content.sound = .default()
+      
+      let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+      let requestIndentifier = "friend"
+      let request = UNNotificationRequest(identifier: requestIndentifier, content: content, trigger: trigger)
+      
+      UNUserNotificationCenter.current().add(request, withCompletionHandler: {(error) in
+        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [requestIndentifier])
+      })
+    }
   }
 }

@@ -16,6 +16,7 @@ class DialogCell: UICollectionViewCell {
       message.numberOfLines = 0
     }
   }
+  
   @IBOutlet weak var date: UILabel! {
     didSet {
       date.translatesAutoresizingMaskIntoConstraints = false
@@ -29,12 +30,36 @@ class DialogCell: UICollectionViewCell {
     
   }
   
-  func setMessageText(text: String) {
-    message.text = text
+  func setMessageText(text: String, out: Int) {
+    let array = text.components(separatedBy: "<br>")
+    let updateString = array.joined(separator: "\n")
+    message.text = updateString
     
-    handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: message.text!, font: message.font), label: message, originX: 10, originY: 15)
+    let customBounds = CGRect(x: 0.0, y: 0.0, width: bounds.width - 80.0, height: 0.0)
+    let size = handleSizingUI.getLabelSize(bounds: customBounds, text: message.text!, font: message.font)
+    let sizeOfLabel = CGSize(width: size.width + 20.0, height: size.height + 10.0)
+    handleSizingUI.labelFrame(labelSize: sizeOfLabel, label: message, originX: 10, originY: 0)
+    if out == 1 { message.backgroundColor = #colorLiteral(red: 0.7509090551, green: 0.7755917149, blue: 0.9828761576, alpha: 1) } else { message.backgroundColor = .white }
+    
+    message.layer.cornerRadius = 5.0
+    message.layer.masksToBounds = true
+    message.layer.borderColor = #colorLiteral(red: 0.8961292574, green: 0.9088429323, blue: 1, alpha: 1)
+    message.layer.borderWidth = 1.0
+    
+    message.textAlignment = .left
+    let paragraphStyle = NSMutableParagraphStyle()
+    paragraphStyle.firstLineHeadIndent = 10.0
+    paragraphStyle.headIndent = 10.0
+    paragraphStyle.tailIndent = -10.0
+    let attributes = [NSAttributedStringKey.paragraphStyle: paragraphStyle]
+    
+    let myMutableString = NSMutableAttributedString(
+      string: updateString,
+      attributes: attributes)
+    message.attributedText = myMutableString
     
   }
+  
   func setDate(text: String) {
     date.text = text
     
@@ -42,3 +67,12 @@ class DialogCell: UICollectionViewCell {
   }
   
 }
+
+
+
+
+
+
+
+
+

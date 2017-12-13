@@ -6,13 +6,13 @@
 //  Copyright © 2017 Александр. All rights reserved.
 //
 
-import Foundation
-import FirebaseDatabase
-
+//import Foundation
+//import FirebaseDatabase
+//
 //struct User {
 //  let id: String
 //  let groups: [Group]
-//  
+//
 //  var toAnyObject: Any {
 //    return [
 //      "id": id,
@@ -28,19 +28,19 @@ import FirebaseDatabase
 //class FireBaseMethods {
 //  let dbLink = Database.database().reference()
 //  var requestHandle: DatabaseHandle?
-//  
+//
 //  func saveData(group: Group) {
 //    guard let id = userDefaults.string(forKey: "userID") else { return }
 //    let puth = "Users/" + id + "/groups"
 //    dbLink.child(puth).updateChildValues([group.name : group.toAnyObject])
 //  }
-//  
+//
 //  func deleteData(group: Group) {
 //    guard let id = userDefaults.string(forKey: "userID") else { return }
 //    let puth = "Users/" + id + "/groups/" + group.name
 //    dbLink.child(puth).removeValue()
 //  }
-//  
+//
 //  func loadData(completion: @escaping ([Group]) -> ()) {
 //    guard let id = userDefaults.string(forKey: "userID") else { return }
 //    requestHandle = dbLink

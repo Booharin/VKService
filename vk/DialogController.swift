@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class DialogController: UICollectionViewController {
+class DialogController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   let chatRequest = ChatRequest()
   let dialogMethods = DialogMethods()
   
@@ -25,10 +25,23 @@ class DialogController: UICollectionViewController {
     chatRequest.loadHistoryOfMessages()
     sleep(1)
     realm.collectionUpdate(&messages, &token, collectionView!)
+    
+    collectionView?.transform = CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: 0)
+    
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    var sizeOfCell = CGSize(width: 0.0, height: 0.0)
+    let message = messages?[indexPath.row]
+    if let text = message?.text {
+      let height = dialogMethods.getCellHeight(text: text) + 50.0
+      sizeOfCell = CGSize(width: UIScreen.main.bounds.width, height: height)
+    }
+    return sizeOfCell
   }
   
   override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -41,14 +54,22 @@ class DialogController: UICollectionViewController {
   
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DialogCell", for: indexPath) as! DialogCell
+    
+    cell.transform = CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: 0)
+    
     guard let message = messages?[indexPath.row] else { return cell }
-    if message.out == 1 { cell.backgroundColor = #colorLiteral(red: 0.802629771, green: 0.7909274573, blue: 1, alpha: 1) } else { cell.backgroundColor = .white }
+    
     cell.message.text = message.text
-    cell.setMessageText(text: cell.message.text!)
+    if let text = cell.message.text {
+      cell.setMessageText(text: text, out: message.out)
+    }
     
     let date = dialogMethods.getCellDateText(indexPath, Double(message.date))
     cell.date.text = date
-    cell.setDate(text: cell.date.text!)
+    if let dateOfMessage = cell.date.text {
+      cell.setDate(text: dateOfMessage)
+    }
+    
     return cell
   }
   

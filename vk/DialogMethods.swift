@@ -6,10 +6,10 @@
 //  Copyright © 2017 Александр. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class DialogMethods {
-  
+  let handleSizingUI = HandleSizingUI()
   var dateTextCache = [IndexPath: String]()
   
   let dateFormatter: DateFormatter = {
@@ -30,4 +30,12 @@ class DialogMethods {
       return stringDate
     }
   }
+  
+  func getCellHeight(text: String) -> CGFloat {
+    let font = UIFont.systemFont(ofSize: 15.0)
+    let size = handleSizingUI.getLabelSize(bounds: UIScreen.main.bounds, text: text, font: font)
+    
+    return CGFloat(size.height)
+  }
+  
 }

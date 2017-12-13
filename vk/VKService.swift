@@ -14,6 +14,7 @@ import UserNotifications
 
 let userDefaults = UserDefaults.standard
 let defaults = UserDefaults(suiteName: "group.VKGroup")
+let registrationForPushesVK = RegistrationVKPush()
 
 class VKService: UIViewController, WCSessionDelegate {
   var token = ""
@@ -99,14 +100,16 @@ extension VKService: WKNavigationDelegate {
         return dict
     }
     
-    let token = params["access_token"]
-    self.token = token!
-    userDefaults.set(token!, forKey: "token")
-    let userID = params["user_id"]
-    userDefaults.set(userID, forKey: "userID")
-    connectWatch()
-    performSegue(withIdentifier: "Enter", sender: token)
-    
+    if let token = params["access_token"] {
+      self.token = token
+      userDefaults.set(token, forKey: "token")
+     // registrationForPushesVK.registrationForPushes()
+      //registrationForPushesVK.getPushSettings()
+      let userID = params["user_id"]
+      userDefaults.set(userID, forKey: "userID")
+      connectWatch()
+      performSegue(withIdentifier: "Enter", sender: token)
+    }
     decisionHandler(.cancel)
   }
   

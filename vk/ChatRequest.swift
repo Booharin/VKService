@@ -21,12 +21,14 @@ class ChatRequest {
       "version": requestMethods.apiVersion,
       "access_token": userDefaults.string(forKey: "token") ?? print("no Token")
     ]
-    //    print(Alamofire.request(requestMethods.baseURL + requestMethods.dialogsGet, parameters: parameters))
+   
     Alamofire.request(requestMethods.baseURL + requestMethods.dialogsGet, parameters: parameters).responseJSON(queue: .global()) { response in
       let responseDialogsGet = response.value as! [String: Any]
       guard var array = responseDialogsGet["response"] as! [Any]? else { return }
       array.remove(at: 0)
       userDefaults.set(0, forKey: "UnreadMessage")
+      userDefaults.set("", forKey: "NameOfLastMessage")
+      userDefaults.set("", forKey: "TextOfLastMessage")
       var dialogs = [Dialog]()
       var dialogItem = Dialog()
       var usersIDString = ""
@@ -47,6 +49,8 @@ class ChatRequest {
         
         if dialogItem.readState == 0 && dialogItem.out == 0 {
           userDefaults.set(1, forKey: "UnreadMessage")
+          // установка текста в уведомление
+          userDefaults.set(dialogItem.textLastMessage, forKey: "TextOfLastMessage")
         }
         
         dialogs.append(dialogItem)
@@ -75,7 +79,7 @@ class ChatRequest {
         let array = responseUsersGet["response"] as! [Any]
         
         for dialog in dialogs {
-          for value in array {
+          for (index, value) in array.enumerated() {
             let user = value as! [String: Any]
             if String(user["uid"] as! Int) == dialog.id {
               if dialog.nameID == "" {
@@ -83,6 +87,8 @@ class ChatRequest {
                 dialog.nameID = user["first_name"] as! String + " " + (user["last_name"] as! String)
               }
             }
+             //установка имени в заголовок уведомления
+            if index == 0 { userDefaults.set(user["first_name"] as! String, forKey: "NameOfLastMessage") }
           }
           if Int(dialog.id)! < 0 {
             
@@ -104,6 +110,10 @@ class ChatRequest {
           }
         }
         self.realm.saveDialogData(dialogs)
+        if userDefaults.string(forKey: "NameOfLastMessage") == "" {
+          // установка названия группы в заголовок уведомления
+          userDefaults.set(dialogs[0].nameID, forKey: "NameOfLastMessage")
+        }
       }
     }
   }
