@@ -12,27 +12,21 @@ import Alamofire
 class RegistrationVKPush {
   let requestMethods = RequestMethods()
   func registrationForPushes() {
+  var deviceIDEasy = "12345"
+    if let deviceID = userDefaults.string(forKey: "RegistrationToken") {
+      deviceIDEasy = deviceID + "id"
+    }
     
     let parameters: Parameters = [
       "token": userDefaults.string(forKey: "RegistrationToken") ?? print("no token"),
+      "device_id": deviceIDEasy,
       "access_token": userDefaults.string(forKey: "token") ?? print("no access token"),
-      "device_id": "123456",
-      "settings": "{\"msg\":\"on\", \"chat\": \"on\", \"friend\":\"on\", \"reply\":\"on\", \"mention\":\"fr_of_fr\"} ",
-      "version": requestMethods.apiVersion,
-      "sandbox": "1"
+      "sandbox": "1",
+      "settings": "{\"msg\":\"on\", \"chat\": \"on\", \"friend\":\"on\", \"reply\":\"on\", \"mention\":\"fr_of_fr\", \"wall_post\":\"on\"}",
+      "v": requestMethods.apiVersion,
     ]
-   
+   print(Alamofire.request(requestMethods.baseURL + requestMethods.registrationForPushes, parameters: parameters))
     Alamofire.request(requestMethods.baseURL + requestMethods.registrationForPushes, parameters: parameters)
-  }
-  
-  func getPushSettings() {
-    
-    let parameters: Parameters = [
-      "token": userDefaults.string(forKey: "RegistrationToken") ?? print("no token"),
-      "access_token": userDefaults.string(forKey: "token") ?? print("no access token"),
-    ]
-    
-    Alamofire.request(requestMethods.baseURL + requestMethods.getPushSettings, parameters: parameters)
   }
   
 }

@@ -37,7 +37,7 @@ class VKService: UIViewController, WCSessionDelegate {
     urlComponents.host = "oauth.vk.com"
     urlComponents.path = "/authorize"
     urlComponents.queryItems = [
-      URLQueryItem(name: "client_id", value: "6195592"),
+      URLQueryItem(name: "client_id", value: "6298211"),
       URLQueryItem(name: "display", value: "mobile"),
       URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
       URLQueryItem(name: "scope", value: "274438"), //270342
@@ -103,7 +103,10 @@ extension VKService: WKNavigationDelegate {
     if let token = params["access_token"] {
       self.token = token
       userDefaults.set(token, forKey: "token")
-     // registrationForPushesVK.registrationForPushes()
+      print()
+      print(token)
+      print()
+      registrationForPushesVK.registrationForPushes()
       //registrationForPushesVK.getPushSettings()
       let userID = params["user_id"]
       userDefaults.set(userID, forKey: "userID")

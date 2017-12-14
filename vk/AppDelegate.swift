@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     
     FirebaseApp.configure()
     Messaging.messaging().delegate = self
-    UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+    //UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
     
     return true
   }
@@ -68,12 +68,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
   }
   
   func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-
-    if let newData = remoteNotification.goFetch() {
-      print("New Data loaded: \(newData)")
-      completionHandler(.newData)
-    }
-    completionHandler(.noData)
+    
+    //    if let newData = remoteNotification.goFetch() {
+    //      print("New Data loaded: \(newData)")
+    //      completionHandler(.newData)
+    //    }
+    //    completionHandler(.noData)
   }
   
 }
