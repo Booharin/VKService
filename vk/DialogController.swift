@@ -23,11 +23,10 @@ class DialogController: UICollectionViewController, UICollectionViewDelegateFlow
     navigationController?.hidesBarsOnSwipe = true
     
     chatRequest.loadHistoryOfMessages()
-    sleep(1)
+    sleep(2)
     realm.collectionUpdate(&messages, &token, collectionView!)
     
     collectionView?.transform = CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: 0)
-    
   }
   
   override func didReceiveMemoryWarning() {
@@ -55,8 +54,6 @@ class DialogController: UICollectionViewController, UICollectionViewDelegateFlow
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DialogCell", for: indexPath) as! DialogCell
     
-    cell.transform = CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: 0)
-    
     guard let message = messages?[indexPath.row] else { return cell }
     
     cell.message.text = message.text
@@ -68,6 +65,10 @@ class DialogController: UICollectionViewController, UICollectionViewDelegateFlow
     cell.date.text = date
     if let dateOfMessage = cell.date.text {
       cell.setDate(text: dateOfMessage)
+    }
+    // переворот клетки, не в главном потоке иногда не переворачивается
+    DispatchQueue.main.async {
+      cell.transform = CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: 0)
     }
     
     return cell

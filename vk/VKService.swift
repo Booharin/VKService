@@ -103,11 +103,8 @@ extension VKService: WKNavigationDelegate {
     if let token = params["access_token"] {
       self.token = token
       userDefaults.set(token, forKey: "token")
-      print()
-      print(token)
-      print()
       registrationForPushesVK.registrationForPushes()
-      //registrationForPushesVK.getPushSettings()
+
       let userID = params["user_id"]
       userDefaults.set(userID, forKey: "userID")
       connectWatch()

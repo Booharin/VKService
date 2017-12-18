@@ -25,7 +25,7 @@ class RegistrationVKPush {
       "settings": "{\"msg\":\"on\", \"chat\": \"on\", \"friend\":\"on\", \"reply\":\"on\", \"mention\":\"fr_of_fr\", \"wall_post\":\"on\"}",
       "v": requestMethods.apiVersion,
     ]
-   print(Alamofire.request(requestMethods.baseURL + requestMethods.registrationForPushes, parameters: parameters))
+  
     Alamofire.request(requestMethods.baseURL + requestMethods.registrationForPushes, parameters: parameters)
   }
   

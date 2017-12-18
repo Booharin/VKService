@@ -27,7 +27,6 @@ class DialogCell: UICollectionViewCell {
   
   override func layoutSubviews() {
     super.layoutSubviews()
-    
   }
   
   func setMessageText(text: String, out: Int) {
@@ -67,7 +66,6 @@ class DialogCell: UICollectionViewCell {
   }
   
 }
-
 
 
 
