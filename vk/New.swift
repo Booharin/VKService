@@ -9,24 +9,24 @@
 import Foundation
 
 class New {
-  var photoID = ""
-  var nameID = ""
-  var textOfPost = ""
-  var typeOfAttachment = TypeOfAttachment.none
-  var photoOfPost = PhotoOfPost()
-  var linkOfPost = LinkOfPost()
-  var items = Item()
-  
-  convenience init(photoID: String, nameID: String, textOfPost: String, typeOfAttachment: TypeOfAttachment, photoOfPost: PhotoOfPost, linkOfPost: LinkOfPost, items: Item) {
-    self.init()
-    self.photoID = photoID
-    self.nameID = nameID
-    self.textOfPost = textOfPost
-    self.typeOfAttachment = typeOfAttachment
-    self.linkOfPost = linkOfPost
-    self.photoOfPost = photoOfPost
-    self.items = items
-  }
+    var photoID = ""
+    var nameID = ""
+    var textOfPost = ""
+    var typeOfAttachment = TypeOfAttachment.none
+    var photoOfPost = PhotoOfPost()
+    var linkOfPost = LinkOfPost()
+    var items = Item()
+    
+    convenience init(photoID: String, nameID: String, textOfPost: String, typeOfAttachment: TypeOfAttachment, photoOfPost: PhotoOfPost, linkOfPost: LinkOfPost, items: Item) {
+        self.init()
+        self.photoID = photoID
+        self.nameID = nameID
+        self.textOfPost = textOfPost
+        self.typeOfAttachment = typeOfAttachment
+        self.linkOfPost = linkOfPost
+        self.photoOfPost = photoOfPost
+        self.items = items
+    }
 }
 
 class PhotoOfPost {

@@ -13,6 +13,7 @@ target 'vk' do
   pod 'Firebase/Messaging'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+
   # Pods for vk
 
 end

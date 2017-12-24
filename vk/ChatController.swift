@@ -10,64 +10,67 @@ import UIKit
 import RealmSwift
 
 class ChatController: UITableViewController {
-  let chatRequest = ChatRequest()
-  let chatMethods = ChatMethods()
-  
-  let realm = RealmMethodsForDialogs()
-  var dialogs : Results<Dialog>?
-  var token: NotificationToken?
-  
-  lazy var photoService = PhotoService(container: tableView)
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
+    let chatRequest = ChatRequest()
+    let chatMethods = ChatMethods()
     
-    navigationController?.hidesBarsOnSwipe = true
+    let realm = RealmMethodsForDialogs()
+    var dialogs : Results<Dialog>?
+    var token: NotificationToken?
     
-    chatRequest.loadDialogsData()
-    realm.tableUpdate(&dialogs, &token, tableView)
+    lazy var photoService = PhotoService(container: tableView)
     
-  }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-  }
-  
-  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 80
-  }
-  
-  override func numberOfSections(in tableView: UITableView) -> Int {
-    return 1
-  }
-  
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return dialogs?.count ?? 0
-  }
-  
-  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatCell
-    guard let dialog = dialogs?[indexPath.row] else { return cell }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        chatRequest.loadDialogsData()
+        realm.tableUpdate(&dialogs, &token, tableView)
+        
+    }
     
-    if dialog.readState == 0 { cell.backgroundColor = #colorLiteral(red: 0.7570501583, green: 0.7513055267, blue: 1, alpha: 1) } else { cell.backgroundColor = .white }
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setToolbarHidden(true, animated: false)
+        navigationController?.hidesBarsOnSwipe = false
+    }
     
-    cell.photoID.image = photoService.photo(atIndexpath: indexPath, byUrl: dialog.photoID)
-    cell.nameID.text = dialog.nameID
-    cell.lastMessage.text = dialog.textLastMessage
-    let date = chatMethods.getCellDateText(indexPath, Double(dialog.date))
-    cell.date.text = date
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
     
-    cell.setLastMessage(text: &cell.lastMessage.text!)
-    cell.setDate(text: date, width: UIScreen.main.bounds.width)
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
     
-    return cell
-  }
-  
-  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let indexPathCurrent = tableView.indexPathForSelectedRow
-    let whatDialogID = dialogs?[(indexPathCurrent?.row)!].id
-    userDefaults.set(whatDialogID, forKey: "whatDialogID")
-  }
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dialogs?.count ?? 0
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatCell
+        guard let dialog = dialogs?[indexPath.row] else { return cell }
+        
+        if dialog.readState == 0 { cell.backgroundColor = #colorLiteral(red: 0.7570501583, green: 0.7513055267, blue: 1, alpha: 1) } else { cell.backgroundColor = .white }
+        
+        cell.photoID.image = photoService.photo(atIndexpath: indexPath, byUrl: dialog.photoID)
+        cell.nameID.text = dialog.nameID
+        cell.lastMessage.text = dialog.textLastMessage
+        let date = chatMethods.getCellDateText(indexPath, Double(dialog.date))
+        cell.date.text = date
+        
+        cell.setLastMessage(text: &cell.lastMessage.text!)
+        cell.setDate(text: date, width: UIScreen.main.bounds.width)
+        
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let indexPathCurrent = tableView.indexPathForSelectedRow
+        let whatDialogID = dialogs?[(indexPathCurrent?.row)!].id
+        userDefaults.set(whatDialogID, forKey: "whatDialogID")
+    }
 
   
   /*

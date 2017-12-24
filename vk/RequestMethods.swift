@@ -9,28 +9,29 @@
 import Foundation
 
 class RequestMethods {
-  
-  let baseURL = "https://api.vk.com"
-  let apiVersion = "5.69"
-  
-  let getFriends = "/method/friends.get"
-  let getRequests = "/method/friends.getRequests"
-  let getPhotos = "/method/photos.get"
-  let groupSearch = "/method/groups.search"
-  let groupsInfo = "/method/groups.getById"
-  let newsGet = "/method/newsfeed.get"
-  
-  let messagesGet = "/method/messages.get"
-  let dialogsGet = "/method/messages.getDialogs"
-  let historyOfMessagesGet = "/method/messages.getHistory"
-  let getUsers = "/method/users.get"
-  
-  let goPost = "/method/wall.post"
-  
-  let registrationForPushes = "/method/account.registerDevice"
-  let getPushSettings = "/method/account.getPushSettings"
-  
-  let photoPlaceHolder = "https://vk.com/images/camera_100.png"
-  
+    
+    let baseURL = "https://api.vk.com"
+    let apiVersion = "5.69"
+    
+    let getFriends = "/method/friends.get"
+    let getRequests = "/method/friends.getRequests"
+    let getPhotos = "/method/photos.get"
+    let groupSearch = "/method/groups.search"
+    let groupsInfo = "/method/groups.getById"
+    let newsGet = "/method/newsfeed.get"
+    
+    let messagesGet = "/method/messages.get"
+    let dialogsGet = "/method/messages.getDialogs"
+    let historyOfMessagesGet = "/method/messages.getHistory"
+    let getUsers = "/method/users.get"
+    let sendMessage = "/method/messages.send"
+    
+    let goPost = "/method/wall.post"
+    
+    let registrationForPushes = "/method/account.registerDevice"
+    let getPushSettings = "/method/account.getPushSettings"
+    
+    let photoPlaceHolder = "https://vk.com/images/camera_100.png"
+    
 }
 

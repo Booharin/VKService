@@ -12,26 +12,26 @@ import SwiftyJSON
 import RealmSwift
 
 class PhotosRequest {
-  let realm = RealmMethodsForPhoto()
-  let reqestMethods = RequestMethods()
-  
-  func loadPhotosData() {
+    let realm = RealmMethodsForPhoto()
+    let reqestMethods = RequestMethods()
     
-    let parameters: Parameters = [
-      "owner_id": userDefaults.string(forKey: "whoIsYourFriend") ?? print("No ID"),
-      "album_id": "profile",
-      "rev":"1",
-      "count": "200",
-      "version": reqestMethods.apiVersion
-    ]
-
-    Alamofire.request(reqestMethods.baseURL + reqestMethods.getPhotos, parameters: parameters).responseJSON(queue: .global()) { response in
-      guard let data = response.value else { return }
-      let json = JSON(data)
-      let photos = json["response"].flatMap { Photo(json: $0.1 ) }
-      if userDefaults.string(forKey: "whoIsYourFriend") != "" {
-      self.realm.savePhotoData(photos, userID: userDefaults.string(forKey: "whoIsYourFriend")!)
-      }
+    func loadPhotosData() {
+        
+        let parameters: Parameters = [
+            "owner_id": userDefaults.string(forKey: "whoIsYourFriend") ?? print("No ID"),
+            "album_id": "profile",
+            "rev":"1",
+            "count": "200",
+            "version": reqestMethods.apiVersion
+        ]
+        
+        Alamofire.request(reqestMethods.baseURL + reqestMethods.getPhotos, parameters: parameters).responseJSON(queue: .global()) { response in
+            guard let data = response.value else { return }
+            let json = JSON(data)
+            let photos = json["response"].flatMap { Photo(json: $0.1 ) }
+            if userDefaults.string(forKey: "whoIsYourFriend") != "" {
+                self.realm.savePhotoData(photos, userID: userDefaults.string(forKey: "whoIsYourFriend")!)
+            }
+        }
     }
-  }
 }

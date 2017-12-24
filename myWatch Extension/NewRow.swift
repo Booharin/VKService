@@ -10,5 +10,5 @@ import UIKit
 import WatchKit
 
 class NewRow: NSObject {
-  @IBOutlet weak var labelInterface: WKInterfaceLabel!
+    @IBOutlet weak var labelInterface: WKInterfaceLabel!
 }

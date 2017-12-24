@@ -76,6 +76,7 @@
 		1FAB65C81FCF2EFE0004F0AE /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F14C1671FCDD2FD004221A3 /* MessagesViewController.swift */; };
 		1FAB65CA1FCF353D0004F0AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F14C16C1FCDD2FE004221A3 /* Assets.xcassets */; };
 		1FBB090F1FD84FF70066F1F6 /* VKLocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB090E1FD84FF70066F1F6 /* VKLocalNotification.swift */; };
+		1FDA2F5C1FE953120013CBC3 /* ButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA2F5B1FE953120013CBC3 /* ButtonItem.swift */; };
 		1FE040AF1FD5754A00ADEAF3 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FE040AD1FD5754A00ADEAF3 /* Interface.storyboard */; };
 		1FE040B11FD5754A00ADEAF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FE040B01FD5754A00ADEAF3 /* Assets.xcassets */; };
 		1FE040B81FD5754A00ADEAF3 /* myWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1FE040B71FD5754A00ADEAF3 /* myWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -236,6 +237,7 @@
 		1FAA1C791FBDFECC00354807 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		1FBB090E1FD84FF70066F1F6 /* VKLocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLocalNotification.swift; sourceTree = "<group>"; };
 		1FC0F7191FCECFDB0090AFD1 /* iMessageVK.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iMessageVK.entitlements; sourceTree = "<group>"; };
+		1FDA2F5B1FE953120013CBC3 /* ButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonItem.swift; sourceTree = "<group>"; };
 		1FE040AB1FD5754A00ADEAF3 /* myWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FE040AE1FD5754A00ADEAF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		1FE040B01FD5754A00ADEAF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -477,6 +479,7 @@
 				1F6A680D1FB834100038A390 /* ChatController.swift */,
 				1F6A681F1FBA06580038A390 /* DialogController.swift */,
 				1F6A68251FBAE49F0038A390 /* DialogCell.swift */,
+				1FDA2F5B1FE953120013CBC3 /* ButtonItem.swift */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -973,6 +976,7 @@
 				1F62360B1F73F5D400C2EC13 /* AllFriendsController.swift in Sources */,
 				1F443C611FA24B53005ED345 /* SetImageToRow.swift in Sources */,
 				1F5B350B1F933FCF00360FCA /* NewsCell.swift in Sources */,
+				1FDA2F5C1FE953120013CBC3 /* ButtonItem.swift in Sources */,
 				1F39AB7C1FCC0A28008CCD50 /* ToDayTableViewCell.swift in Sources */,
 				1F6A68241FBA0D580038A390 /* RealmMethodsForDialogs.swift in Sources */,
 				1F6236121F741C5100C2EC13 /* FriendPhotoCell.swift in Sources */,
