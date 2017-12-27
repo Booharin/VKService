@@ -23,7 +23,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        if let token = self.token {
+        if self.token != nil {
             setupSession()
         } else {
             showPopup()

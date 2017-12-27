@@ -11,11 +11,9 @@ import Alamofire
 import RealmSwift
 
 class ChatRequest {
-    let requestMethods = RequestMethods()
-    let realm = RealmMethodsForDialogs()
-    let realmMSG = RealmMethodsForMessages()
-    
-    func loadDialogsData() {
+   
+    func loadDialogsData(completion: @escaping ()->Void) {
+        let requestMethods = RequestMethods()
         let parameters: Parameters = [
             "count": "200",
             "version": requestMethods.apiVersion,
@@ -23,133 +21,163 @@ class ChatRequest {
         ]
         
         Alamofire.request(requestMethods.baseURL + requestMethods.dialogsGet, parameters: parameters).responseJSON(queue: .global()) { response in
-            let responseDialogsGet = response.value as! [String: Any]
-            guard var array = responseDialogsGet["response"] as! [Any]? else { return }
-            array.remove(at: 0)
+            
+            guard let responseDialogsGet = response.value as? [String: Any],
+                let dialogJsons = (responseDialogsGet["response"] as? [Any])?.flatMap({ $0 as? [String: Any] }) else {
+                return
+            }
+            
             userDefaults.set(0, forKey: "UnreadMessage")
             userDefaults.set("", forKey: "NameOfLastMessage")
             userDefaults.set("", forKey: "TextOfLastMessage")
+           
             var dialogs = [Dialog]()
-            var dialogItem = Dialog()
-            var usersIDString = ""
-            for value in array {
-                let dialog = value as! [String: Any]
-                dialogItem.id = String(dialog["uid"] as! Int)
-                if dialog["photo_100"] != nil { dialogItem.photoID = dialog["photo_100"] as! String }
-                if dialog["title"] as! String != "" { dialogItem.nameID = dialog["title"] as! String }
-                if dialogItem.nameID != "" && dialogItem.photoID == "" { dialogItem.photoID = self.requestMethods.photoPlaceHolder }
-                dialogItem.textLastMessage = dialog["body"] as! String
-                if dialog["attachment"] != nil {
-                    let attachment = dialog["attachment"] as! [String: Any]
-                    if attachment["type"] as! String == "sticker" { dialogItem.textLastMessage = "Стикер" }
-                }
-                dialogItem.date = dialog["date"] as! Int
-                dialogItem.readState = dialog["read_state"] as! Int
-                dialogItem.out = dialog["out"] as! Int
+            for json in dialogJsons {
+                let dialogItem = Dialog(withJson: json, andImgPlaceholderUrl: requestMethods.photoPlaceHolder)
                 
                 if dialogItem.readState == 0 && dialogItem.out == 0 {
                     userDefaults.set(1, forKey: "UnreadMessage")
-                    // установка текста в уведомление
                     userDefaults.set(dialogItem.textLastMessage, forKey: "TextOfLastMessage")
                 }
                 
                 dialogs.append(dialogItem)
-                dialogItem = Dialog(id: "", photoID: "", nameID: "", title: "", photoIDLastMessage: "", textLastMessage: "", date: 0, readState: 1, out: 1)
             }
             
-            for i in dialogs {
-                usersIDString = usersIDString + "," + i.id
+            guard RealmMethodsForDialogs.saveDialogData(dialogs) else {
+                print("Error! Data couldn't be save!")
+                return
             }
-            // обновление числа на бэдже
+            
+            let usersIDs: String = dialogs.filter({ !$0.isGroup }).flatMap({ String($0.id) }).joined(separator: ",")
+            let groupIDs: [String] = dialogs.filter({ $0.isGroup }).flatMap({ $0.id })
+            
+            // MARK: - Обновление числа на бэдже
             let application = UIApplication.shared
             DispatchQueue.main.async {
                 application.applicationIconBadgeNumber = userDefaults.integer(forKey: "RequestsCount") + userDefaults.integer(forKey: "UnreadMessage")
             }
             
-            let newParameters: Parameters = [
-                "user_ids": usersIDString,
+            let dispGroup = DispatchGroup()
+
+            // MARK: - Запрос по пользователям
+            dispGroup.enter()
+            
+            let usersParameters: Parameters = [
+                "user_ids": usersIDs,
                 "fields": "nickname,photo_100",
                 "name_case": "nom",
-                "version": self.requestMethods.apiVersion,
+                "version": requestMethods.apiVersion,
                 "access_token": userDefaults.string(forKey: "token") ?? print("no Token")
             ]
             
-            Alamofire.request(self.requestMethods.baseURL + self.requestMethods.getUsers, parameters: newParameters).responseJSON(queue: .global()) { response in
-                let responseUsersGet = response.value as! [String: Any]
-                let array = responseUsersGet["response"] as! [Any]
+            Alamofire.request(requestMethods.baseURL + requestMethods.getUsers,
+                              parameters: usersParameters).responseJSON(queue: .global()) { response in
                 
-                for dialog in dialogs {
-                    for (index, value) in array.enumerated() {
-                        let user = value as! [String: Any]
-                        if String(user["uid"] as! Int) == dialog.id {
+                guard let responseUsersGet = response.value as? [String: Any],
+                    let array = (responseUsersGet["response"] as? [Any])?.flatMap({ $0 as? [String: Any] }) else {
+                        return
+                }
+                        
+                for (index, user) in array.enumerated() {
+                    if let key = user["uid"] as? Int {
+                        RealmMethodsForDialogs.modifyDialog(forPrimaryKey: String(key), work: { (dialog) in
+                            guard let dialog = dialog else { return }
+                            
                             if dialog.nameID == "" {
                                 dialog.photoID = user["photo_100"] as! String
                                 dialog.nameID = user["first_name"] as! String + " " + (user["last_name"] as! String)
                             }
-                        }
-                        //установка имени в заголовок уведомления
-                        if index == 0 { userDefaults.set(user["first_name"] as! String, forKey: "NameOfLastMessage") }
+                        })
                     }
-                    if Int(dialog.id)! < 0 {
-                        
-                        let groupParameters: Parameters = [
-                            "group_id": dialog.id.dropFirst(),
-                            "fields": "members_count",
-                            "access_token": userDefaults.string(forKey: "token") ?? print("no Token")
-                        ]
-                        
-                        Alamofire.request(self.requestMethods.baseURL + self.requestMethods.groupsInfo, parameters: groupParameters).responseJSON(queue: .global()) { response in
-                            let responseGroups = response.value as! [String: Any]
-                            guard let array = responseGroups["response"] as! [Any]? else { return }
-                            for value in array {
-                                let groupJSON = value as! [String:Any]
-                                dialog.nameID = groupJSON["name"] as! String
-                                dialog.photoID = groupJSON["photo_medium"] as! String
-                            }
-                        }
-                    }
+                    //установка имени в заголовок уведомления
+                    if index == 0 { userDefaults.set(user["first_name"] as! String, forKey: "NameOfLastMessage") }
                 }
-                self.realm.saveDialogData(dialogs)
+                                
+                dispGroup.leave()
+            }
+            
+            // MARK: Запросы по группам
+            groupIDs.forEach({ (groupId) in
+                dispGroup.enter()
+                
+                let groupParameters: Parameters = [
+                    "group_id": groupId.dropFirst(),
+                    "fields": "members_count",
+                    "access_token": userDefaults.string(forKey: "token") ?? print("no Token")
+                ]
+                
+                Alamofire.request(requestMethods.baseURL + requestMethods.groupsInfo, parameters: groupParameters).responseJSON(queue: .global()) { response in
+                    
+                    guard let responseGroups = response.value as? [String: Any],
+                        let array = (responseGroups["response"] as? [Any])?.flatMap({ $0 as? [String: Any] }),
+                        let groupJson = array.first else {
+                            return
+                    }
+                    
+                    RealmMethodsForDialogs.modifyDialog(forPrimaryKey: groupId, work: { (dialog) in
+                        guard let dialog = dialog else { return }
+                        
+                        dialog.nameID = groupJson["name"] as! String
+                        dialog.photoID = groupJson["photo_medium"] as! String
+                    })
+                    
+                    dispGroup.leave()
+                }
+            })
+            
+            // MARK: Оповещение об окончании загрузки -
+            dispGroup.notify(queue: DispatchQueue.global(), execute: {
+                // RealmMethodsForDialogs.saveDialogData(dialogs)
                 if userDefaults.string(forKey: "NameOfLastMessage") == "" {
                     // установка названия группы в заголовок уведомления
                     userDefaults.set(dialogs[0].nameID, forKey: "NameOfLastMessage")
                 }
-            }
+                
+                DispatchQueue.main.async {
+                    completion()
+                }
+            })
         }
     }
     
-    func loadHistoryOfMessages() {
+    func loadHistoryOfMessages(completion: (()->Void)? = nil) {
+        guard let dialogId = userDefaults.string(forKey: "whatDialogID") else {
+            print("no DialogID")
+            return
+        }
+        
+        let requestMethods = RequestMethods()
         let parameters: Parameters = [
             "count": "200",
-            "user_id": userDefaults.string(forKey: "whatDialogID") ?? print("no DialogID"),
-            //"peer_id": "153984390",
-            "version": self.requestMethods.apiVersion,
+            "user_id": dialogId,
+            "version": requestMethods.apiVersion,
             "access_token": userDefaults.string(forKey: "token") ?? print("no Token")
         ]
-        //    print(Alamofire.request(self.requestMethods.baseURL + requestMethods.historyOfMessagesGet, parameters: parameters))
-        Alamofire.request(self.requestMethods.baseURL + self.requestMethods.historyOfMessagesGet, parameters: parameters).responseJSON(queue: .global()) { response in
-            let responseMessagesGet = response.value as! [String: Any]
-            guard var array = responseMessagesGet["response"] as! [Any]? else { return }
-            array.remove(at: 0)
-            var messages = [Message]()
-            var messageItem = Message()
-            for value in array {
-                let message = value as! [String: Any]
-                messageItem.text = message["body"] as! String
-                messageItem.messageID = message["mid"] as! Int
-                messageItem.fromID = String(message["from_id"] as! Int)
-                messageItem.date = message["date"] as! Int
-                messageItem.readState = message["read_state"] as! Int
-                messageItem.out = message["out"] as! Int
-                messages.append(messageItem)
-                messageItem = Message(text: "", messageID: 1, fromID: "", date: 0, readState: 1, out: 1)
+        
+        Alamofire.request(requestMethods.baseURL + requestMethods.historyOfMessagesGet, parameters: parameters).responseJSON(queue: .global()) { response in
+            guard let responseMessagesGet = response.value as? [String: Any],
+            let array = (responseMessagesGet["response"] as? [Any])?.flatMap({ $0 as? [String: Any] }) else {
+                return
             }
-            self.realmMSG.saveMessagesData(messages, date: messages[0].date)
-            userDefaults.set(messages[0].date, forKey: "DateID")
+
+            var messages = [Message]()
+            for message in array {
+                let messageItem = Message(withJson: message)
+                messages.append(messageItem)
+            }
+            
+            if RealmMethodsForMessages().saveMessages(messages, fromDialogWithId: dialogId) {
+                DispatchQueue.main.async {
+                    completion?()
+                }
+                
+                //userDefaults.set(messages[0].date, forKey: "DateID")
+            }
         }
     }
     
     func sendMessage() {
+        let requestMethods = RequestMethods()
         let parameters: Parameters = [
             "user_id": userDefaults.string(forKey: "whatDialogID") ?? print("no DialogID"),
             "random_id": Int(Date().timeIntervalSince1970),
@@ -158,7 +186,7 @@ class ChatRequest {
             "v": requestMethods.apiVersion
         ]
         
-        Alamofire.request(self.requestMethods.baseURL + self.requestMethods.sendMessage, parameters: parameters)
+        Alamofire.request(requestMethods.baseURL + requestMethods.sendMessage, parameters: parameters)
     }
     
 }

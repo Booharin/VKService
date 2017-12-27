@@ -11,26 +11,27 @@ import RealmSwift
 
 class RealmMethodsForMessages {
     
-    func saveMessagesData(_ messages: [Message], date: Int) {
+    @discardableResult
+    func saveMessages(_ messages: [Message], fromDialogWithId id: String) -> Bool {       
         do {
             let realm = try Realm()
-            guard let dialog = realm.object(ofType: Dialog.self, forPrimaryKey: date) else { return }
-            let oldMessages = dialog.messages
-            realm.beginWrite()
-            if messages.count != oldMessages.count {
-                realm.delete(oldMessages)
+            guard let dialog = realm.object(ofType: Dialog.self, forPrimaryKey: id) else { return false }
+            try realm.write {
+                realm.add(messages, update: true)
+                dialog.messages.removeAll()
                 dialog.messages.append(objectsIn: messages)
             }
-            try realm.commitWrite()
         } catch {
-            print(error)
+            print(error.localizedDescription)
+            return false
         }
+        return true
     }
     
     func collectionUpdate(_ items: inout List<Message>?, _ token: inout NotificationToken?, _ collectionView: UICollectionView) {
         do {
             let realm = try Realm()
-            guard let dialog = realm.object(ofType: Dialog.self, forPrimaryKey: userDefaults.integer(forKey: "DateID")) else { return }
+            guard let dialog = realm.object(ofType: Dialog.self, forPrimaryKey: userDefaults.value(forKey: "whatDialogID")) else { return }
             items = dialog.messages
             token = items?.observe { [weak collectionView] (changes: RealmCollectionChange) in
                 

@@ -11,24 +11,33 @@ import RealmSwift
 
 class RealmMethodsForDialogs {
     
-    func saveDialogData(_ dialogs: [Dialog]) {
+    @discardableResult
+    static func saveDialogData(_ dialogs: [Dialog]) -> Bool {
         do {
             let realm = try Realm()
-            let oldDialogs = realm.objects(Dialog.self)
-            realm.beginWrite()
-            for value in dialogs {
-                guard realm.object(ofType: Dialog.self, forPrimaryKey: value.date) != nil else {
-                    if !oldDialogs.isEmpty {
-                        realm.delete(oldDialogs)
-                    }
-                    realm.add(dialogs)
-                    try realm.commitWrite()
-                    return
-                }
+            try realm.write {
+                realm.add(dialogs, update: true)
             }
         } catch {
-            print(error)
+            debugPrint(error.localizedDescription)
+            return false
         }
+        return true
+    }
+    
+    @discardableResult
+    static func modifyDialog(forPrimaryKey key: String, work: (Dialog?)->Void) -> Bool {
+        do {
+            let realm = try Realm()
+            let dialog = realm.object(ofType: Dialog.self, forPrimaryKey: key)
+            try realm.write {
+                work(dialog)
+            }
+        } catch {
+            debugPrint(error.localizedDescription)
+            return false
+        }
+        return true
     }
     
     func tableUpdate<T: Dialog>(_ items: inout Results<T>?, _ token: inout NotificationToken?, _ tableView: UITableView) {
