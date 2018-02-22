@@ -5,5 +5,4 @@ SceenShots
 
 
 ![alt text](https://github.com/Booharin/VKService/blob/master/img/1211477.jpg)
-
 ![alt text](https://github.com/Booharin/VKService/blob/master/img/1211478.jpg)
