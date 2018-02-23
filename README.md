@@ -7,9 +7,9 @@ VKService is client-server application for vk.com. It builded with Alamofire for
 SceenShots
 
 
-![alt text](https://github.com/Booharin/VKService/blob/master/img/1211477.jpg)
-![alt text](https://github.com/Booharin/VKService/blob/master/img/1211478.jpg)
+![alt text](https://github.com/Booharin/VKService/blob/master/img/12.png)
+![alt text](https://github.com/Booharin/VKService/blob/master/img/122.png)
 
 
-![alt text](https://github.com/Booharin/VKService/blob/master/img/1211480.jpg)
-![alt text](https://github.com/Booharin/VKService/blob/master/img/1211479.jpg)
+![alt text](https://github.com/Booharin/VKService/blob/master/img/123.png)
+![alt text](https://github.com/Booharin/VKService/blob/master/img/124.png)
