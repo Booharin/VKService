@@ -17,9 +17,10 @@ class NewsRequest {
         let parameters: Parameters = [
             "access_token": userDefaults.string(forKey: "token") ?? print("no Token"),
             "filters": "post,photo,photo_tag,note",
-            "count": "20"
+            "count": "20",
+            "v": requestMethods.apiVersion
         ]
-        
+       print(Alamofire.request(requestMethods.baseURL + requestMethods.newsGet, parameters: parameters))
         Alamofire.request(requestMethods.baseURL + requestMethods.newsGet, parameters: parameters).responseJSON(queue: .global()) { response in
             var news = [New]()
             var newsText = [String]()
@@ -39,49 +40,60 @@ class NewsRequest {
                 let linkOfPost = LinkOfPost()
                 let items = Item()
                 var typeOfAttachment = TypeOfAttachment.none
-                if item["attachment"] != nil {
-                    let attachment = item["attachment"] as! [String:Any]
-                    let typeOfAttachmentJSON = attachment["type"] as! String
-                    
-                    switch typeOfAttachmentJSON {
-                    case "photo" :
-                        typeOfAttachment = .photo
-                        let photoAttachment = attachment["photo"] as! [String:Any]
-                        photoOfPost.urlOfImage = photoAttachment["src_big"] as! String
-                        photoOfPost.width = photoAttachment["width"] as! Int
-                        photoOfPost.height = photoAttachment["height"] as! Int
-                    case "link" :
-                        typeOfAttachment = .link
-                        let linkAttachment = attachment["link"] as! [String:Any]
-                        linkOfPost.urlOfLink = linkAttachment["url"] as! String
-                        linkOfPost.title = linkAttachment["title"] as! String
-                        if linkAttachment["image_big"] != nil {
-                            linkOfPost.image = (linkAttachment["image_big"] as! String)
-                        } else if linkAttachment["image_src"] != nil {
-                            linkOfPost.image = (linkAttachment["image_src"] as! String)
-                        } else { linkOfPost.image = "" }
-                    case "video" :
-                        typeOfAttachment = .video
-                        let videoAttachment = attachment["video"] as! [String:Any]
-                        photoOfPost.urlOfImage = videoAttachment["image_big"] as! String
-                    case "audio" :
-                        typeOfAttachment = .none
-                    case "poll":
-                        typeOfAttachment = .none
-                    case "doc":
-                        typeOfAttachment = .none
-                    default: break
+                if item["attachments"] != nil {
+                    let arrayOfAttachments = item["attachments"] as! [Any]
+                    arrayOfAttachments.forEach { attachment in
+                        let attachment = attachment as! [String:Any]
+                        let typeOfAttachmentJSON = attachment["type"] as! String
+                        
+                        switch typeOfAttachmentJSON {
+                        case "photo" :
+                            typeOfAttachment = .photo
+                            let photoAttachment = attachment["photo"] as! [String:Any]
+                            photoOfPost.urlOfImage = photoAttachment["photo_604"] as! String
+                            photoOfPost.width = photoAttachment["width"] as! Int
+                            photoOfPost.height = photoAttachment["height"] as! Int
+                        case "link" :
+                            typeOfAttachment = .link
+                            let linkAttachment = attachment["link"] as! [String:Any]
+                            linkOfPost.urlOfLink = linkAttachment["url"] as! String
+                            linkOfPost.title = linkAttachment["title"] as! String
+                            if let imageOfLink = linkAttachment["photo"] as? [String: Any] {
+                                if let photoLink = imageOfLink["photo_604"] as? String {
+                                    linkOfPost.image = photoLink
+                                }
+                            }
+                        case "video" :
+                            typeOfAttachment = .video
+                            let videoAttachment = attachment["video"] as! [String:Any]
+                            if let image = videoAttachment["photo_800"] as? String {
+                                photoOfPost.urlOfImage = image
+                            }
+                        case "audio" :
+                            typeOfAttachment = .none
+                        case "poll":
+                            typeOfAttachment = .none
+                        case "doc":
+                            typeOfAttachment = .none
+                        default: break
+                        }
                     }
                 } else {
                     typeOfAttachment = .none
                 }
                 //FIXME:
                 if item["photos"] != nil {
-                    let arrayOfPhotos = item["photos"] as! [Any]
-                    let photoDescribe = arrayOfPhotos[1] as! [String: Any]
-                    photoOfPost.urlOfImage = photoDescribe["src_big"] as! String
-                    photoOfPost.width = photoDescribe["width"] as! Int
-                    photoOfPost.height = photoDescribe["height"] as! Int
+                    
+                    let dictOfPhotos = item["photos"] as! [String: Any]
+                    let arrayOfPhotos = dictOfPhotos["items"] as! [Any]
+                    arrayOfPhotos.forEach { image in
+                        let image = image as! [String: Any]
+                        if let photo = image["photo_604"] as? String {
+                            photoOfPost.urlOfImage = photo
+                            photoOfPost.width = image["width"] as! Int
+                            photoOfPost.height = image["height"] as! Int
+                        }
+                    }
                 }
                 
                 if item["likes"] != nil {
@@ -100,8 +112,8 @@ class NewsRequest {
                     let arrayOfProfiles = dict["profiles"] as! [Any]
                     for value in arrayOfProfiles {
                         let profile = value as! [String:Any]
-                        if sourceID == profile["uid"] as! Int {
-                            photoID = profile["photo"] as! String
+                        if sourceID == profile["id"] as! Int {
+                            photoID = profile["photo_100"] as! String
                             nameID = profile["first_name"] as! String + " " + (profile["last_name"] as! String)
                         }
                     }
@@ -109,8 +121,8 @@ class NewsRequest {
                     let arrayOfGroups = dict["groups"] as! [Any]
                     for value in arrayOfGroups {
                         let group = value as! [String:Any]
-                        if -sourceID == group["gid"] as! Int {
-                            photoID = group["photo"] as! String
+                        if -sourceID == group["id"] as! Int {
+                            photoID = group["photo_100"] as! String
                             nameID = group["name"] as! String
                         }
                     }

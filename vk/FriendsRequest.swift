@@ -50,13 +50,14 @@ class FriendsRequest {
             "extended": "1",
             "sort": "0",
             "need_viewed": "0",
-            "access_token": userDefaults.string(forKey: "token") ?? print("no Token")
+            "access_token": userDefaults.string(forKey: "token") ?? print("no Token"),
+            "v": requestMethods.apiVersion
         ]
-        
+
         Alamofire.request(requestMethods.baseURL + requestMethods.getRequests, parameters: parameters).responseJSON(queue: .global()) { response in
             guard let responseRequestsGet = response.value as! [String: Any]? else { return }
-            let array = responseRequestsGet["response"] as! [Any]
-            userDefaults.set(array.count, forKey: "RequestsCount")
+            let dict = responseRequestsGet["response"] as! [String: Any]
+            userDefaults.set(dict["count"], forKey: "RequestsCount")
             
             let application = UIApplication.shared
             DispatchQueue.main.async {

@@ -11,7 +11,7 @@ import Foundation
 class RequestMethods {
     
     let baseURL = "https://api.vk.com"
-    let apiVersion = "5.69"
+    let apiVersion = "5.73"
     
     let getFriends = "/method/friends.get"
     let getRequests = "/method/friends.getRequests"

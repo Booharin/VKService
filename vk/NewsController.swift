@@ -91,7 +91,6 @@ class NewsController: UITableViewController {
         cell.reposts.text = new.items.reposts
         cell.photoID.image = photoService.photo(atIndexpath: indexPath, byUrl: new.photoID)
         cell.photoOfPost.image = photoService.photo(atIndexpath: indexPath, byUrl: dictCell["imageOfPost"] as! String)
-        
         cell.setName(text: cell.nameID.text!)
         cell.setPostText(text: cell.textOfPost.text!)
         

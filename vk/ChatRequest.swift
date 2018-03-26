@@ -19,7 +19,7 @@ class ChatRequest {
             "version": requestMethods.apiVersion,
             "access_token": userDefaults.string(forKey: "token") ?? print("no Token")
         ]
-        
+        print(Alamofire.request(requestMethods.baseURL + requestMethods.dialogsGet, parameters: parameters))
         Alamofire.request(requestMethods.baseURL + requestMethods.dialogsGet, parameters: parameters).responseJSON(queue: .global()) { response in
             
             guard let responseDialogsGet = response.value as? [String: Any],
@@ -32,7 +32,7 @@ class ChatRequest {
             userDefaults.set("", forKey: "TextOfLastMessage")
            
             var dialogs = [Dialog]()
-            for json in dialogJsons {
+            dialogJsons.forEach { json in
                 let dialogItem = Dialog(withJson: json, andImgPlaceholderUrl: requestMethods.photoPlaceHolder)
                 
                 if dialogItem.readState == 0 && dialogItem.out == 0 {
@@ -41,6 +41,7 @@ class ChatRequest {
                 }
                 
                 dialogs.append(dialogItem)
+                print(dialogs)
             }
             
             guard RealmMethodsForDialogs.saveDialogData(dialogs) else {
