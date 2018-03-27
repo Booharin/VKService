@@ -30,7 +30,8 @@ class PhotosRequest {
             let json = JSON(data)
             let photos = json["response"].flatMap { Photo(json: $0.1 ) }
             if userDefaults.string(forKey: "whoIsYourFriend") != "" {
-                self.realm.savePhotoData(photos, userID: userDefaults.string(forKey: "whoIsYourFriend")!)
+                self.realm.savePhotoData(photos,
+                                         userID: userDefaults.string(forKey: "whoIsYourFriend")!)
             }
         }
     }

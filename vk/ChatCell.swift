@@ -48,21 +48,40 @@ class ChatCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         // nameID
-        handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: nameID.text!, font: nameID.font), label: nameID, originX: 70, originY: 10)
-        // photoID
-        handleSizingUI.imageFrame(image: photoID, imageSide: 60, originX: 0, originY: 10, round: true)
+        if var nameIDtext = nameID.text {
+            if nameIDtext.count >= 26 {
+                nameIDtext = nameIDtext.dropLast(nameIDtext.count - 26) + "..."
+            }
+            handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds,
+                                                                             text: nameIDtext,
+                                                                             font: nameID.font),
+                                      label: nameID, originX: 70, originY: 10)
+            // photoID
+            handleSizingUI.imageFrame(image: photoID,
+                                      imageSide: 60,
+                                      originX: 0,
+                                      originY: 10,
+                                      round: true)
+        }
     }
     // date
     func setDate(text: String, width: CGFloat) {
         date.text = text
-        handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: date.text!, font: date.font), label: date, originX: width - 70, originY: 10)
+        handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds,
+                                                                         text: date.text!,
+                                                                         font: date.font),
+                                  label: date, originX: width - 70, originY: 10)
     }
     // lastMessage
     func setLastMessage(text: inout String) {
         if text.count >= 30 { text = text.dropLast(text.count - 30) + "..." }
-        if text == "Стикер" { lastMessage.textColor = UIColor.blue } else { lastMessage.textColor = UIColor.gray }
+        if text == "Стикер" { lastMessage.textColor = UIColor.blue
+        } else { lastMessage.textColor = UIColor.gray }
         lastMessage.text = text
-        handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds, text: lastMessage.text!, font: lastMessage.font), label: lastMessage, originX: 70, originY: 30)
+        handleSizingUI.labelFrame(labelSize: handleSizingUI.getLabelSize(bounds: bounds,
+                                                                         text: lastMessage.text!,
+                                                                         font: lastMessage.font),
+                                  label: lastMessage, originX: 70, originY: 40)
     }
     
 }

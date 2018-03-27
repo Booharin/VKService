@@ -43,9 +43,13 @@ class GroupsDataRequest {
                 "access_token": userDefaults.string(forKey: "token") ?? print("no Token")
             ]
             
-            Alamofire.request(self.reqestMethods.baseURL + self.reqestMethods.groupsInfo, parameters: newParameters).responseJSON(queue: .global()) { response in
+            Alamofire.request(self.reqestMethods.baseURL + self.reqestMethods.groupsInfo,
+                              parameters: newParameters)
+                .responseJSON(queue: .global()) { response in
                 let responseGroupsMembersCount = response.value as! [String: Any]
-                guard let array = responseGroupsMembersCount["response"] as! [Any]? else { return }
+                    guard let array = responseGroupsMembersCount["response"] as! [Any]? else {
+                        return
+                    }
                 var groups = [Group]()
                 for value in array {
                     let userJSON = value as! [String:Any]
@@ -53,7 +57,10 @@ class GroupsDataRequest {
                     let photo = userJSON["photo_medium"] as! String
                     let groupID = String(userJSON["gid"] as! Int)
                     let membersCount = userJSON["members_count"] as! Int
-                    groups.append(Group(name: name, photo: photo, groupID: groupID, membersCount: membersCount))
+                    groups.append(Group(name: name,
+                                        photo: photo,
+                                        groupID: groupID,
+                                        membersCount: membersCount))
                 }
                 completion(groups)
             }

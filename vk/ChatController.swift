@@ -22,9 +22,8 @@ class ChatController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        chatRequest.loadDialogsData(completion: { [unowned self] in
-            self.realm.tableUpdate(&self.dialogs, &self.token, self.tableView)
-        })
+        chatRequest.loadDialogsData(completion: {})
+        self.realm.tableUpdate(&self.dialogs, &self.token, self.tableView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,7 +35,8 @@ class ChatController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView,
+                            heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
     
@@ -44,12 +44,15 @@ class ChatController: UITableViewController {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView,
+                            numberOfRowsInSection section: Int) -> Int {
         return dialogs?.count ?? 0
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatCell
+    override func tableView(_ tableView: UITableView,
+                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell",
+                                                 for: indexPath) as! ChatCell
         guard let dialog = dialogs?[indexPath.row] else { return cell }
         
         if dialog.readState == 0 { cell.backgroundColor = #colorLiteral(red: 0.7570501583, green: 0.7513055267, blue: 1, alpha: 1) } else { cell.backgroundColor = .white }

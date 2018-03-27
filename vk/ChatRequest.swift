@@ -19,11 +19,14 @@ class ChatRequest {
             "version": requestMethods.apiVersion,
             "access_token": userDefaults.string(forKey: "token") ?? print("no Token")
         ]
-        print(Alamofire.request(requestMethods.baseURL + requestMethods.dialogsGet, parameters: parameters))
-        Alamofire.request(requestMethods.baseURL + requestMethods.dialogsGet, parameters: parameters).responseJSON(queue: .global()) { response in
+        
+        Alamofire.request(requestMethods.baseURL + requestMethods.dialogsGet,
+                          parameters: parameters).responseJSON(queue: .global()) { response in
             
             guard let responseDialogsGet = response.value as? [String: Any],
-                let dialogJsons = (responseDialogsGet["response"] as? [Any])?.flatMap({ $0 as? [String: Any] }) else {
+                let dialogJsons =
+                (responseDialogsGet["response"] as? [Any])?
+                    .flatMap({ $0 as? [String: Any] }) else {
                 return
             }
             
@@ -33,7 +36,8 @@ class ChatRequest {
            
             var dialogs = [Dialog]()
             dialogJsons.forEach { json in
-                let dialogItem = Dialog(withJson: json, andImgPlaceholderUrl: requestMethods.photoPlaceHolder)
+                let dialogItem = Dialog(withJson: json,
+                                        andImgPlaceholderUrl: requestMethods.photoPlaceHolder)
                 
                 if dialogItem.readState == 0 && dialogItem.out == 0 {
                     userDefaults.set(1, forKey: "UnreadMessage")
@@ -41,7 +45,6 @@ class ChatRequest {
                 }
                 
                 dialogs.append(dialogItem)
-                print(dialogs)
             }
             
             guard RealmMethodsForDialogs.saveDialogData(dialogs) else {
@@ -49,13 +52,21 @@ class ChatRequest {
                 return
             }
             
-            let usersIDs: String = dialogs.filter({ !$0.isGroup }).flatMap({ String($0.id) }).joined(separator: ",")
-            let groupIDs: [String] = dialogs.filter({ $0.isGroup }).flatMap({ $0.id })
+            let usersIDs: String = dialogs
+                .filter({ !$0.isGroup })
+                .flatMap({ String($0.id) })
+                .joined(separator: ",")
+            
+            let groupIDs: [String] = dialogs
+                .filter({ $0.isGroup })
+                .flatMap({ $0.id })
             
             // MARK: - Обновление числа на бэдже
             let application = UIApplication.shared
             DispatchQueue.main.async {
-                application.applicationIconBadgeNumber = userDefaults.integer(forKey: "RequestsCount") + userDefaults.integer(forKey: "UnreadMessage")
+                application.applicationIconBadgeNumber = userDefaults
+                    .integer(forKey: "RequestsCount") + userDefaults
+                        .integer(forKey: "UnreadMessage")
             }
             
             let dispGroup = DispatchGroup()
@@ -72,26 +83,31 @@ class ChatRequest {
             ]
             
             Alamofire.request(requestMethods.baseURL + requestMethods.getUsers,
-                              parameters: usersParameters).responseJSON(queue: .global()) { response in
+                              parameters: usersParameters)
+                .responseJSON(queue: .global()) { response in
                 
                 guard let responseUsersGet = response.value as? [String: Any],
-                    let array = (responseUsersGet["response"] as? [Any])?.flatMap({ $0 as? [String: Any] }) else {
+                    let array = (responseUsersGet["response"] as? [Any])?
+                        .flatMap({ $0 as? [String: Any] }) else {
                         return
                 }
                         
                 for (index, user) in array.enumerated() {
                     if let key = user["uid"] as? Int {
-                        RealmMethodsForDialogs.modifyDialog(forPrimaryKey: String(key), work: { (dialog) in
+                        RealmMethodsForDialogs.modifyDialog(forPrimaryKey: String(key),
+                                                            work: { (dialog) in
                             guard let dialog = dialog else { return }
                             
                             if dialog.nameID == "" {
                                 dialog.photoID = user["photo_100"] as! String
-                                dialog.nameID = user["first_name"] as! String + " " + (user["last_name"] as! String)
+                                dialog.nameID = user["first_name"] as! String +
+                                    " " + (user["last_name"] as! String)
                             }
                         })
                     }
                     //установка имени в заголовок уведомления
-                    if index == 0 { userDefaults.set(user["first_name"] as! String, forKey: "NameOfLastMessage") }
+                    if index == 0 { userDefaults.set(user["first_name"] as! String,
+                                                     forKey: "NameOfLastMessage") }
                 }
                                 
                 dispGroup.leave()
@@ -104,13 +120,17 @@ class ChatRequest {
                 let groupParameters: Parameters = [
                     "group_id": groupId.dropFirst(),
                     "fields": "members_count",
+                    "version": requestMethods.apiVersion,
                     "access_token": userDefaults.string(forKey: "token") ?? print("no Token")
                 ]
                 
-                Alamofire.request(requestMethods.baseURL + requestMethods.groupsInfo, parameters: groupParameters).responseJSON(queue: .global()) { response in
+                Alamofire.request(requestMethods.baseURL + requestMethods.groupsInfo,
+                                  parameters: groupParameters)
+                    .responseJSON(queue: .global()) { response in
                     
                     guard let responseGroups = response.value as? [String: Any],
-                        let array = (responseGroups["response"] as? [Any])?.flatMap({ $0 as? [String: Any] }),
+                        let array = (responseGroups["response"] as? [Any])?
+                            .flatMap({ $0 as? [String: Any] }),
                         let groupJson = array.first else {
                             return
                     }
@@ -155,9 +175,11 @@ class ChatRequest {
             "access_token": userDefaults.string(forKey: "token") ?? print("no Token")
         ]
         
-        Alamofire.request(requestMethods.baseURL + requestMethods.historyOfMessagesGet, parameters: parameters).responseJSON(queue: .global()) { response in
+        Alamofire.request(requestMethods.baseURL + requestMethods.historyOfMessagesGet,
+                          parameters: parameters).responseJSON(queue: .global()) { response in
             guard let responseMessagesGet = response.value as? [String: Any],
-            let array = (responseMessagesGet["response"] as? [Any])?.flatMap({ $0 as? [String: Any] }) else {
+            let array = (responseMessagesGet["response"] as? [Any])?
+                .flatMap({ $0 as? [String: Any] }) else {
                 return
             }
 
@@ -187,7 +209,8 @@ class ChatRequest {
             "v": requestMethods.apiVersion
         ]
         
-        Alamofire.request(requestMethods.baseURL + requestMethods.sendMessage, parameters: parameters)
+        Alamofire.request(requestMethods.baseURL + requestMethods.sendMessage,
+                          parameters: parameters)
     }
     
 }

@@ -37,7 +37,10 @@ class FriendsRequest {
                     let lastName = userJSON["last_name"] as! String
                     let photoAvatar = userJSON["photo_100"] as! String
                     let userID = userJSON["user_id"] as! Int
-                    friends.append(Friend(firstName: firstName, lastName: lastName, photoAvatar: photoAvatar, userID: String(userID)))
+                    friends.append(Friend(firstName: firstName,
+                                          lastName: lastName,
+                                          photoAvatar: photoAvatar,
+                                          userID: String(userID)))
                 }
             }
             self?.realm.saveFriendsData(friends)
@@ -54,7 +57,10 @@ class FriendsRequest {
             "v": requestMethods.apiVersion
         ]
 
-        Alamofire.request(requestMethods.baseURL + requestMethods.getRequests, parameters: parameters).responseJSON(queue: .global()) { response in
+        Alamofire.request(requestMethods.baseURL + requestMethods.getRequests,
+                          parameters: parameters)
+            .responseJSON(queue: .global()) { response in
+                
             guard let responseRequestsGet = response.value as! [String: Any]? else { return }
             let dict = responseRequestsGet["response"] as! [String: Any]
             userDefaults.set(dict["count"], forKey: "RequestsCount")

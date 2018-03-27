@@ -20,7 +20,7 @@ class NewsRequest {
             "count": "20",
             "v": requestMethods.apiVersion
         ]
-       print(Alamofire.request(requestMethods.baseURL + requestMethods.newsGet, parameters: parameters))
+        
         Alamofire.request(requestMethods.baseURL + requestMethods.newsGet, parameters: parameters).responseJSON(queue: .global()) { response in
             var news = [New]()
             var newsText = [String]()
@@ -114,7 +114,8 @@ class NewsRequest {
                         let profile = value as! [String:Any]
                         if sourceID == profile["id"] as! Int {
                             photoID = profile["photo_100"] as! String
-                            nameID = profile["first_name"] as! String + " " + (profile["last_name"] as! String)
+                            nameID = profile["first_name"] as! String
+                                + " " + (profile["last_name"] as! String)
                         }
                     }
                 } else {
@@ -127,7 +128,13 @@ class NewsRequest {
                         }
                     }
                 }
-                news.append(New(photoID: photoID, nameID: nameID, textOfPost: textOfPost, typeOfAttachment: typeOfAttachment, photoOfPost: photoOfPost, linkOfPost: linkOfPost, items: items))
+                news.append(New(photoID: photoID,
+                                nameID: nameID,
+                                textOfPost: textOfPost,
+                                typeOfAttachment: typeOfAttachment,
+                                photoOfPost: photoOfPost,
+                                linkOfPost: linkOfPost,
+                                items: items))
                 if textOfPost != "" {
                     newsText.append(textOfPost)
                     newsImages[textOfPost] = photoOfPost.urlOfImage
