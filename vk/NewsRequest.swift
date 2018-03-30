@@ -17,10 +17,10 @@ class NewsRequest {
         let parameters: Parameters = [
             "access_token": userDefaults.string(forKey: "token") ?? print("no Token"),
             "filters": "post,photo,photo_tag,note",
-            "count": "20",
+            "count": "40",
             "v": requestMethods.apiVersion
         ]
-        
+        print(Alamofire.request(requestMethods.baseURL + requestMethods.newsGet, parameters: parameters))
         Alamofire.request(requestMethods.baseURL + requestMethods.newsGet, parameters: parameters).responseJSON(queue: .global()) { response in
             var news = [New]()
             var newsText = [String]()
@@ -59,8 +59,14 @@ class NewsRequest {
                             linkOfPost.urlOfLink = linkAttachment["url"] as! String
                             linkOfPost.title = linkAttachment["title"] as! String
                             if let imageOfLink = linkAttachment["photo"] as? [String: Any] {
-                                if let photoLink = imageOfLink["photo_604"] as? String {
-                                    linkOfPost.image = photoLink
+                                if let photoLinkImage = imageOfLink["photo_604"] as? String {
+                                    if imageOfLink["width"] as! Int > 200 {
+                                        let photoOfLink = PhotoOfPost()
+                                        photoOfLink.urlOfImage = photoLinkImage
+                                        photoOfLink.width = imageOfLink["width"] as! Int
+                                        photoOfLink.height = imageOfLink["height"] as! Int
+                                        linkOfPost.image = photoOfLink
+                                    }
                                 }
                             }
                         case "video" :
@@ -74,7 +80,13 @@ class NewsRequest {
                         case "poll":
                             typeOfAttachment = .none
                         case "doc":
-                            typeOfAttachment = .none
+                            typeOfAttachment = .doc
+                            let photoAttachment = attachment["doc"] as! [String:Any]
+                            photoOfPost.urlOfImage = photoAttachment["url"] as! String
+                            let dict = photoAttachment["preview"] as! [String:Any]
+                            let dictOfPreview = dict["video"] as! [String:Any]
+                            photoOfPost.width = dictOfPreview["width"] as! Int
+                            photoOfPost.height = dictOfPreview["height"] as! Int
                         default: break
                         }
                     }
@@ -142,9 +154,9 @@ class NewsRequest {
                 }
                 if (linkOfPost.title != "") && (textOfPost == "") {
                     newsText.append(linkOfPost.title)
-                    if linkOfPost.image != "" {
-                        newsImages[linkOfPost.title] = linkOfPost.image!
-                        newsImagesRatio[linkOfPost.image!] = 0.5
+                    if linkOfPost.image?.urlOfImage != "" {
+                        newsImages[linkOfPost.title] = linkOfPost.image?.urlOfImage
+                        newsImagesRatio[linkOfPost.image!.urlOfImage] = linkOfPost.image?.ratio
                     }
                 }
             }

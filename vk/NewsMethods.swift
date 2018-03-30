@@ -32,13 +32,18 @@ class NewsMethods {
             dict["addedHeight"] = 150.0
         case .link:
             dict["identifier"] = "NewsCellLinkPost"
-            dict["imageOfPost"] = new.linkOfPost.image ?? ""
-            dict["ratio"] = 0.5
+            dict["imageOfPost"] = new.linkOfPost.image?.urlOfImage ?? ""
+            dict["ratio"] = new.linkOfPost.image?.ratio ?? 0.0
             dict["addedHeight"] = 190.0
         case .video:
             dict["identifier"] = "NewsCellPhotoPost"
             dict["imageOfPost"] = new.photoOfPost.urlOfImage
             dict["ratio"] = 0.75
+            dict["addedHeight"] = 150.0
+        case .doc:
+            dict["identifier"] = "NewsCellGifPost"
+            dict["imageOfPost"] = new.photoOfPost.urlOfImage
+            dict["ratio"] = new.photoOfPost.ratio
             dict["addedHeight"] = 150.0
         case .none:
             dict["identifier"] = "NewsCellPhotoPost"

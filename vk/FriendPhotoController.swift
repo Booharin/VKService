@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AlamofireImage
 import Alamofire
 import RealmSwift
 

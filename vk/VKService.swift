@@ -81,9 +81,13 @@ class VKService: UIViewController, WCSessionDelegate {
 }
 
 extension VKService: WKNavigationDelegate {
-    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+    func webView(_ webView: WKWebView,
+                 decidePolicyFor navigationResponse: WKNavigationResponse,
+                 decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         
-        guard let url = navigationResponse.response.url, url.path == "/blank.html", let fragment = url.fragment  else {
+        guard let url = navigationResponse.response.url,
+            url.path == "/blank.html",
+            let fragment = url.fragment  else {
             decisionHandler(.allow)
             
             return

@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import RealmSwift
+import SwiftGifOrigin
 //import UserNotifications
 
 class NewsController: UITableViewController {
@@ -90,9 +91,19 @@ class NewsController: UITableViewController {
         cell.comments.text = new.items.comments
         cell.reposts.text = new.items.reposts
         cell.photoID.image = photoService.photo(atIndexpath: indexPath, byUrl: new.photoID)
+        
         cell.photoOfPost.image = photoService.photo(atIndexpath: indexPath, byUrl: dictCell["imageOfPost"] as! String)
+        
         cell.setName(text: cell.nameID.text!)
         cell.setPostText(text: cell.textOfPost.text!)
+        
+        if dictCell["identifier"] as! String == "NewsCellGifPost" {
+            var gif = UIImage()
+            DispatchQueue.global().async {
+                gif = UIImage.gif(url: dictCell["imageOfPost"] as! String)!
+            }
+            cell.photoOfPost.image = gif
+        }
         
         if dictCell["identifier"] as! String == "NewsCellLinkPost" {
             cell.titleUrl.text = new.linkOfPost.title
@@ -124,4 +135,3 @@ extension UIApplication {
         return value(forKey: "statusBar") as? UIView
     }
 }
-

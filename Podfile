@@ -7,12 +7,12 @@ target 'vk' do
 
   pod 'Alamofire', '~> 4.5'
   pod 'SwiftyJSON'
-  pod 'AlamofireImage', '~> 3.3'
   pod 'RealmSwift'
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod 'SwiftGifOrigin', '~> 1.6.1'
 
   # Pods for vk
 

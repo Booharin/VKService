@@ -1,7 +1,5 @@
 PODS:
   - Alamofire (4.7.0)
-  - AlamofireImage (3.3.0):
-    - Alamofire (~> 4.5)
   - Firebase/Auth (4.11.0):
     - Firebase/Core
     - FirebaseAuth (= 4.5.0)
@@ -57,26 +55,26 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Protobuf (3.5.0)
-  - Realm (3.3.0):
-    - Realm/Headers (= 3.3.0)
-  - Realm/Headers (3.3.0)
-  - RealmSwift (3.3.0):
-    - Realm (= 3.3.0)
+  - Realm (3.3.1):
+    - Realm/Headers (= 3.3.1)
+  - Realm/Headers (3.3.1)
+  - RealmSwift (3.3.1):
+    - Realm (= 3.3.1)
+  - SwiftGifOrigin (1.6.1)
   - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
-  - AlamofireImage (~> 3.3)
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
   - Firebase/Messaging
   - RealmSwift
+  - SwiftGifOrigin (~> 1.6.1)
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
-  AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
   Firebase: cc13dfab1038c8b45d7903e01fc690451d6d0b24
   FirebaseAnalytics: 3dfae28d4a5e06f86c4fae830efc2ad3fadb19bc
   FirebaseAuth: 147bf340a0706b44ca1753d6b41ebafd9687cfe6
@@ -89,10 +87,11 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
-  Realm: 7d74ad6c5020432f58fe5e1df90bb6d97b2c7fef
-  RealmSwift: b2fa31a09c22e246026766557405505eeaad2b01
+  Realm: 63ebf4903b446b0bdf2131244eb1e1549925c724
+  RealmSwift: f28fe8507bdfb8f1c924962401b83e7b9d7abb5c
+  SwiftGifOrigin: d6679d3ebe9df2e049a84bc52582635107b581f6
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: fded6a37285d84b4772a9702bb30c002940aed28
+PODFILE CHECKSUM: 172cc09b5adb929410da3346fcf81d3e788f1785
 
 COCOAPODS: 1.4.0

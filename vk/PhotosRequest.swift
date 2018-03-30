@@ -28,7 +28,7 @@ class PhotosRequest {
         Alamofire.request(reqestMethods.baseURL + reqestMethods.getPhotos, parameters: parameters).responseJSON(queue: .global()) { response in
             guard let data = response.value else { return }
             let json = JSON(data)
-            let photos = json["response"].flatMap { Photo(json: $0.1 ) }
+            let photos = json["response"].compactMap { Photo(json: $0.1 ) }
             if userDefaults.string(forKey: "whoIsYourFriend") != "" {
                 self.realm.savePhotoData(photos,
                                          userID: userDefaults.string(forKey: "whoIsYourFriend")!)

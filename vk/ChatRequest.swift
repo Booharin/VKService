@@ -26,7 +26,7 @@ class ChatRequest {
             guard let responseDialogsGet = response.value as? [String: Any],
                 let dialogJsons =
                 (responseDialogsGet["response"] as? [Any])?
-                    .flatMap({ $0 as? [String: Any] }) else {
+                    .compactMap({ $0 as? [String: Any] }) else {
                 return
             }
             
@@ -54,12 +54,12 @@ class ChatRequest {
             
             let usersIDs: String = dialogs
                 .filter({ !$0.isGroup })
-                .flatMap({ String($0.id) })
+                .compactMap({ String($0.id) })
                 .joined(separator: ",")
             
             let groupIDs: [String] = dialogs
                 .filter({ $0.isGroup })
-                .flatMap({ $0.id })
+                .compactMap({ $0.id })
             
             // MARK: - Обновление числа на бэдже
             let application = UIApplication.shared
@@ -88,7 +88,7 @@ class ChatRequest {
                 
                 guard let responseUsersGet = response.value as? [String: Any],
                     let array = (responseUsersGet["response"] as? [Any])?
-                        .flatMap({ $0 as? [String: Any] }) else {
+                        .compactMap({ $0 as? [String: Any] }) else {
                         return
                 }
                         
@@ -130,7 +130,7 @@ class ChatRequest {
                     
                     guard let responseGroups = response.value as? [String: Any],
                         let array = (responseGroups["response"] as? [Any])?
-                            .flatMap({ $0 as? [String: Any] }),
+                            .compactMap({ $0 as? [String: Any] }),
                         let groupJson = array.first else {
                             return
                     }
@@ -179,7 +179,7 @@ class ChatRequest {
                           parameters: parameters).responseJSON(queue: .global()) { response in
             guard let responseMessagesGet = response.value as? [String: Any],
             let array = (responseMessagesGet["response"] as? [Any])?
-                .flatMap({ $0 as? [String: Any] }) else {
+                .compactMap({ $0 as? [String: Any] }) else {
                 return
             }
 

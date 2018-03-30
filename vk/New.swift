@@ -42,7 +42,7 @@ class LinkOfPost {
   var urlOfLink = ""
   var title = ""
   var description = ""
-  var image : String?
+  var image : PhotoOfPost?
 }
 
 class Item {
@@ -56,6 +56,7 @@ enum TypeOfAttachment {
   case link
   case audio
   case video
+  case doc
   case poll
   case none
 }

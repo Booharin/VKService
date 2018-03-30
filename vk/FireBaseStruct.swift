@@ -58,7 +58,7 @@ class FireBaseMethods {
           self.dbLink.child("Users").setValue(data)
           return
         }
-        let groups: [Group] = (value["groups"] as? [String: Any])?.flatMap { groupJSON in
+        let groups: [Group] = (value["groups"] as? [String: Any])?.compactMap { groupJSON in
               guard let groupJSON = groupJSON.value as? [String: Any],
               let groupID = groupJSON["groupID"] as? String,
               let membersCount = groupJSON["membersCount"] as? Int,
