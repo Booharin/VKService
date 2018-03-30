@@ -18,7 +18,7 @@ class NewsController: UITableViewController {
     let postRequest = PostRequest()
     let newsMethods = NewsMethods()
     
-    var news = [New]()
+    var news = [ItemVK]()
     lazy var photoService = PhotoService(container: tableView)
     var gesture = UITapGestureRecognizer()
     var heigthOfCell: CGFloat = 0.0
@@ -65,14 +65,14 @@ class NewsController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let new = news[indexPath.row]
-        let heightOfText = newsMethods.setHeightOfText(text: new.textOfPost)
+        let heightOfText = newsMethods.setHeightOfText(text: new.text ?? "")
         let dictCell = self.newsMethods.cellType(new)
         var heightOfTitleOfURL : CGFloat = 0.0
         
         heigthOfCell = CGFloat(ceil((Double(UIScreen.main.bounds.width) * (dictCell["ratio"] as! Double))) + (dictCell["addedHeight"] as! Double))
         
         if dictCell["identifier"] as! String == "NewsCellLinkPost" {
-            heightOfTitleOfURL = newsMethods.setHeightOfText(text: new.linkOfPost.title)
+            heightOfTitleOfURL = newsMethods.setHeightOfText(text: new.attachments[0].title)
         }
         heigthOfCell += heightOfText + heightOfTitleOfURL
         
@@ -86,10 +86,10 @@ class NewsController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: dictCell["identifier"] as! String, for: indexPath) as! NewsCell
         
         cell.nameID.text = new.nameID
-        cell.textOfPost.text = new.textOfPost
-        cell.likes.text = new.items.likes
-        cell.comments.text = new.items.comments
-        cell.reposts.text = new.items.reposts
+        cell.textOfPost.text = new.text
+        cell.likes.text = new.likes.countString
+        cell.comments.text = new.comments.countString
+        cell.reposts.text = new.reposts.countString
         cell.photoID.image = photoService.photo(atIndexpath: indexPath, byUrl: new.photoID)
         
         cell.photoOfPost.image = photoService.photo(atIndexpath: indexPath, byUrl: dictCell["imageOfPost"] as! String)
@@ -98,16 +98,16 @@ class NewsController: UITableViewController {
         cell.setPostText(text: cell.textOfPost.text!)
         
         if dictCell["identifier"] as! String == "NewsCellGifPost" {
-            var gif = UIImage()
-            DispatchQueue.global().async {
-                gif = UIImage.gif(url: dictCell["imageOfPost"] as! String)!
+            loadGif(url: dictCell["imageOfPost"] as! String) { [weak cell] image in
+                DispatchQueue.main.async {
+                    cell?.photoOfPost.image = image
+                }
             }
-            cell.photoOfPost.image = gif
         }
         
         if dictCell["identifier"] as! String == "NewsCellLinkPost" {
-            cell.titleUrl.text = new.linkOfPost.title
-            cell.setTitleOfLink(text: cell.titleUrl.text ?? new.linkOfPost.urlOfLink, originY: heigthOfCell)
+            cell.titleUrl.text = new.attachments[0].title
+            cell.setTitleOfLink(text: cell.titleUrl.text ?? new.attachments[0].url, originY: heigthOfCell)
             cell.titleUrl.isUserInteractionEnabled = true
             cell.titleUrl.addGestureRecognizer(gesture)
         }
@@ -126,6 +126,14 @@ class NewsController: UITableViewController {
             let text = source.textOfPost.text
             postRequest.goPost(text: text ?? "")
             userDefaults.set(false, forKey: "pressedMyLocation")
+        }
+    }
+    
+    func loadGif(url: String, completion: @escaping (UIImage) -> ()) {
+        DispatchQueue.global().async {
+            if let image = UIImage.gif(url: url) {
+                completion(image)
+            }
         }
     }
 }

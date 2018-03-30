@@ -46,7 +46,7 @@ extension UIImage {
             print("SwiftGif: Cannot turn image named \"\(url)\" into NSData")
             return nil
         }
-
+        
         return gif(data: imageData)
     }
 

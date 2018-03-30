@@ -76,6 +76,7 @@
 		1FAB65C81FCF2EFE0004F0AE /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F14C1671FCDD2FD004221A3 /* MessagesViewController.swift */; };
 		1FAB65CA1FCF353D0004F0AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F14C16C1FCDD2FE004221A3 /* Assets.xcassets */; };
 		1FBB090F1FD84FF70066F1F6 /* VKLocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB090E1FD84FF70066F1F6 /* VKLocalNotification.swift */; };
+		1FCF336F206EA53F0025C77A /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCF336E206EA53F0025C77A /* Parser.swift */; };
 		1FDA2F5C1FE953120013CBC3 /* ButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA2F5B1FE953120013CBC3 /* ButtonItem.swift */; };
 		1FE040AF1FD5754A00ADEAF3 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FE040AD1FD5754A00ADEAF3 /* Interface.storyboard */; };
 		1FE040B11FD5754A00ADEAF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FE040B01FD5754A00ADEAF3 /* Assets.xcassets */; };
@@ -237,6 +238,7 @@
 		1FAA1C791FBDFECC00354807 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		1FBB090E1FD84FF70066F1F6 /* VKLocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLocalNotification.swift; sourceTree = "<group>"; };
 		1FC0F7191FCECFDB0090AFD1 /* iMessageVK.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iMessageVK.entitlements; sourceTree = "<group>"; };
+		1FCF336E206EA53F0025C77A /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		1FDA2F5B1FE953120013CBC3 /* ButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonItem.swift; sourceTree = "<group>"; };
 		1FE040AB1FD5754A00ADEAF3 /* myWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FE040AE1FD5754A00ADEAF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 			children = (
 				1F99445D1F77C6C400351C0A /* VKService.swift */,
 				1F66F0D91F9E8A6600D74D4E /* PhotoService.swift */,
+				1FCF336E206EA53F0025C77A /* Parser.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -1019,6 +1022,7 @@
 				1F6A68281FBB11810038A390 /* RealmMethodsForMessages.swift in Sources */,
 				1F6236181F75267E00C2EC13 /* AllGroupsCell.swift in Sources */,
 				1F6A68261FBAE49F0038A390 /* DialogCell.swift in Sources */,
+				1FCF336F206EA53F0025C77A /* Parser.swift in Sources */,
 				1FF641CE1FDD5EBA004ABEB0 /* RegistrationVKPush.swift in Sources */,
 				1F708B9F1FB05A2100ACE7FF /* FireBaseStruct.swift in Sources */,
 				1FBB090F1FD84FF70066F1F6 /* VKLocalNotification.swift in Sources */,
