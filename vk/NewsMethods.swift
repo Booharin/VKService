@@ -24,26 +24,26 @@ class NewsMethods {
     func cellType(_ new: ItemVK) -> [String: Any] {
         var dict = [String: Any]()
         
-        switch new.attachments[0].type {
-        case .photo:
+        switch new.attachments?[0].type {
+        case .photo?:
             dict["identifier"] = "NewsCellPhotoPost"
-            dict["imageOfPost"] = new.attachments[0].photo?.photo_604
-            dict["ratio"] = new.attachments[0].photo?.ratio
+            dict["imageOfPost"] = new.attachments?[0].photo?.photo_604
+            dict["ratio"] = new.attachments?[0].photo?.ratio ?? 0.5
             dict["addedHeight"] = 150.0
-        case .link:
+        case .link?:
             dict["identifier"] = "NewsCellLinkPost"
-            dict["imageOfPost"] = new.attachments[0].photo?.photo_604
-            dict["ratio"] = new.attachments[0].photo?.ratio
+            dict["imageOfPost"] = new.attachments?[0].photo?.photo_604
+            dict["ratio"] = new.attachments?[0].photo?.ratio ?? 0.5
             dict["addedHeight"] = 190.0
-        case .video:
+        case .video?:
             dict["identifier"] = "NewsCellPhotoPost"
-            dict["imageOfPost"] = new.attachments[0].photo?.photo_800
+            dict["imageOfPost"] = new.attachments?[0].photo?.photo_800
             dict["ratio"] = 0.75
             dict["addedHeight"] = 150.0
-        case .doc:
+        case .doc?:
             dict["identifier"] = "NewsCellGifPost"
-            dict["imageOfPost"] = new.attachments[0].url
-            dict["ratio"] = new.attachments[0].photo?.ratio
+            dict["imageOfPost"] = new.attachments?[0].url
+            dict["ratio"] = new.attachments?[0].photo?.ratio ?? 0.5
             dict["addedHeight"] = 150.0
         case .none:
             dict["identifier"] = "NewsCellPhotoPost"

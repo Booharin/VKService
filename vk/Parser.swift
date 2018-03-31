@@ -20,13 +20,13 @@ struct ItemVK: Codable {
     let type: String
     let source_id: Int
     let text: String?
-    let attachments: [AttachmentVK]
+    let attachments: [AttachmentVK]?
     let comments: CommentVK
     let likes: LikeVK
     let reposts: RepostVK
     
-    var photoID: String
-    var nameID: String
+    //var photoID: String
+    //var nameID: String
     
     struct CommentVK: Codable {
         let count: Int
@@ -51,8 +51,8 @@ struct ItemVK: Codable {
 struct AttachmentVK: Codable {
     let type: TypeOfAttachment
     let photo: PhotoVK?
-    let url: String
-    let title: String
+    let url: String?
+    let title: String?
 }
 
 struct PhotoVK: Codable {

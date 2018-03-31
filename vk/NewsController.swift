@@ -72,7 +72,7 @@ class NewsController: UITableViewController {
         heigthOfCell = CGFloat(ceil((Double(UIScreen.main.bounds.width) * (dictCell["ratio"] as! Double))) + (dictCell["addedHeight"] as! Double))
         
         if dictCell["identifier"] as! String == "NewsCellLinkPost" {
-            heightOfTitleOfURL = newsMethods.setHeightOfText(text: new.attachments[0].title)
+            heightOfTitleOfURL = newsMethods.setHeightOfText(text: new.attachments?[0].title ?? "")
         }
         heigthOfCell += heightOfText + heightOfTitleOfURL
         
@@ -85,12 +85,12 @@ class NewsController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: dictCell["identifier"] as! String, for: indexPath) as! NewsCell
         
-        cell.nameID.text = new.nameID
+        //cell.nameID.text = new.nameID
         cell.textOfPost.text = new.text
         cell.likes.text = new.likes.countString
         cell.comments.text = new.comments.countString
         cell.reposts.text = new.reposts.countString
-        cell.photoID.image = photoService.photo(atIndexpath: indexPath, byUrl: new.photoID)
+        //cell.photoID.image = photoService.photo(atIndexpath: indexPath, byUrl: new.photoID)
         
         cell.photoOfPost.image = photoService.photo(atIndexpath: indexPath, byUrl: dictCell["imageOfPost"] as! String)
         
@@ -106,8 +106,8 @@ class NewsController: UITableViewController {
         }
         
         if dictCell["identifier"] as! String == "NewsCellLinkPost" {
-            cell.titleUrl.text = new.attachments[0].title
-            cell.setTitleOfLink(text: cell.titleUrl.text ?? new.attachments[0].url, originY: heigthOfCell)
+            cell.titleUrl.text = new.attachments?[0].title ?? ""
+            cell.setTitleOfLink(text: cell.titleUrl.text ?? (new.attachments?[0].url)!, originY: heigthOfCell)
             cell.titleUrl.isUserInteractionEnabled = true
             cell.titleUrl.addGestureRecognizer(gesture)
         }
