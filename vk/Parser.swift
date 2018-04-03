@@ -53,6 +53,9 @@ struct AttachmentVK: Codable {
     let photo: PhotoVK?
     let url: String?
     let title: String?
+    let link: LinkVK?
+    let doc: DocVK?
+    let video: VideoVK?
 }
 
 struct PhotoVK: Codable {
@@ -60,10 +63,20 @@ struct PhotoVK: Codable {
     let photo_800: String?
     let width: Int
     let height: Int
-    let preview: PreviewVK?
     var ratio: Double {
         return Double(height) / Double(width)
     }
+}
+
+struct LinkVK: Codable {
+    let url: String?
+    let title: String?
+    let photo: PhotoVK?
+}
+
+struct DocVK: Codable {
+    let url: String?
+    let preview: PreviewVK?
     
     var ratioForGif: Double {
         var ratio: Double?
@@ -76,11 +89,12 @@ struct PhotoVK: Codable {
 
 struct PreviewVK: Codable {
     let video: VideoVK
+}
 
-    struct VideoVK: Codable {
-        let width: Int
-        let height: Int
-    }
+struct VideoVK: Codable {
+    let photo_800: String?
+    let width: Int
+    let height: Int
 }
 
 struct GroupVK: Codable {
@@ -104,5 +118,6 @@ enum TypeOfAttachment: String, Codable {
     case video
     case doc
     case poll
+    case page
     case none
 }

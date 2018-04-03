@@ -106,8 +106,10 @@ class NewsController: UITableViewController {
         }
         
         if dictCell["identifier"] as! String == "NewsCellLinkPost" {
-            cell.titleUrl.text = new.attachments?[0].title ?? ""
-            cell.setTitleOfLink(text: cell.titleUrl.text ?? (new.attachments?[0].url)!, originY: heigthOfCell)
+            cell.titleUrl.text = new.attachments?[0].link?.title ?? ""
+            if let url = new.attachments?[0].link?.url {
+                cell.setTitleOfLink(text: cell.titleUrl.text ?? url, originY: heigthOfCell)
+            }
             cell.titleUrl.isUserInteractionEnabled = true
             cell.titleUrl.addGestureRecognizer(gesture)
         }
