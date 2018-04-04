@@ -22,7 +22,6 @@
 		1F34A1E31FC6AF40008E5B55 /* RealmMethodsForGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F34A1E21FC6AF40008E5B55 /* RealmMethodsForGroups.swift */; };
 		1F39AB7B1FCC0A1F008CCD50 /* ToDayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39AB7A1FCC0A1F008CCD50 /* ToDayTableViewCell.swift */; };
 		1F39AB7C1FCC0A28008CCD50 /* ToDayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39AB7A1FCC0A1F008CCD50 /* ToDayTableViewCell.swift */; };
-		1F39AB7D1FCC5D2A008CCD50 /* New.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5B350D1F937B9300360FCA /* New.swift */; };
 		1F39AB7E1FCC5D3F008CCD50 /* HandleSizingUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE50AE21FAC6D950060E54B /* HandleSizingUI.swift */; };
 		1F443C611FA24B53005ED345 /* SetImageToRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F443C601FA24B53005ED345 /* SetImageToRow.swift */; };
 		1F47CA111FADD7DB007FF908 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F47CA101FADD7DB007FF908 /* GoogleService-Info.plist */; };
@@ -35,7 +34,6 @@
 		1F5B35061F932CD300360FCA /* NewsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5B35051F932CD300360FCA /* NewsRequest.swift */; };
 		1F5B35091F933FB600360FCA /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5B35081F933FB600360FCA /* NewsController.swift */; };
 		1F5B350B1F933FCF00360FCA /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5B350A1F933FCF00360FCA /* NewsCell.swift */; };
-		1F5B350E1F937B9300360FCA /* New.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5B350D1F937B9300360FCA /* New.swift */; };
 		1F62360B1F73F5D400C2EC13 /* AllFriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62360A1F73F5D400C2EC13 /* AllFriendsController.swift */; };
 		1F62360D1F73F76900C2EC13 /* AllFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62360C1F73F76900C2EC13 /* AllFriendsCell.swift */; };
 		1F6236101F741C2800C2EC13 /* FriendPhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F62360F1F741C2800C2EC13 /* FriendPhotoController.swift */; };
@@ -76,7 +74,7 @@
 		1FAB65C81FCF2EFE0004F0AE /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F14C1671FCDD2FD004221A3 /* MessagesViewController.swift */; };
 		1FAB65CA1FCF353D0004F0AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F14C16C1FCDD2FE004221A3 /* Assets.xcassets */; };
 		1FBB090F1FD84FF70066F1F6 /* VKLocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB090E1FD84FF70066F1F6 /* VKLocalNotification.swift */; };
-		1FCF336F206EA53F0025C77A /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCF336E206EA53F0025C77A /* Parser.swift */; };
+		1FCF336F206EA53F0025C77A /* ParserVK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCF336E206EA53F0025C77A /* ParserVK.swift */; };
 		1FDA2F5C1FE953120013CBC3 /* ButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDA2F5B1FE953120013CBC3 /* ButtonItem.swift */; };
 		1FE040AF1FD5754A00ADEAF3 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FE040AD1FD5754A00ADEAF3 /* Interface.storyboard */; };
 		1FE040B11FD5754A00ADEAF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FE040B01FD5754A00ADEAF3 /* Assets.xcassets */; };
@@ -89,7 +87,6 @@
 		1FE040D41FD580EA00ADEAF3 /* MyWatchInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE040D31FD580EA00ADEAF3 /* MyWatchInterfaceController.swift */; };
 		1FE040D61FD582BE00ADEAF3 /* NewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE040D51FD582BE00ADEAF3 /* NewRow.swift */; };
 		1FE040D81FD5853100ADEAF3 /* NewWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE040D71FD5853100ADEAF3 /* NewWatch.swift */; };
-		1FE040DB1FD5C7D200ADEAF3 /* New.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5B350D1F937B9300360FCA /* New.swift */; };
 		1FE50AE31FAC6D950060E54B /* HandleSizingUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE50AE21FAC6D950060E54B /* HandleSizingUI.swift */; };
 		1FEEA4201F86A359004FB74A /* GroupsDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEEA41F1F86A359004FB74A /* GroupsDataRequest.swift */; };
 		1FEEB3311F7CED0F00010A3F /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEEB3301F7CED0F00010A3F /* Friend.swift */; };
@@ -198,7 +195,6 @@
 		1F5B35051F932CD300360FCA /* NewsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRequest.swift; sourceTree = "<group>"; };
 		1F5B35081F933FB600360FCA /* NewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsController.swift; sourceTree = "<group>"; };
 		1F5B350A1F933FCF00360FCA /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
-		1F5B350D1F937B9300360FCA /* New.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = New.swift; sourceTree = "<group>"; };
 		1F62360A1F73F5D400C2EC13 /* AllFriendsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllFriendsController.swift; sourceTree = "<group>"; };
 		1F62360C1F73F76900C2EC13 /* AllFriendsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllFriendsCell.swift; sourceTree = "<group>"; };
 		1F62360F1F741C2800C2EC13 /* FriendPhotoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendPhotoController.swift; sourceTree = "<group>"; };
@@ -238,7 +234,7 @@
 		1FAA1C791FBDFECC00354807 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		1FBB090E1FD84FF70066F1F6 /* VKLocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLocalNotification.swift; sourceTree = "<group>"; };
 		1FC0F7191FCECFDB0090AFD1 /* iMessageVK.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iMessageVK.entitlements; sourceTree = "<group>"; };
-		1FCF336E206EA53F0025C77A /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		1FCF336E206EA53F0025C77A /* ParserVK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserVK.swift; sourceTree = "<group>"; };
 		1FDA2F5B1FE953120013CBC3 /* ButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonItem.swift; sourceTree = "<group>"; };
 		1FE040AB1FD5754A00ADEAF3 /* myWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FE040AE1FD5754A00ADEAF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -470,7 +466,7 @@
 			children = (
 				1F99445D1F77C6C400351C0A /* VKService.swift */,
 				1F66F0D91F9E8A6600D74D4E /* PhotoService.swift */,
-				1FCF336E206EA53F0025C77A /* Parser.swift */,
+				1FCF336E206EA53F0025C77A /* ParserVK.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -514,10 +510,10 @@
 		1F99445C1F77C6A500351C0A /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				1F5B35051F932CD300360FCA /* NewsRequest.swift */,
 				1F4E4B6D1F802AD20021B873 /* FriendsRequest.swift */,
 				1F4E4B6F1F802E410021B873 /* PhotosRequest.swift */,
 				1FEEA41F1F86A359004FB74A /* GroupsDataRequest.swift */,
-				1F5B35051F932CD300360FCA /* NewsRequest.swift */,
 				1F6A68171FB865110038A390 /* ChatRequest.swift */,
 				1FAA1C6E1FBCB62E00354807 /* PostRequest.swift */,
 			);
@@ -608,7 +604,6 @@
 				1FEEB3301F7CED0F00010A3F /* Friend.swift */,
 				1FEEB3321F7D8C1000010A3F /* Photo.swift */,
 				1F5A87511F7E5EC000C967DA /* Group.swift */,
-				1F5B350D1F937B9300360FCA /* New.swift */,
 				1F6A68191FB8B8AC0038A390 /* Chat.swift */,
 			);
 			name = Classes;
@@ -1017,12 +1012,11 @@
 				1F6A681A1FB8B8AC0038A390 /* Chat.swift in Sources */,
 				1F62360D1F73F76900C2EC13 /* AllFriendsCell.swift in Sources */,
 				1F6A681C1FB9D2B10038A390 /* ChatMethods.swift in Sources */,
-				1F5B350E1F937B9300360FCA /* New.swift in Sources */,
 				1F2DD36A1FDA7C4B009A5F10 /* RemoteNotification.swift in Sources */,
 				1F6A68281FBB11810038A390 /* RealmMethodsForMessages.swift in Sources */,
 				1F6236181F75267E00C2EC13 /* AllGroupsCell.swift in Sources */,
 				1F6A68261FBAE49F0038A390 /* DialogCell.swift in Sources */,
-				1FCF336F206EA53F0025C77A /* Parser.swift in Sources */,
+				1FCF336F206EA53F0025C77A /* ParserVK.swift in Sources */,
 				1FF641CE1FDD5EBA004ABEB0 /* RegistrationVKPush.swift in Sources */,
 				1F708B9F1FB05A2100ACE7FF /* FireBaseStruct.swift in Sources */,
 				1FBB090F1FD84FF70066F1F6 /* VKLocalNotification.swift in Sources */,
@@ -1035,7 +1029,6 @@
 			files = (
 				1F9EB5361FC896CC0070ABCB /* TodayViewController.swift in Sources */,
 				1F39AB7E1FCC5D3F008CCD50 /* HandleSizingUI.swift in Sources */,
-				1F39AB7D1FCC5D2A008CCD50 /* New.swift in Sources */,
 				1F39AB7B1FCC0A1F008CCD50 /* ToDayTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1044,7 +1037,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FE040DB1FD5C7D200ADEAF3 /* New.swift in Sources */,
 				1FE040C11FD5754B00ADEAF3 /* NotificationController.swift in Sources */,
 				1FE040D61FD582BE00ADEAF3 /* NewRow.swift in Sources */,
 				1FE040D81FD5853100ADEAF3 /* NewWatch.swift in Sources */,

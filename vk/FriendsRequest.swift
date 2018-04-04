@@ -13,6 +13,7 @@ import RealmSwift
 class FriendsRequest {
     let requestMethods = RequestMethods()
     let realm = RealmMethodsForFriends()
+    var parser: FriendsParserVK?
     
     func loadFriendsData() {
         
@@ -24,28 +25,34 @@ class FriendsRequest {
             "version": requestMethods.apiVersion,
             ]
         
-        Alamofire.request(requestMethods.baseURL + requestMethods.getFriends, parameters: parameters).responseData(queue: .global()) { [weak self] response in // без SwiftyJSON
-            let json = try! JSONSerialization.jsonObject(with: response.value!, options: JSONSerialization.ReadingOptions.mutableContainers)
-            
-            var friends = [Friend]()
-            
-            let dict = json as! [String: Any]
-            for (_, array) in dict {
-                for value in array as! [Any] {
-                    let userJSON = value as! [String:Any]
-                    let firstName = userJSON["first_name"] as! String
-                    let lastName = userJSON["last_name"] as! String
-                    let photoAvatar = userJSON["photo_100"] as! String
-                    let userID = userJSON["user_id"] as! Int
-                    friends.append(Friend(firstName: firstName,
-                                          lastName: lastName,
-                                          photoAvatar: photoAvatar,
-                                          userID: String(userID)))
-                }
+        Alamofire.request(requestMethods.baseURL + requestMethods.getFriends, parameters: parameters).responseJSON(queue: .global()) { [weak self] response in
+            guard let data = response.data else {
+                print("Error: Invalid Response from Request")
+                return
             }
-            self?.realm.saveFriendsData(friends)
+            do {
+                let decoder = JSONDecoder()
+                let result = try decoder.decode(FriendsParserVK.self, from: data)
+                self?.parser = result
+            } catch {
+                print(error)
+            }
+            
+            if let response = self?.parser?.response {
+                var friends = [Friend]()
+                response.forEach { friend in
+                    if let id = friend.user_id {
+                        friends.append(Friend(firstName: friend.first_name,
+                                              lastName: friend.last_name,
+                                              photoAvatar: friend.photo_100,
+                                              userID: String(id)))
+                    }
+                }
+                self?.realm.saveFriendsData(friends)
+            }
         }
     }
+
     
     func loadRequestsToFriends() {
         let parameters: Parameters = [
@@ -61,13 +68,15 @@ class FriendsRequest {
                           parameters: parameters)
             .responseJSON(queue: .global()) { response in
                 
-            guard let responseRequestsGet = response.value as! [String: Any]? else { return }
-            let dict = responseRequestsGet["response"] as! [String: Any]
-            userDefaults.set(dict["count"], forKey: "RequestsCount")
+            guard let responseRequestsGet = response.value as? [String: Any]? else { return }
+                guard let dict = responseRequestsGet?["response"] as? [String: Any]? else { return }
+            userDefaults.set(dict?["count"], forKey: "RequestsCount")
             
             let application = UIApplication.shared
             DispatchQueue.main.async {
-                application.applicationIconBadgeNumber = userDefaults.integer(forKey: "RequestsCount") + userDefaults.integer(forKey: "UnreadMessage")
+                application.applicationIconBadgeNumber =
+                    userDefaults.integer(forKey: "RequestsCount") +
+                    userDefaults.integer(forKey: "UnreadMessage")
             }
         }
     }

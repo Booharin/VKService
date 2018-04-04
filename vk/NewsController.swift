@@ -17,8 +17,11 @@ class NewsController: UITableViewController {
     let newsRequest = NewsRequest()
     let postRequest = PostRequest()
     let newsMethods = NewsMethods()
+
+    lazy var response = ResponseNewsVK(items: [],
+                                       groups: [],
+                                       profiles: [])
     
-    var news = [ItemVK]()
     lazy var photoService = PhotoService(container: tableView)
     var gesture = UITapGestureRecognizer()
     var heigthOfCell: CGFloat = 0.0
@@ -28,8 +31,8 @@ class NewsController: UITableViewController {
         navigationController?.hidesBarsOnSwipe = true
         newsMethods.addTapGestureRecognizer(gesture: &gesture)
         
-        self.newsRequest.loadNewsData() { [weak self] news in
-            self?.news = news
+        self.newsRequest.loadNewsData() { [weak self] response in
+            self?.response = response
             OperationQueue.main.addOperation { self?.tableView.reloadData() }
         }
         
@@ -39,8 +42,8 @@ class NewsController: UITableViewController {
     }
     
     @objc func doRefresh(refreshControl: UIRefreshControl) {
-        self.newsRequest.loadNewsData() { [weak self] news in
-            self?.news = news
+        self.newsRequest.loadNewsData() { [weak self] response in
+            self?.response = response
             OperationQueue.main.addOperation { self?.tableView.reloadData() }
         }
         refreshControl.endRefreshing()
@@ -60,13 +63,13 @@ class NewsController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return news.count
+        return response.items.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let new = news[indexPath.row]
+        let new = response.items[indexPath.row]
         let heightOfText = newsMethods.setHeightOfText(text: new.text ?? "")
-        let dictCell = self.newsMethods.cellType(new)
+        let dictCell = self.newsMethods.cellType(new, response)
         var heightOfTitleOfURL : CGFloat = 0.0
         
         heigthOfCell = CGFloat(ceil((Double(UIScreen.main.bounds.width) * (dictCell["ratio"] as! Double))) + (dictCell["addedHeight"] as! Double))
@@ -80,21 +83,24 @@ class NewsController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let new = news[indexPath.row]
-        var dictCell = newsMethods.cellType(new)
+        let new = response.items[indexPath.row]
+        var dictCell = newsMethods.cellType(new, response)
         
         let cell = tableView.dequeueReusableCell(withIdentifier: dictCell["identifier"] as! String, for: indexPath) as! NewsCell
-        
-        //cell.nameID.text = new.nameID
+        if let nameID = dictCell["nameID"] as? String {
+            cell.nameID.text = nameID
+            cell.setName(text: cell.nameID.text!)
+        }
         cell.textOfPost.text = new.text
         cell.likes.text = new.likes.countString
         cell.comments.text = new.comments.countString
         cell.reposts.text = new.reposts.countString
-        //cell.photoID.image = photoService.photo(atIndexpath: indexPath, byUrl: new.photoID)
+        if let photoID = dictCell["photoID"] as? String {
+            cell.photoID.image = photoService.photo(atIndexpath: indexPath, byUrl: photoID)
+        }
         
         cell.photoOfPost.image = photoService.photo(atIndexpath: indexPath, byUrl: dictCell["imageOfPost"] as! String)
         
-        cell.setName(text: cell.nameID.text!)
         cell.setPostText(text: cell.textOfPost.text!)
         
         if dictCell["identifier"] as! String == "NewsCellGifPost" {

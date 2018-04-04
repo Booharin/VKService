@@ -21,7 +21,7 @@ class NewsMethods {
         print("clicked!")
     }
     
-    func cellType(_ new: ItemVK) -> [String: Any] {
+    func cellType(_ new: ItemVK, _ response: ResponseNewsVK) -> [String: Any] {
         var dict = [String: Any]()
         
         switch new.attachments?[0].type {
@@ -37,7 +37,10 @@ class NewsMethods {
             dict["addedHeight"] = 190.0
         case .video?:
             dict["identifier"] = "NewsCellPhotoPost"
-            dict["imageOfPost"] = new.attachments?[0].video?.photo_800
+            dict["imageOfPost"] =
+                new.attachments?[0].video?.photo_800 ??
+                new.attachments?[0].video?.photo_640 ??
+                new.attachments?[0].video?.photo_320
             dict["ratio"] = 0.75
             dict["addedHeight"] = 150.0
         case .doc?:
@@ -56,6 +59,25 @@ class NewsMethods {
             dict["ratio"] = 0.5
             dict["addedHeight"] = 150.0
         }
+        
+        // MARK: - Setting photo & name of creator of post
+        
+        if new.source_id > 0 {
+            response.profiles.forEach { profile in
+                if profile.id == new.source_id {
+                    dict["nameID"] = profile.fullName 
+                    dict["photoID"] = profile.photo_100
+                }
+            }
+        } else {
+            response.groups.forEach { group in
+                if group.id == -new.source_id {
+                    dict["nameID"] = group.name
+                    dict["photoID"] = group.photo_100
+                }
+            }
+        }
+        
         return dict
     }
     

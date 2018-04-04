@@ -6,11 +6,15 @@
 //  Copyright © 2018 Александр. All rights reserved.
 //
 
-struct ParserVK : Codable {
-    let response: ResponseVK
+struct NewsParserVK : Codable {
+    let response: ResponseNewsVK
 }
 
-struct ResponseVK: Codable {
+struct FriendsParserVK : Codable {
+    let response: [ProfileVK]
+}
+
+struct ResponseNewsVK: Codable {
     var items: [ItemVK]
     let groups: [GroupVK]
     let profiles: [ProfileVK]
@@ -24,9 +28,6 @@ struct ItemVK: Codable {
     let comments: CommentVK
     let likes: LikeVK
     let reposts: RepostVK
-    
-    //var photoID: String
-    //var nameID: String
     
     struct CommentVK: Codable {
         let count: Int
@@ -93,22 +94,27 @@ struct PreviewVK: Codable {
 
 struct VideoVK: Codable {
     let photo_800: String?
-    let width: Int
-    let height: Int
+    let photo_640: String?
+    let photo_320: String?
+    let width: Int?
+    let height: Int?
 }
 
 struct GroupVK: Codable {
-    
+    let id: Int
+    let name: String
+    let photo_100: String
 }
 
 struct ProfileVK: Codable {
-    let id: Int
+    let id: Int?
     let photo_100: String
     let first_name: String
     let last_name: String
     var fullName: String {
         return first_name + " " + last_name
     }
+    let user_id: Int?
 }
 
 enum TypeOfAttachment: String, Codable {
