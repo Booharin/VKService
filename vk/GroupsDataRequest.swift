@@ -10,7 +10,8 @@ import Foundation
 import Alamofire
 
 class GroupsDataRequest {
-    let reqestMethods = RequestMethods()
+    let requestMethods = RequestMethods()
+    var parser: GroupsParserVK?
     
     func loadGroupsDataCount(completion: @escaping ([Group]) -> ()) {
         
@@ -19,31 +20,47 @@ class GroupsDataRequest {
         let parameters: Parameters = [
             "q": userDefaults.string(forKey: "whatYouSearch") ?? print("no search"),
             "type": "group",
-            "access_token": userDefaults.string(forKey: "token") ?? print("no Token")
+            "access_token": userDefaults.string(forKey: "token") ?? print("no Token"),
+            "v": requestMethods.apiVersion
         ]
-        
-        Alamofire.request(reqestMethods.baseURL + reqestMethods.groupSearch, parameters: parameters).responseJSON(queue: .global()) { response in
-            let responseGroupGet = response.value as! [String: Any]
+//        print(Alamofire.request(requestMethods.baseURL + requestMethods.groupSearch, parameters: parameters))
+        Alamofire.request(requestMethods.baseURL + requestMethods.groupSearch, parameters: parameters).responseJSON(queue: .global()) { response in
+            guard let data = response.data else {
+                print("Error: Invalid Response from Request")
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                let result = try decoder.decode(GroupsParserVK.self, from: data)
+                self.parser = result
+            } catch {
+                print(error)
+            }
             
-            guard var allData = responseGroupGet["response"] as! [Any]? else { return }
-            allData.remove(at: 0)
-            var groupIDs = [Int]()
-            var groupIDsString = ""
-            for value in allData {
-                let group = value as! [String: Any]
-                groupIDs.append(group["gid"] as! Int)
-            }
-            for i in groupIDs {
-                groupIDsString = groupIDsString + "," + String(i)
-            }
+            let groupsIDs: String = (self.parser?.response
+                .compactMap({ String($0.id) })
+                .joined(separator: ","))!
+            
+//            let responseGroupGet = response.value as! [String: Any]
+//
+//            guard let allData = responseGroupGet["response"] as! [String: Any]? else { return }
+//            var groupIDs = [Int]()
+//            var groupIDsString = ""
+//            for (_, value) in allData {
+//                let group = value as! [String: Any]
+//                groupIDs.append(group["gid"] as! Int)
+//            }
+//            for i in groupIDs {
+//                groupIDsString = groupIDsString + "," + String(i)
+//            }
             
             let newParameters: Parameters = [
-                "group_ids": groupIDsString,
+                "group_ids": groupsIDs,
                 "fields": "members_count",
                 "access_token": userDefaults.string(forKey: "token") ?? print("no Token")
             ]
             
-            Alamofire.request(self.reqestMethods.baseURL + self.reqestMethods.groupsInfo,
+            Alamofire.request(self.requestMethods.baseURL + self.requestMethods.groupsInfo,
                               parameters: newParameters)
                 .responseJSON(queue: .global()) { response in
                 let responseGroupsMembersCount = response.value as! [String: Any]
@@ -55,11 +72,11 @@ class GroupsDataRequest {
                     let userJSON = value as! [String:Any]
                     let name = userJSON["name"] as! String
                     let photo = userJSON["photo_medium"] as! String
-                    let groupID = String(userJSON["gid"] as! Int)
+                    let groupID = userJSON["gid"] as! Int
                     let membersCount = userJSON["members_count"] as! Int
                     groups.append(Group(name: name,
-                                        photo: photo,
-                                        groupID: groupID,
+                                        photo_100: photo,
+                                        id: groupID,
                                         membersCount: membersCount))
                 }
                 completion(groups)

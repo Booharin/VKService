@@ -15,7 +15,7 @@ class RealmMethodsForGroups {
         do {
             let realm = try Realm()
             realm.beginWrite()
-            if realm.object(ofType: Group.self, forPrimaryKey: group.groupID) == nil {
+            if realm.object(ofType: Group.self, forPrimaryKey: String(group.id)) == nil {
                 realm.add(group)
             }
             try realm.commitWrite()

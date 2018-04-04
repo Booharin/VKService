@@ -17,12 +17,12 @@ class MyCloud {
     }
     
     func saveToiCloud(_ groupIncoming: Group) {
-        let groupID = CKRecordID(recordName: groupIncoming.groupID, zoneID: zoneID)
+        let groupID = CKRecordID(recordName: String(groupIncoming.id), zoneID: zoneID)
         let groupGoingToTheCloud = CKRecord(recordType: "Group", recordID: groupID)
         
         groupGoingToTheCloud["name"] = groupIncoming.name as NSString
-        groupGoingToTheCloud["groupID"] = groupIncoming.groupID as NSString
-        groupGoingToTheCloud["image"] = groupIncoming.photo as NSString
+        groupGoingToTheCloud["groupID"] = groupIncoming.id as NSNumber
+        groupGoingToTheCloud["image"] = groupIncoming.photo_100 as NSString
         groupGoingToTheCloud["membersCount"] = groupIncoming.membersCount as NSNumber
         
         dataBase.save(groupGoingToTheCloud) {
@@ -41,10 +41,10 @@ class MyCloud {
             if results != nil {
                 for group in results! {
                     let name = group["name"] as! String
-                    let groupID = group["groupID"] as! String
+                    let groupID = group["groupID"] as! Int
                     let photo = group["image"] as! String
                     let membersCount = group["membersCount"] as! Int
-                    groups.append(Group(name: name, photo: photo, groupID: groupID, membersCount: membersCount))
+                    groups.append(Group(name: name, photo_100: photo, id: groupID, membersCount: membersCount))
                 }
                 completion(groups)
             }

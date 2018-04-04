@@ -21,7 +21,7 @@ class NewsRequest {
             "count": "40",
             "v": requestMethods.apiVersion
         ]
-        print(Alamofire.request(requestMethods.baseURL + requestMethods.newsGet, parameters: parameters))
+        
         Alamofire.request(requestMethods.baseURL + requestMethods.newsGet, parameters: parameters).responseJSON (queue: .global()) { [weak self] response in
             guard let data = response.data else {
                 print("Error: Invalid Response from Request")

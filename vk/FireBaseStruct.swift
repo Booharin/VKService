@@ -18,7 +18,7 @@ struct User {
       "id": id,
       "groups": groups.reduce([String: Any](), { (prevResult, group) in
         var prevResult = prevResult
-        prevResult[group.groupID] = group.toAnyObject
+        prevResult[String(group.id)] = group.toAnyObject
         return prevResult
       })
     ]
@@ -60,11 +60,11 @@ class FireBaseMethods {
         }
         let groups: [Group] = (value["groups"] as? [String: Any])?.compactMap { groupJSON in
               guard let groupJSON = groupJSON.value as? [String: Any],
-              let groupID = groupJSON["groupID"] as? String,
+              let groupID = groupJSON["groupID"] as? Int,
               let membersCount = groupJSON["membersCount"] as? Int,
               let name = groupJSON["name"] as? String,
                 let photo = groupJSON["photo"] as? String else { return nil }
-              let group = Group(name: name, photo: photo, groupID: groupID, membersCount: membersCount)
+            let group = Group(name: name, photo_100: photo, id: groupID, membersCount: membersCount)
               return group
         } ?? []
         completion(groups)

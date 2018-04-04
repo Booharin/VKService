@@ -51,7 +51,7 @@ class MyGroupsController: UITableViewController {
         cell.nameOfMyGroup.text = group.name
         cell.setGroupName(text: cell.nameOfMyGroup.text!)
         
-        guard let imgURL = URL(string: group.photo) else { return cell }
+        guard let imgURL = URL(string: group.photo_100) else { return cell }
         Alamofire.request(imgURL).responseData(queue: .global()) { (response) in
             OperationQueue.main.addOperation {
                 cell.photoOfMyGroup.image = UIImage(data: response.data!)
@@ -76,10 +76,11 @@ class MyGroupsController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            guard let deletedGroupID = groups?[indexPath.row].groupID else { return }
+            guard let deletedGroupID = groups?[indexPath.row].id else { return }
+            let id = String(deletedGroupID)
             //fireBase.deleteData(group: deletedGroup)
-            realm.deleteGroupData(deletedGroupID)
-            myCloud.deleteFromiCloud(deletedGroupID)
+            realm.deleteGroupData(id)
+            myCloud.deleteFromiCloud(id)
         }
     }
     

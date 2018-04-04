@@ -11,28 +11,28 @@ import RealmSwift
 
 class Group: Object, Codable {
     @objc dynamic var name = ""
-    @objc dynamic var photo = ""
-    @objc dynamic var groupID = ""
+    @objc dynamic var photo_100 = ""
+    @objc dynamic var id = 0
     @objc dynamic var membersCount = 0
     
     @objc dynamic var toAnyObject: Any {
         return [
             "name": name,
-            "photo": photo,
-            "groupID": groupID,
+            "photo_100": photo_100,
+            "id": id,
             "membersCount": membersCount
         ]
     }
     
-    convenience init(name: String, photo: String, groupID: String, membersCount: Int) {
+    convenience init(name: String, photo_100: String, id: Int, membersCount: Int) {
         self.init()
         self.name = name
-        self.photo = photo
-        self.groupID = groupID
+        self.photo_100 = photo_100
+        self.id = id
         self.membersCount = membersCount
     }
     
     override static func primaryKey() -> String? {
-        return "groupID"
+        return "id"
     }
 }
