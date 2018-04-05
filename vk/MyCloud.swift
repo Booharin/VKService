@@ -23,7 +23,7 @@ class MyCloud {
         groupGoingToTheCloud["name"] = groupIncoming.name as NSString
         groupGoingToTheCloud["groupID"] = groupIncoming.id as NSNumber
         groupGoingToTheCloud["image"] = groupIncoming.photo_100 as NSString
-        groupGoingToTheCloud["membersCount"] = groupIncoming.membersCount as NSNumber
+        groupGoingToTheCloud["membersCount"] = groupIncoming.members_count as NSNumber
         
         dataBase.save(groupGoingToTheCloud) {
             (record, error) in
@@ -44,7 +44,7 @@ class MyCloud {
                     let groupID = group["groupID"] as! Int
                     let photo = group["image"] as! String
                     let membersCount = group["membersCount"] as! Int
-                    groups.append(Group(name: name, photo_100: photo, id: groupID, membersCount: membersCount))
+                    groups.append(Group(name: name, photo_100: photo, id: groupID, members_count: membersCount))
                 }
                 completion(groups)
             }

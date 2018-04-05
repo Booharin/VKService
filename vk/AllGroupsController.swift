@@ -13,7 +13,7 @@ class AllGroupsController: UITableViewController {
     
     let searchController = UISearchController(searchResultsController: nil)
     var groupsRequest = GroupsDataRequest()
-    var groups = [Group]()
+    var groups = [GroupVK]()
     
     func searchBarIsEmpty() -> Bool {
         return searchController.searchBar.text?.isEmpty ?? true
@@ -70,7 +70,9 @@ class AllGroupsController: UITableViewController {
         //if isFiltering() {
         let group = groups[indexPath.row]
         cell.nameOfGroup.text = group.name
-        cell.countMembers.text = String(group.membersCount)
+        if let membersCount = group.members_count {
+            cell.countMembers.text = String(membersCount)
+        }
         cell.setGroupName(text: cell.nameOfGroup.text!)
         cell.setCountMembers(text: cell.countMembers.text!)
         

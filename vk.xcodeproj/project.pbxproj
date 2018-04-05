@@ -16,6 +16,7 @@
 		1F24821A1FCABF810017F645 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F5446D51F6EDCA000FAA2FF /* Assets.xcassets */; };
 		1F24821B1FCAD86F0017F645 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9EB5351FC896CC0070ABCB /* TodayViewController.swift */; };
 		1F25C02A1FA0F85A00E799D0 /* GetCacheImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F25C0291FA0F85A00E799D0 /* GetCacheImage.swift */; };
+		1F28CD6F20760FAD00AB12B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F28CD6E20760FAD00AB12B1 /* GoogleService-Info.plist */; };
 		1F2DD36A1FDA7C4B009A5F10 /* RemoteNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD3691FDA7C4B009A5F10 /* RemoteNotification.swift */; };
 		1F2EDF411F8D0D8F00798E59 /* RealmMethodsForFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2EDF401F8D0D8F00798E59 /* RealmMethodsForFriends.swift */; };
 		1F2EDF431F8D1ACD00798E59 /* RealmMethodsForPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2EDF421F8D1ACD00798E59 /* RealmMethodsForPhoto.swift */; };
@@ -24,7 +25,6 @@
 		1F39AB7C1FCC0A28008CCD50 /* ToDayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F39AB7A1FCC0A1F008CCD50 /* ToDayTableViewCell.swift */; };
 		1F39AB7E1FCC5D3F008CCD50 /* HandleSizingUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE50AE21FAC6D950060E54B /* HandleSizingUI.swift */; };
 		1F443C611FA24B53005ED345 /* SetImageToRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F443C601FA24B53005ED345 /* SetImageToRow.swift */; };
-		1F47CA111FADD7DB007FF908 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F47CA101FADD7DB007FF908 /* GoogleService-Info.plist */; };
 		1F4E4B6E1F802AD20021B873 /* FriendsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4E4B6D1F802AD20021B873 /* FriendsRequest.swift */; };
 		1F4E4B701F802E410021B873 /* PhotosRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4E4B6F1F802E410021B873 /* PhotosRequest.swift */; };
 		1F5446CF1F6EDC9F00FAA2FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5446CE1F6EDC9F00FAA2FF /* AppDelegate.swift */; };
@@ -175,6 +175,7 @@
 		1F14C16C1FCDD2FE004221A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F14C16E1FCDD2FE004221A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F25C0291FA0F85A00E799D0 /* GetCacheImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCacheImage.swift; sourceTree = "<group>"; };
+		1F28CD6E20760FAD00AB12B1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F2DD3691FDA7C4B009A5F10 /* RemoteNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotification.swift; sourceTree = "<group>"; };
 		1F2EDF401F8D0D8F00798E59 /* RealmMethodsForFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMethodsForFriends.swift; sourceTree = "<group>"; };
 		1F2EDF421F8D1ACD00798E59 /* RealmMethodsForPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMethodsForPhoto.swift; sourceTree = "<group>"; };
@@ -182,7 +183,6 @@
 		1F34A1E21FC6AF40008E5B55 /* RealmMethodsForGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMethodsForGroups.swift; sourceTree = "<group>"; };
 		1F39AB7A1FCC0A1F008CCD50 /* ToDayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDayTableViewCell.swift; sourceTree = "<group>"; };
 		1F443C601FA24B53005ED345 /* SetImageToRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetImageToRow.swift; sourceTree = "<group>"; };
-		1F47CA101FADD7DB007FF908 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F4BE7C01FC31A7500E1C0A1 /* vk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = vk.entitlements; sourceTree = "<group>"; };
 		1F4E4B6D1F802AD20021B873 /* FriendsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsRequest.swift; sourceTree = "<group>"; };
 		1F4E4B6F1F802E410021B873 /* PhotosRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosRequest.swift; sourceTree = "<group>"; };
@@ -381,8 +381,6 @@
 			children = (
 				1F4BE7C01FC31A7500E1C0A1 /* vk.entitlements */,
 				1F5446CE1F6EDC9F00FAA2FF /* AppDelegate.swift */,
-				1F78C3171FC5AA6800E53F19 /* MyCloud */,
-				1F708B9D1FB059FD00ACE7FF /* FireBase */,
 				1FE50AE11FAC6D5E0060E54B /* HandleSizingUI */,
 				1F25C0281FA0F83000E799D0 /* Operations */,
 				1FC4C6181FE16D8000FB2AFD /* PushNotifications */,
@@ -395,7 +393,7 @@
 				1F13A2F11FB448BC000AD5B4 /* Storyboards */,
 				1F5446D51F6EDCA000FAA2FF /* Assets.xcassets */,
 				1F5446DA1F6EDCA000FAA2FF /* Info.plist */,
-				1F47CA101FADD7DB007FF908 /* GoogleService-Info.plist */,
+				1F28CD6E20760FAD00AB12B1 /* GoogleService-Info.plist */,
 			);
 			path = vk;
 			sourceTree = "<group>";
@@ -467,6 +465,8 @@
 				1F99445D1F77C6C400351C0A /* VKService.swift */,
 				1F66F0D91F9E8A6600D74D4E /* PhotoService.swift */,
 				1FCF336E206EA53F0025C77A /* ParserVK.swift */,
+				1F78C3171FC5AA6800E53F19 /* MyCloud */,
+				1F708B9D1FB059FD00ACE7FF /* FireBase */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -845,7 +845,7 @@
 			files = (
 				1F13A2F51FB44D97000AD5B4 /* Friends.storyboard in Resources */,
 				1F13A2F31FB44B2D000AD5B4 /* Groups.storyboard in Resources */,
-				1F47CA111FADD7DB007FF908 /* GoogleService-Info.plist in Resources */,
+				1F28CD6F20760FAD00AB12B1 /* GoogleService-Info.plist in Resources */,
 				1FAA1C7A1FBDFECC00354807 /* Map.storyboard in Resources */,
 				1F13A2F71FB44DE1000AD5B4 /* News.storyboard in Resources */,
 				1F5446D61F6EDCA000FAA2FF /* Assets.xcassets in Resources */,

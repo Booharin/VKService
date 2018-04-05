@@ -11,9 +11,11 @@ import Alamofire
 
 class GroupsDataRequest {
     let requestMethods = RequestMethods()
+    let decoder = JSONDecoder()
     var parser: GroupsParserVK?
+    var parserFromID: GroupsParserFromIDVK?
     
-    func loadGroupsDataCount(completion: @escaping ([Group]) -> ()) {
+    func loadGroupsDataCount(completion: @escaping ([GroupVK]) -> ()) {
         
         if userDefaults.string(forKey: "whatYouSearch") == "" { return }
         
@@ -23,63 +25,44 @@ class GroupsDataRequest {
             "access_token": userDefaults.string(forKey: "token") ?? print("no Token"),
             "v": requestMethods.apiVersion
         ]
-//        print(Alamofire.request(requestMethods.baseURL + requestMethods.groupSearch, parameters: parameters))
+        
         Alamofire.request(requestMethods.baseURL + requestMethods.groupSearch, parameters: parameters).responseJSON(queue: .global()) { response in
             guard let data = response.data else {
                 print("Error: Invalid Response from Request")
                 return
             }
             do {
-                let decoder = JSONDecoder()
-                let result = try decoder.decode(GroupsParserVK.self, from: data)
+                let result = try self.decoder.decode(GroupsParserVK.self, from: data)
                 self.parser = result
             } catch {
                 print(error)
             }
             
-            let groupsIDs: String = (self.parser?.response
-                .compactMap({ String($0.id) })
-                .joined(separator: ","))!
-            
-//            let responseGroupGet = response.value as! [String: Any]
-//
-//            guard let allData = responseGroupGet["response"] as! [String: Any]? else { return }
-//            var groupIDs = [Int]()
-//            var groupIDsString = ""
-//            for (_, value) in allData {
-//                let group = value as! [String: Any]
-//                groupIDs.append(group["gid"] as! Int)
-//            }
-//            for i in groupIDs {
-//                groupIDsString = groupIDsString + "," + String(i)
-//            }
+            let groupsIDs: String? = self.parser?.response.items.compactMap({ String($0.id) }).joined(separator: ",")
             
             let newParameters: Parameters = [
-                "group_ids": groupsIDs,
+                "group_ids": groupsIDs ?? "",
                 "fields": "members_count",
-                "access_token": userDefaults.string(forKey: "token") ?? print("no Token")
+                "access_token": userDefaults.string(forKey: "token") ?? print("no Token"),
+                "v": self.requestMethods.apiVersion
             ]
-            
+
             Alamofire.request(self.requestMethods.baseURL + self.requestMethods.groupsInfo,
                               parameters: newParameters)
                 .responseJSON(queue: .global()) { response in
-                let responseGroupsMembersCount = response.value as! [String: Any]
-                    guard let array = responseGroupsMembersCount["response"] as! [Any]? else {
+                    guard let data = response.data else {
+                        print("Error: Invalid Response from Request")
                         return
                     }
-                var groups = [Group]()
-                for value in array {
-                    let userJSON = value as! [String:Any]
-                    let name = userJSON["name"] as! String
-                    let photo = userJSON["photo_medium"] as! String
-                    let groupID = userJSON["gid"] as! Int
-                    let membersCount = userJSON["members_count"] as! Int
-                    groups.append(Group(name: name,
-                                        photo_100: photo,
-                                        id: groupID,
-                                        membersCount: membersCount))
-                }
-                completion(groups)
+                    do {
+                        let result = try self.decoder.decode(GroupsParserFromIDVK.self, from: data)
+                        self.parserFromID = result
+                    } catch {
+                        print(error)
+                    }
+                    if let groups = self.parserFromID?.response {
+                        completion(groups)
+                    }
             }
         }
     }

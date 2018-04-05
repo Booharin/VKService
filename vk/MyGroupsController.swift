@@ -8,23 +8,28 @@
 
 import UIKit
 import Alamofire
-//import FirebaseDatabase
+import FirebaseDatabase
 import CloudKit
 import RealmSwift
 
 class MyGroupsController: UITableViewController {
-    //let fireBase = FireBaseMethods()
-    let myCloud = MyCloud()
-    let realm = RealmMethodsForGroups()
-    var token: NotificationToken?
-    var groups : Results<Group>?
+    let fireBase = FireBaseMethods()
+    //let myCloud = MyCloud()
+    //let realm = RealmMethodsForGroups()
+    //var token: NotificationToken?
+    //var groups : Results<Group>?
+    var groups: [GroupVK]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.hidesBarsOnSwipe = true
         
-        realm.tableUpdate(&groups, &token, tableView)
+        //realm.tableUpdate(&groups, &token, tableView)
+        fireBase.loadData() { groups in
+            self.groups = groups
+            self.tableView.reloadData()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -47,7 +52,6 @@ class MyGroupsController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyGroupsCell", for: indexPath) as! MyGroupsCell
         
         guard let group = groups?[indexPath.row] else { return cell }
-        
         cell.nameOfMyGroup.text = group.name
         cell.setGroupName(text: cell.nameOfMyGroup.text!)
         
@@ -65,26 +69,26 @@ class MyGroupsController: UITableViewController {
             let allGroupsController = segue.source as! AllGroupsController
             guard let indexPath = allGroupsController.tableView.indexPathForSelectedRow else { return }
             let group = allGroupsController.groups[indexPath.row]
-            //fireBase.saveData(group: group)
-            realm.saveGroupData(group)
-            myCloud.saveToiCloud(group)
+            fireBase.saveData(group: group)
+            //realm.saveGroupData(group)
+            //myCloud.saveToiCloud(group)
             if let navController = self.navigationController {
                 navController.popViewController(animated: true)
+            }
+            fireBase.loadData() { groups in
+                self.groups = groups
+                self.tableView.reloadData()
             }
         }
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            guard let deletedGroupID = groups?[indexPath.row].id else { return }
-            let id = String(deletedGroupID)
-            //fireBase.deleteData(group: deletedGroup)
-            realm.deleteGroupData(id)
-            myCloud.deleteFromiCloud(id)
+            guard let deletedGroup = groups?[indexPath.row] else { return }
+            //let id = String(deletedGroupID)
+            fireBase.deleteData(group: deletedGroup)
+            //realm.deleteGroupData(id)
+            //myCloud.deleteFromiCloud(id)
         }
     }
-    
 }
-
-
-

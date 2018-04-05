@@ -15,7 +15,15 @@ struct FriendsParserVK : Codable {
 }
 
 struct GroupsParserVK : Codable {
-    let response: [Group]
+    let response: ResponseGroupVK
+}
+
+struct GroupsParserFromIDVK : Codable {
+    let response: [GroupVK]
+}
+
+struct ResponseGroupVK: Codable {
+    let items: [GroupVK]
 }
 
 struct ResponseNewsVK: Codable {
@@ -108,6 +116,15 @@ struct GroupVK: Codable {
     let id: Int
     let name: String
     let photo_100: String
+    let members_count: Int?
+    var toAnyObject: Any {
+        return [
+            "name": name,
+            "photo_100": photo_100,
+            "id": id,
+            "members_count": members_count
+        ]
+    }
 }
 
 struct ProfileVK: Codable {
